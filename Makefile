@@ -1,4 +1,4 @@
-NAME =container
+NAME =ircserv
 
 SRCS = srcs/main.cpp \
 
@@ -40,7 +40,7 @@ norm:
 
 git_add:
 	${_STATUS7}	
-	git add ${SRCS} ${INCLUDE} Makefile
+	git add ${SRCS} ${INCLUDE} Makefile .vscode/*
 	${_DONE}
 	@git status | grep modif
 
@@ -58,6 +58,7 @@ re: fclean all
 
 ree: fclean all
 	@./${NAME}
+	@rm ./$(NAME)
 
 reee:
 	@./${NAME}
