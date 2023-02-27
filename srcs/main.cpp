@@ -17,7 +17,7 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 		std::cout << "Error : During socket creation" << std::endl; return (1);}
 	if (setsockopt(dta->fd_socket, SOL_SOCKET, SO_REUSEADDR, &number_option, sizeof(number_option)) != 0){
 		std::cout << "Error : During socket configuration" << std::endl; return (1);}
-	if (bind(dta->fd_socket, (struct sockaddr *) &addr, sizeof(addr)) != 0){
+	if (bind(dta->fd_socket, (struct sockaddr *) addr, sizeof(addr)) != 0){
 		std::cout << "Error : During dind on IP/port" << std::endl; return (1);}
 	if (listen(dta->fd_socket, BACKLOG) != 0){
 		std::cout << "Error : During listen" << std::endl; return (1);}
