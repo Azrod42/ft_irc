@@ -10,14 +10,14 @@ void init_sockaddr(struct sockaddr_in *addr, unsigned short port){
 }
 
 int	init_socket(t_data *dta, struct sockaddr_in *addr) {
-	int	number_option;
+	int	number_option = 1;
 
 	dta->fd_socket = -1;
 	if ((dta->fd_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1){
 		std::cout << "Error : During socket creation" << std::endl; return (1);}
-	if (setsockopt(dta->fd_socket, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &number_option, sizeof(number_option)) != 0){
+	if (setsockopt(dta->fd_socket, SOL_SOCKET, SO_REUSEADDR, &number_option, sizeof(number_option)) != 0){
 		std::cout << "Error : During socket configuration" << std::endl; return (1);}
-	if (bind(dta->fd_socket, (struct sockaddr *)addr, sizeof(addr)) != 0){
+	if (bind(dta->fd_socket, (struct sockaddr *) &addr, sizeof(addr)) != 0){
 		std::cout << "Error : During dind on IP/port" << std::endl; return (1);}
 	if (listen(dta->fd_socket, BACKLOG) != 0){
 		std::cout << "Error : During listen" << std::endl; return (1);}
@@ -46,6 +46,7 @@ int main(int argc, char **argv)
 	}
 	if (pars_port(&dta, argv)) return (1);
 	init_sockaddr(&adresse, dta.port);
+	if (init_socket(&dta, &adresse)) return (1);
 	// int fd_socket = socket(AF_INET, SOCK_STREAM, 0);
 	// setsockopt(fd_socket, IPPROTO_TCP, SO_REUSEADDR, );
 	// bind(fd_socket, const struct sockaddr *addr, socklen_t addrlen)
@@ -55,3 +56,4 @@ int main(int argc, char **argv)
 	std::cout << argv[1] << " " << argv[2] << std::endl;
 	return (0);
 }
+// | SO_REUSEPORT
