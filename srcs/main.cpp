@@ -125,6 +125,10 @@ int main(int argc, char **argv)
 	t_data				dta;
 	struct sockaddr_in	adresse;
 	struct pollfd		fds[NB_CLIENT];
+	int					fdn = 1;
+	int					end_server = 0;
+	int					current_size = 1, i, j, len, compress_array, new_sd = -1, close_conn = -1;
+	int					timeout = 3 * 60 * 1000;
 	int 				client[NB_CLIENT];
 	static char			buf[BUFFER_LEN + 1];
 
@@ -138,45 +142,99 @@ int main(int argc, char **argv)
 	init_sockaddr(&adresse, dta.port);
 	if (init_socket(&dta, &adresse)) return (1);
 	// init_pollfd(&fds, &dta);
-	fds[0].fd = STDIN_FILENO;
-	fds[0].events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
-	fds[1].fd = dta.fd_socket;
-	fds[1].events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
+	fds[0].fd = dta.fd_socket;
+	fds[0].events = POLLIN;
 	int ret = 0;
-	while (1){
-		if ((clientsocket = waitForClient(&dta.fd_socket)) != -1)
-			addClientToTab(clientsocket, client);
-		ret = poll(fds, 2, -1);
+	do {
+		// if ((clientsocket = waitForClient(&dta.fd_socket)) != -1)
+			// addClientToTab(clientsocket, client);
+		ret = poll(fds, fdn, timeout);
 		if (ret < 0){
 			std::cout << "Error : durring poll use" << std::endl; 
 			return (1);
-		}
-		if (ret == -1) {
-		} else if (ret == 1000) {
-			printf("timeout expired\n");
+		} else if (ret == 0) {
+			std::cout << "Error : poll() timed out.\n" << std::endl; 
+			return (1);
 		} else {
-			if (fds[0].revents & POLLIN) {
-				int len = recv(dta.fd_socket, buf, BUFFER_LEN, MSG_DONTWAIT);
-				buf[len] = '\0';
-				std::cout << "Recive 1 : " << buf << std::endl;
-				// printf("stdin is ready to be read\n");
+			current_size = fdn;
+			for (i = 0; i < current_size; i++){
+				if (fds[i].revents == 0)
+					continue;
+				if (fds[i].revents != POLLIN) {
+					printf("Error! revents = %d\n", fds[i].revents);
+					return -1;
+				}
+				if (fds[i].fd == dta.fd_socket) {
+					std::cout << "Listening socket is readable" << std::endl;
+					do {
+						new_sd = accept(dta.fd_socket, NULL, NULL);
+						if (new_sd < 0){
+							if (errno != EWOULDBLOCK){
+								std::cout << "Error : accept() failed" << std::endl;
+								end_server = 1;
+							}
+							break;
+						}
+						std::cout << "New incoming connection - " << new_sd << std::endl;
+						fds[fdn].fd = new_sd;
+						fds[fdn].events = POLLIN;
+						fdn++;
+					} while (new_sd != -1);
+				}
+				else {
+					std::cout << "Descriptor is readable : " << fds[i].fd << std::endl;
+					close_conn = 0;
+					do {
+						ret = recv(fds[i].fd, buf, sizeof(buf), 0);
+						if (ret < 0) {
+							if (errno != EWOULDBLOCK){
+								std::cout << "Error : recv() failed" << std::endl;
+								close_conn = 1;
+							}
+							break;
+						}
+						if (ret == 0){
+							std::cout << "Connection closed" << std::endl;
+							close_conn = 1;
+							break;
+						}
+						len = ret;
+						std::cout << len << " byte received" << std::endl;
+						ret = send(fds[i].fd, buf, len, 0);
+						if (ret < 0) {
+							std::cout << "Error : send() failed" << std::endl;
+							close_conn = 1;
+							break;
+						}
+					} while (1);
+					if (close_conn = 1) {
+						close(fds[i].fd);
+						fds[i].fd = -1;
+						compress_array = 1;
+					}
+				}
 			}
-			if (fds[1].revents & POLLIN) {
-				int len = recv(dta.fd_socket, buf, BUFFER_LEN, MSG_DONTWAIT);
-				buf[len] = '\0';
-				std::cout << "Recive 2 : " << buf << std::endl;
-				// printf("socket is ready to be read\n");
-			}
-			if (fds[1].revents & POLLOUT) {
-				int len = recv(dta.fd_socket, buf, BUFFER_LEN, MSG_DONTWAIT);
-				buf[len] = '\0';
-				std::cout << "Recive 3 : " << buf << std::endl;
-				printf("socket is ready to be written\n");
+			if (compress_array == 1){
+				compress_array = 0;
+				for (i = 0; i < fdn; i++){
+					if (fds[i].fd == -1){
+						for (j = i; j < fdn; j++){
+							fds[j].fd = fds[j+1].fd;
+						}
+					i--;
+					fdn--;
+					}
+				}
 			}
 			usleep(1000);
 		}
 		// manageClient(client);
-	// }
+	} while (end_server == 0);
+	for (i = 0; i < fdn; i++){
+		if (fds[i].fd >= -1){
+			close(fds[i].fd);
+		}
+	}
 	return (0);
 }
 
