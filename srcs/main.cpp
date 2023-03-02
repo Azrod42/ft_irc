@@ -33,9 +33,20 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 	if (listen(dta->fd_socket, BACKLOG) != 0){
 		std::cout << "Error : During listen" << std::endl; return (1);}
 	fcntl(dta->fd_socket, F_SETFL, O_NONBLOCK);
+	// if (connect(dta->fd_socket, (struct sockaddr *) addr, sizeof(* addr)) < 0){
+		// std::cout << "Error : During connect" << std::endl; return (1);}
 	std::cout << "Socket mis en ecoute" << std::endl;
 	return (0);
 }
+
+// int	init_pollfd(struct pollfd *fds[2], t_data *dta) {
+
+// 	fds[0]->fd = STDIN_FILENO;
+// 	fds[0]->events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
+// 	fds[1]->fd = dta->fd_socket;
+// 	fds[1]->events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
+// 	return (0);
+// }
 
 int waitForClient(int *fd_socket){
 	int clientsocket;
@@ -113,7 +124,9 @@ int main(int argc, char **argv)
 	int					clientsocket = 0;
 	t_data				dta;
 	struct sockaddr_in	adresse;
+	struct pollfd		fds[NB_CLIENT];
 	int 				client[NB_CLIENT];
+	static char			buf[BUFFER_LEN + 1];
 
 	for (int i = 0; i < NB_CLIENT; i++)
 		client[i] = -1;
@@ -124,19 +137,47 @@ int main(int argc, char **argv)
 	if (pars_port(&dta, argv)) return (1);
 	init_sockaddr(&adresse, dta.port);
 	if (init_socket(&dta, &adresse)) return (1);
+	// init_pollfd(&fds, &dta);
+	fds[0].fd = STDIN_FILENO;
+	fds[0].events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
+	fds[1].fd = dta.fd_socket;
+	fds[1].events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
+	int ret = 0;
 	while (1){
 		if ((clientsocket = waitForClient(&dta.fd_socket)) != -1)
 			addClientToTab(clientsocket, client);
-		// std::cout << "ok" << std::endl;
-		manageClient(client);
-	}
-	// int fd_socket = socket(AF_INET, SOCK_STREAM, 0);
-	// setsockopt(fd_socket, IPPROTO_TCP, SO_REUSEADDR, );
-	// bind(fd_socket, const struct sockaddr *addr, socklen_t addrlen)
-
-
-	std::cout << adresse.sin_port << std::endl;
-	std::cout << argv[1] << " " << argv[2] << std::endl;
+		ret = poll(fds, 2, -1);
+		if (ret < 0){
+			std::cout << "Error : durring poll use" << std::endl; 
+			return (1);
+		}
+		if (ret == -1) {
+		} else if (ret == 1000) {
+			printf("timeout expired\n");
+		} else {
+			if (fds[0].revents & POLLIN) {
+				int len = recv(dta.fd_socket, buf, BUFFER_LEN, MSG_DONTWAIT);
+				buf[len] = '\0';
+				std::cout << "Recive 1 : " << buf << std::endl;
+				// printf("stdin is ready to be read\n");
+			}
+			if (fds[1].revents & POLLIN) {
+				int len = recv(dta.fd_socket, buf, BUFFER_LEN, MSG_DONTWAIT);
+				buf[len] = '\0';
+				std::cout << "Recive 2 : " << buf << std::endl;
+				// printf("socket is ready to be read\n");
+			}
+			if (fds[1].revents & POLLOUT) {
+				int len = recv(dta.fd_socket, buf, BUFFER_LEN, MSG_DONTWAIT);
+				buf[len] = '\0';
+				std::cout << "Recive 3 : " << buf << std::endl;
+				printf("socket is ready to be written\n");
+			}
+			usleep(1000);
+		}
+		// manageClient(client);
+	// }
 	return (0);
 }
+
 // | SO_REUSEPORT

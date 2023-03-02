@@ -11,9 +11,11 @@
 #include <errno.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
+#include <poll.h>
 
 typedef struct s_data {
 	unsigned short	port;
+	int				rc;
 	int				fd_socket;
 } t_data;
 
