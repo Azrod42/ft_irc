@@ -79,7 +79,32 @@ void manageClient(int client[]){
 		if (clientsocket == -1) {
 			continue;
 		}
-	int len 
+		int len = recv(clientsocket, buf, BUFFER_LEN, MSG_DONTWAIT);
+		int isclose = 0;
+		if (len == -1 && errno != EAGAIN){
+			std::cout << " Error : " << strerror(errno) << std::endl;
+			isclose = 1;
+		} else if (len == 0) {
+			isclose = 1;
+		} else if (len > 0) {
+			buf[len] = '\0';
+			if (strncmp(buf, "exit", 4) == 0) {
+				send(clientsocket, "Bye\n", strlen("Bye\n"), 0);
+				isclose = 1;
+			}
+			else {
+				int len = strlen("Your msg : ") + strlen(buf) + 1;
+				char rep[len];
+				strcpy(rep, "Your msg : ");
+				strcat(rep, buf);
+				send(clientsocket, rep, strlen(rep), 0);
+			}
+		}
+		if (isclose == 1){
+			std::cout << "Client close connectiom" << std::endl;
+			close(clientsocket);
+			client[i] = -1;
+		}
 	}
 }
 
