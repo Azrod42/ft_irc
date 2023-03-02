@@ -39,89 +39,8 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 	return (0);
 }
 
-// int	init_pollfd(struct pollfd *fds[2], t_data *dta) {
-
-// 	fds[0]->fd = STDIN_FILENO;
-// 	fds[0]->events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
-// 	fds[1]->fd = dta->fd_socket;
-// 	fds[1]->events = POLLIN | POLLOUT | POLLHUP | POLLERR | POLLNVAL;
-// 	return (0);
-// }
-
-int waitForClient(int *fd_socket){
-	int clientsocket;
-	struct sockaddr_in clientAdrr;
-	int clientsocketsize = sizeof(clientAdrr);
-
-	if ((clientsocket = accept(*fd_socket, (struct sockaddr *)&clientAdrr, (socklen_t *)&clientsocketsize)) != -1) {
-		char ip[INET_ADDRSTRLEN];
-
-		inet_ntop(AF_INET, &(clientAdrr.sin_addr), ip, INET_ADDRSTRLEN);
-		std::cout << "New connection : " << ip << " " << clientAdrr.sin_port << std::endl;
-		int opt = 1;
-		setsockopt(clientsocket, SOL_SOCKET, SO_KEEPALIVE, &opt, sizeof(1));
-	}
-	return (clientsocket);
-}
-
-void addClientToTab(int clientsocket, int client[]){
-	int space = -1;
-
-	for(int i = 0; i < NB_CLIENT; i++){
-		if (client[i] == -1) {
-			client[i] = clientsocket;
-		}
-		send(clientsocket, "Bienvenu zebi\n", strlen("Bienvenu zebi\n"),MSG_DONTWAIT);
-		space = 0;
-		break;
-	}
-	if (space == -1){
-		std::cout << "No place left" << std::endl;
-		close(clientsocket);
-	}
-}
-
-void manageClient(int client[]){
-	static char buf[BUFFER_LEN + 1];
-	int clientsocket;
-
-	for (int i = 0; i < NB_CLIENT; i++) {
-		clientsocket = client[i];
-		if (clientsocket == -1) {
-			continue;
-		}
-		int len = recv(clientsocket, buf, BUFFER_LEN, MSG_DONTWAIT);
-		int isclose = 0;
-		if (len == -1 && errno != EAGAIN){
-			std::cout << " Error : " << strerror(errno) << std::endl;
-			isclose = 1;
-		} else if (len == 0) {
-			isclose = 1;
-		} else if (len > 0) {
-			buf[len] = '\0';
-			if (strncmp(buf, "exit", 4) == 0) {
-				send(clientsocket, "Bye\n", strlen("Bye\n"), 0);
-				isclose = 1;
-			}
-			else {
-				int len = strlen("Your msg : ") + strlen(buf) + 1;
-				char rep[len];
-				strcpy(rep, "Your msg : ");
-				strcat(rep, buf);
-				send(clientsocket, rep, strlen(rep), 0);
-			}
-		}
-		if (isclose == 1){
-			std::cout << "Client close connection" << std::endl;
-			close(clientsocket);
-			client[i] = -1;
-		}
-	}
-}
-
 int main(int argc, char **argv)
 {
-	int					clientsocket = 0;
 	t_data				dta;
 	struct sockaddr_in	adresse;
 	struct pollfd		fds[NB_CLIENT];
@@ -146,8 +65,6 @@ int main(int argc, char **argv)
 	fds[0].events = POLLIN;
 	int ret = 0;
 	do {
-		// if ((clientsocket = waitForClient(&dta.fd_socket)) != -1)
-			// addClientToTab(clientsocket, client);
 		ret = poll(fds, fdn, timeout);
 		if (ret < 0){
 			std::cout << "Error : durring poll use" << std::endl; 
@@ -161,7 +78,7 @@ int main(int argc, char **argv)
 				if (fds[i].revents == 0)
 					continue;
 				if (fds[i].revents != POLLIN) {
-					printf("Error! revents = %d\n", fds[i].revents);
+					printf("Error! events = %d\n", fds[i].revents);
 					return -1;
 				}
 				if (fds[i].fd == dta.fd_socket) {
@@ -207,7 +124,7 @@ int main(int argc, char **argv)
 							break;
 						}
 					} while (1);
-					if (close_conn = 1) {
+					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;
 						compress_array = 1;
@@ -226,9 +143,7 @@ int main(int argc, char **argv)
 					}
 				}
 			}
-			usleep(1000);
 		}
-		// manageClient(client);
 	} while (end_server == 0);
 	for (i = 0; i < fdn; i++){
 		if (fds[i].fd >= -1){
@@ -237,5 +152,3 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
-// | SO_REUSEPORT
