@@ -74,7 +74,7 @@ void manageClient(int client[]){
 	static char buf[BUFFER_LEN + 1];
 	int clientsocket;
 
-	for (int i = 0; i < NB_CLIENT, i++) {
+	for (int i = 0; i < NB_CLIENT; i++) {
 		clientsocket = client[i];
 		if (clientsocket == -1) {
 			continue;
@@ -101,7 +101,7 @@ void manageClient(int client[]){
 			}
 		}
 		if (isclose == 1){
-			std::cout << "Client close connectiom" << std::endl;
+			std::cout << "Client close connection" << std::endl;
 			close(clientsocket);
 			client[i] = -1;
 		}
