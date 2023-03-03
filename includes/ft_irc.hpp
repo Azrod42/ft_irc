@@ -3,6 +3,7 @@
 
 # include<iostream>
 #include <unistd.h>
+#include <string.h>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <stdlib.h>
@@ -24,4 +25,5 @@ typedef struct s_user {
 	unsigned int	id;
 	std::string		name;
 } t_user;
+
 #endif

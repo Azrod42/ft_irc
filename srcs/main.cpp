@@ -3,7 +3,7 @@
 
 #define IP INADDR_ANY
 #define BACKLOG 3
-#define BUFFER_LEN 200
+#define BUFFER_LEN 2
 #define NB_CLIENT 256
 
 void init_sockaddr(struct sockaddr_in *addr, unsigned short port){
@@ -36,7 +36,7 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 	fcntl(dta->fd_socket, F_SETFL, O_NONBLOCK);
 	// if (connect(dta->fd_socket, (struct sockaddr *) addr, sizeof(* addr)) < 0){
 		// std::cout << "Error : During connect" << std::endl; return (1);}
-	std::cout << "Socket mis en ecoute" << std::endl;
+	std::cout << "Server running" << std::endl;
 	return (0);
 }
 
@@ -52,6 +52,7 @@ int main(int argc, char **argv)
 	int					timeout = 3 * 60 * 1000;
 	int 				client[NB_CLIENT];
 	static char			buf[BUFFER_LEN + 1];
+	std::string			buffer;
 
 	for (int i = 0; i < NB_CLIENT; i++)
 		client[i] = -1;
@@ -59,6 +60,7 @@ int main(int argc, char **argv)
 		std::cout << "Usage : ./ircserv [port] [password]" << std::endl;
 		return (1);
 	}
+	std::cout << "Server starting" << std::endl;
 	if (pars_port(&dta, argv)) return (1);
 	init_sockaddr(&adresse, dta.port);
 	if (init_socket(&dta, &adresse)) return (1);
@@ -95,8 +97,8 @@ int main(int argc, char **argv)
 							}
 							break;
 						}
-						std::cout << "New incoming connection - " << new_sd << std::endl;
-						user.addUser(new_sd, "Gest");
+						std::cout << "New incoming connection on fd : " << new_sd << std::endl;
+						user.addUser(new_sd, "User");
 						fds[fdn].fd = new_sd;
 						fds[fdn].events = POLLIN;
 						fdn++;
@@ -105,6 +107,8 @@ int main(int argc, char **argv)
 				else {
 					std::cout << "Descriptor is readable : " << fds[i].fd << std::endl;
 					close_conn = 0;
+					buffer = "";
+					len = 0;
 					do {
 						ret = recv(fds[i].fd, buf, sizeof(buf), 0);
 						if (ret < 0) {
@@ -119,16 +123,14 @@ int main(int argc, char **argv)
 							close_conn = 1;
 							break;
 						}
-						len = ret;
-						std::cout << len << " byte received" << std::endl;
-						std::cout << buf << std::endl;
-						ret = send(fds[i].fd, buf, len, 0);
-						if (ret < 0) {
-							std::cout << "Error : send() failed" << std::endl;
-							close_conn = 1;
-							break;
-						}
+						len += ret;
+						std::cout << ret << " byte received, total : " << len << std::endl;
+						buffer += buf;
 					} while (1);
+					// pos = buffer.find('\n');
+					// buffer.append(buffer, 0, pos);
+					buffer.erase(buffer.begin() + len, buffer.end());
+					user.userCommand(buffer);
 					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;

@@ -32,11 +32,11 @@ class User {
 			}
 			return("Warning: User not found");
 		};
-		int	addUser(const unsigned int id, std::string name) {
+		int				addUser(const unsigned int id, std::string name) {
 			t_user udef;
 			std::vector<t_user>::iterator it = _user.begin();
 
-			if (name == "Gest")
+			if (name == "User")
 				name = this->getGestname();
 			for (size_t i = 0; it + i != _user.end(); ++i){
 				if (it->id == id || it->name == name){
@@ -50,13 +50,26 @@ class User {
 			std::cout << "New user connected : " << udef.name << std::endl;
 			return (0);
 		};
-		std::string getGestname(void) const {
-			std::string ret = "Gest_";
+		std::string 	getGestname(void) const {
+			std::string ret = "User_";
 			srand(time(NULL));
 			int nbr = rand() % 424242; 
 			std::string s2(std::to_string(nbr));
 			ret += s2;
 			return (ret);
+		};
+		void			userCommand(std::string prompt){
+			std::string line = "";
+			while (prompt.size() > 1)
+			{
+				line.clear();
+				line = prompt.append(prompt, 0, prompt.find('\n'));
+				prompt.erase(prompt.begin(), prompt.begin() + prompt.find('\n') + 1);
+				std::cout << "- " << line << "=-=" << std::endl;
+				if (prompt.find('\n') + 1 == 0)
+					break ;
+				sleep(1);
+			}
 		};
 };
 
