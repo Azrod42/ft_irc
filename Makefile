@@ -54,6 +54,10 @@ git_push:
 
 git_master: git_add git_push
 
+git_next: git_add 
+	@git commit -md 
+	@git push origin next
+
 re: fclean all
 
 ree: fclean all
