@@ -1,4 +1,5 @@
 #include"../includes/ft_irc.hpp"
+#include"../includes/User.hpp"
 
 #define IP INADDR_ANY
 #define BACKLOG 3
@@ -41,12 +42,13 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 
 int main(int argc, char **argv)
 {
+	User				user;
 	t_data				dta;
+	t_user				uuser;
 	struct sockaddr_in	adresse;
 	struct pollfd		fds[NB_CLIENT];
-	int					fdn = 1;
-	int					end_server = 0;
-	int					current_size = 1, i, j, len, compress_array, new_sd = -1, close_conn = -1;
+	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
+	int					i, j, len, compress_array;
 	int					timeout = 3 * 60 * 1000;
 	int 				client[NB_CLIENT];
 	static char			buf[BUFFER_LEN + 1];
@@ -60,7 +62,6 @@ int main(int argc, char **argv)
 	if (pars_port(&dta, argv)) return (1);
 	init_sockaddr(&adresse, dta.port);
 	if (init_socket(&dta, &adresse)) return (1);
-	// init_pollfd(&fds, &dta);
 	fds[0].fd = dta.fd_socket;
 	fds[0].events = POLLIN;
 	int ret = 0;
@@ -77,8 +78,10 @@ int main(int argc, char **argv)
 			for (i = 0; i < current_size; i++){
 				if (fds[i].revents == 0)
 					continue;
-				if (fds[i].revents != POLLIN) {
-					printf("Error! events = %d\n", fds[i].revents);
+				if (fds[i].revents == 17) {
+					std::cout << "User disconect : " << fds[i].fd << std::endl;
+				} else if (fds[i].revents != POLLIN) {
+					std::cout << "Error! events = " << fds[i].revents << std::endl;
 					return -1;
 				}
 				if (fds[i].fd == dta.fd_socket) {
@@ -93,6 +96,7 @@ int main(int argc, char **argv)
 							break;
 						}
 						std::cout << "New incoming connection - " << new_sd << std::endl;
+						user.addUser(new_sd, "Gest");
 						fds[fdn].fd = new_sd;
 						fds[fdn].events = POLLIN;
 						fdn++;
@@ -117,6 +121,7 @@ int main(int argc, char **argv)
 						}
 						len = ret;
 						std::cout << len << " byte received" << std::endl;
+						std::cout << buf << std::endl;
 						ret = send(fds[i].fd, buf, len, 0);
 						if (ret < 0) {
 							std::cout << "Error : send() failed" << std::endl;

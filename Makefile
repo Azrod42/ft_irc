@@ -40,7 +40,7 @@ norm:
 
 git_add:
 	${_STATUS7}	
-	git add ${SRCS} ${INCLUDE} Makefile .vscode/*
+	git add ${SRCS} ${INCLUDE} Makefile .vscode/* note
 	${_DONE}
 	@git status | grep modif
 

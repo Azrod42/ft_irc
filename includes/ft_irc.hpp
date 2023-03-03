@@ -12,6 +12,7 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <poll.h>
+#include <vector>
 
 typedef struct s_data {
 	unsigned short	port;
@@ -19,4 +20,8 @@ typedef struct s_data {
 	int				fd_socket;
 } t_data;
 
+typedef struct s_user {
+	unsigned int	id;
+	std::string		name;
+} t_user;
 #endif

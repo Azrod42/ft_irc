@@ -1,0 +1,3 @@
+NICK tsorabel
+USER tsorabel tsorabel localhost :Tom Sorabella
+PRIVMSG #merde salutation
