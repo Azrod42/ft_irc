@@ -3,7 +3,7 @@
 
 #define IP INADDR_ANY
 #define BACKLOG 3
-#define BUFFER_LEN 2
+#define BUFFER_LEN 2000
 #define NB_CLIENT 256
 
 void init_sockaddr(struct sockaddr_in *addr, unsigned short port){
@@ -18,6 +18,23 @@ int pars_port(t_data *dta, char **argv){
 	if (port.size() < 0 || port.size() > 5) {	
 		std::cout << "error : Port range not valid" << std::endl; return 1;}
 	dta->port = static_cast<unsigned short>(std::atoi(argv[1]));
+	return (0);
+}
+
+int pars_pass(t_data *dta, char **av){
+	int j = 0;
+
+	for(int i = 0; av[2][i]; i++, j++){
+		if (!ispass(av[2][i])){
+			std::cout << "error : Invalid pass" << std::endl;
+			return (1);
+		}
+	}
+	if (j < 3){
+		std::cout << "error : Invalid pass : pass_lenght as to be > 3" << std::endl;
+		return (1);
+	}
+	dta->pass = av[2];
 	return (0);
 }
 
@@ -40,6 +57,7 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 	return (0);
 }
 
+
 int main(int argc, char **argv)
 {
 	User				user;
@@ -50,18 +68,17 @@ int main(int argc, char **argv)
 	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
 	int					i, j, len, compress_array;
 	int					timeout = 3 * 60 * 1000;
-	int 				client[NB_CLIENT];
 	static char			buf[BUFFER_LEN + 1];
 	std::string			buffer;
 
-	for (int i = 0; i < NB_CLIENT; i++)
-		client[i] = -1;
 	if (argc != 3) {
 		std::cout << "Usage : ./ircserv [port] [password]" << std::endl;
 		return (1);
 	}
 	std::cout << "Server starting" << std::endl;
 	if (pars_port(&dta, argv)) return (1);
+	if (pars_pass(&dta, argv)) return (1);
+	user.getServerPass(dta.pass);
 	init_sockaddr(&adresse, dta.port);
 	if (init_socket(&dta, &adresse)) return (1);
 	fds[0].fd = dta.fd_socket;
@@ -105,7 +122,7 @@ int main(int argc, char **argv)
 					} while (new_sd != -1);
 				}
 				else {
-					std::cout << "Descriptor is readable : " << fds[i].fd << std::endl;
+					std::cout << "Descriptor is readable : " << user.getNick(fds[i].fd) << std::endl;
 					close_conn = 0;
 					buffer = "";
 					len = 0;
@@ -127,10 +144,9 @@ int main(int argc, char **argv)
 						std::cout << ret << " byte received, total : " << len << std::endl;
 						buffer += buf;
 					} while (1);
-					// pos = buffer.find('\n');
-					// buffer.append(buffer, 0, pos);
-					buffer.erase(buffer.begin() + len, buffer.end());
-					user.userCommand(buffer);
+					buffer.erase(buffer.begin() + len, buffer.end() - 1);
+					std::string rep(buffer.begin(), buffer.begin() + len);
+					user.userCommand(rep, fds[i].fd);
 					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;
@@ -159,3 +175,8 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
+
+
+
+
+
