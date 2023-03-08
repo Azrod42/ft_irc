@@ -67,9 +67,11 @@ int main(int argc, char **argv)
 	struct pollfd		fds[NB_CLIENT];
 	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
 	int					i, j, len, compress_array;
-	int					timeout = 3 * 60 * 1000;
+	int					timeout = 10 * 60 * 1000;
 	static char			buf[BUFFER_LEN + 1];
 	std::string			buffer;
+	char				*buf_full;
+	char				*tmp;
 
 	if (argc != 3) {
 		std::cout << "Usage : ./ircserv [port] [password]" << std::endl;
@@ -125,6 +127,7 @@ int main(int argc, char **argv)
 					std::cout << "Descriptor is readable : " << user.getNick(fds[i].fd) << std::endl;
 					close_conn = 0;
 					buffer = "";
+					buf_full = strdup("");
 					len = 0;
 					do {
 						ret = recv(fds[i].fd, buf, sizeof(buf), 0);
@@ -137,16 +140,21 @@ int main(int argc, char **argv)
 						}
 						if (ret == 0){
 							std::cout << "Connection closed" << std::endl;
+							user.disconectUser(fds[i].fd);
 							close_conn = 1;
 							break;
 						}
 						len += ret;
 						std::cout << ret << " byte received, total : " << len << std::endl;
 						buffer += buf;
+						tmp = buf_full;
+						buf_full = ft_strjoin(buf_full, buf);
+						free(tmp);
 					} while (1);
+					
 					buffer.erase(buffer.begin() + len, buffer.end() - 1);
 					std::string rep(buffer.begin(), buffer.begin() + len);
-					user.userCommand(rep, fds[i].fd);
+					user.userCommand(strdup(rep.c_str()), fds[i].fd);
 					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;
@@ -175,8 +183,6 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
-
 
 
 

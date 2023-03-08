@@ -30,12 +30,15 @@ typedef struct s_uer {
 	unsigned int	id;
 	std::string		nick;
 	std::string		name;//user
-	std::string		real;
+	std::string		realname;
 	int				pass_ok;
 	int				is_log;
+	std::string		mode;
+	std::string		unused;
 } t_user;
 
 char	**ft_split(char const *s, char c);
+char	*ft_strjoin(char const *s1, char const *s2);
 int		ispass(int c);
 
 #endif

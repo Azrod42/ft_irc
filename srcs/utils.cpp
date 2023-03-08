@@ -98,3 +98,25 @@ int ispass(int c) {
 		return (0);
 	return(1);
 }
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	i;
+	size_t	j;
+	char	*dup;
+
+	if (!s1 || !s2)
+		return (NULL);
+	dup = (char *)malloc(strlen(s1) + strlen(s2) + 1);
+	if (!dup)
+		return (NULL);
+	i = -1;
+	j = -1;
+	while (s1[++i])
+		dup[i] = s1[i];
+	i--;
+	while (s2[++j])
+		dup[++i] = s2[j];
+	dup[i + 1] = '\0';
+	return (dup);
+}
