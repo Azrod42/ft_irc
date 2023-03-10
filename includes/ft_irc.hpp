@@ -27,6 +27,7 @@ typedef struct s_data {
 } t_data;
 
 typedef struct s_uer {
+	char			*cmd;
 	unsigned int	id;
 	std::string		nick;
 	std::string		name;//user
@@ -39,6 +40,7 @@ typedef struct s_uer {
 
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 int		ispass(int c);
 
 #endif

@@ -27,6 +27,20 @@ class User {
 		void getServerPass(std::string pass){
 			this->_pass = pass;
 		}
+
+		void		sendMessage(char *message, unsigned int id){
+			std::vector<t_user>::iterator it = _user.begin();
+			std::string user = "";
+			
+			while (it++ != _user.end()){
+				if (it->id == id){
+					user = it->nick + " ";
+				}
+			}
+			user += std::string(message);
+			send(id, user.c_str(), sizeof(user.c_str()), 0);
+		}
+
 		std::string	getName(unsigned int const id){
 			std::vector<t_user>::iterator it = _user.begin();
 			while (it++ != _user.end()){
@@ -66,6 +80,7 @@ class User {
 			udef.pass_ok = 0;
 			udef.mode = "";
 			udef.unused = "";
+			udef.cmd = strdup("");
 			_user.push_back(udef);
 			std::cout << "New user connected : " << udef.name << std::endl;
 			return (0);
@@ -92,17 +107,30 @@ class User {
 			return (ret);
 		};
 
-		void			userCommand(char *prompt, int id){
+		void			userCommand(char *prompt, unsigned int id){
+			std::vector<t_user>::iterator it = _user.begin();
 			char **cmds;
+			char *tmp;
 			int i = -1;
 
-			std::cout << "--------------------------" << std::endl;
-			std::cout << prompt << std::endl;
-			std::cout << "--------------------------" << std::endl;
-			cmds = ft_split(prompt, '\n');
-			while (cmds[++i]){
-				std::cout << cmds[i] << std::endl;
-				this->exeCommand(cmds[i], id);
+			while (it != _user.end())
+			{
+				if (it->id == id)
+				{
+					tmp = it->cmd;
+					it->cmd = ft_strjoin(it->cmd, prompt);
+					free(tmp);
+					if (strchr(it->cmd, '\n') != NULL)
+					{
+						cmds = ft_split(it ->cmd, '\n');
+						while (cmds[++i]){
+							this->exeCommand(cmds[i], id);
+						}
+						free(it->cmd);
+						it->cmd = strdup("");
+					}
+				}
+				it++;
 			}
 			// if (cmds);
 				// free(cmds);
@@ -110,14 +138,10 @@ class User {
 		};
 
 		void			userCommandfull(char *prompt, int id){
-			char **cmds;
+			char **cmds = ft_split(prompt, '\n');
 			int i = -1;
 
-			std::cout << "-----------prompt-------------" << std::endl;
-			std::cout << prompt << std::endl;
-			std::cout << "------------------------------" << std::endl;
 			while (cmds[++i]){
-				std::cout << cmds[i] << std::endl;
 				this->exeCommand(cmds[i], id);
 			}
 			// if (cmds);
@@ -154,7 +178,7 @@ class User {
 						}
 						return ;
 					}
-					else {
+					else if (std::string(cmd[0]) != "PASS" || std::string(cmd[0]) != "CAP"){
 							send(id, ":Please enter PASS\n", sizeof(":Please enter PASS\n"), 0);
 					}
 				}
@@ -190,7 +214,6 @@ class User {
 				send(id, ERR_NEEDMOREPARAMS, strlen(ERR_NEEDMOREPARAMS), 0);
 				return;
 			}
-			std::cout << "-------- recive password :" << pass << std::endl;
 			while (it != _user.end())
 			{
 				if (it->id == id){
@@ -201,15 +224,11 @@ class User {
 				}
 				it++;
 			}
-			std::cout << "-------- recive password :" << pass << std::endl;
-			std::cout << std::string(pass) << " - " << this->_pass << std::endl;
 			if (std::string(pass).size() == 0){
 				send(id, pass, strlen(pass), 0);
 				send(id, ERR_NEEDMOREPARAMS, strlen(ERR_NEEDMOREPARAMS), 0);
 			}
-			else if (strcmp(pass, this->_pass.c_str()) == 0){
-				std::cout << "-------- recive password :" << pass << std::endl;
-				std::cout << std::string(pass) << " - " << this->_pass << std::endl;
+			else if (std::string(pass) != this->_pass){
 				send(id, ":invalid password\n", strlen(":invalid password\n"), 0);
 			} else {
 				it = _user.begin();

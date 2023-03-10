@@ -120,3 +120,32 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	dup[i + 1] = '\0';
 	return (dup);
 }
+
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*dup;
+	size_t	lg;
+
+	lg = 0;
+	if (!s)
+		return (NULL);
+	if (start >= (unsigned int)strlen(s) || *s == '\0')
+	{
+		dup = (char *)malloc(1 * sizeof(char));
+		*dup = 0;
+		return (dup);
+	}
+	else if (len > (size_t)strlen(s))
+		lg = strlen(s);
+	else
+		while (s[lg + start] && lg < len)
+			lg++;
+	dup = (char *)malloc(lg + 1);
+	if (!dup)
+		return (NULL);
+	lg = -1;
+	while (++lg < len && s[lg + start])
+		dup[lg] = s[start + lg];
+	dup[lg] = '\0';
+	return (dup);
+}

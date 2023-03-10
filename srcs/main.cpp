@@ -52,11 +52,10 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 		std::cout << "Error : During listen" << std::endl; return (1);}
 	fcntl(dta->fd_socket, F_SETFL, O_NONBLOCK);
 	// if (connect(dta->fd_socket, (struct sockaddr *) addr, sizeof(* addr)) < 0){
-		// std::cout << "Error : During connect" << std::endl; return (1);}
+	// 	std::cout << "Error : During connect" << std::endl; return (1);}
 	std::cout << "Server running" << std::endl;
 	return (0);
 }
-
 
 int main(int argc, char **argv)
 {
@@ -151,10 +150,7 @@ int main(int argc, char **argv)
 						buf_full = ft_strjoin(buf_full, buf);
 						free(tmp);
 					} while (1);
-					
-					buffer.erase(buffer.begin() + len, buffer.end() - 1);
-					std::string rep(buffer.begin(), buffer.begin() + len);
-					user.userCommand(strdup(rep.c_str()), fds[i].fd);
+					user.userCommand(ft_substr(buf_full, 0, len), fds[i].fd);
 					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;
@@ -183,6 +179,10 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
+
+
+
+
 
 
 
