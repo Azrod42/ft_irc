@@ -1,7 +1,9 @@
 NAME =ircserv
 
 SRCS = srcs/main.cpp \
-		srcs/utils.cpp
+		srcs/utils.cpp \
+		srcs/reply.cpp \
+		srcs/User.cpp
 
 INCLUDE = includes/* 
 

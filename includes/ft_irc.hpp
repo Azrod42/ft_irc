@@ -4,6 +4,7 @@
 # include<iostream>
 #include <unistd.h>
 #include <string.h>
+#include<string>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <stdlib.h>
@@ -15,9 +16,13 @@
 #include <poll.h>
 #include <vector>
 
-#define ERR_UNKNOWCOMMAND " :Unknow command\n"
-#define ERR_ALREADYREGISTRED " :Unauthorized command (already registered)\n"
-#define ERR_NEEDMOREPARAMS " :Not enough parameters\n" // need <command> avant l'erreur
+#define	FINDUSER std::vector<t_user>::iterator it = _user.begin();\
+	while (it != _user.end()){ \
+		if (it->id == id){ \
+			break; \
+		} \
+		it++; \
+	}
 
 typedef struct s_data {
 	unsigned short	port;
@@ -38,9 +43,14 @@ typedef struct s_uer {
 	std::string		unused;
 } t_user;
 
-char	**ft_split(char const *s, char c);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(const char *s, unsigned int start, size_t len);
-int		ispass(int c);
+char			**ft_split(char const *s, char c);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_substr(const char *s, unsigned int start, size_t len);
+int				ispass(int c);
+std::string		error_alreadyregistred();
+std::string		error_pass(std::string pass);
+std::string		error_needmoreparams(std::string word);
+std::string		error_erroneusnickname(std::string nick);
+std::string		error_unknowcommand(std::string cmd);
 
 #endif
