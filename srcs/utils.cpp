@@ -149,3 +149,15 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	dup[lg] = '\0';
 	return (dup);
 }
+
+int	check_nickname(std::string input)
+{
+	for (int i = 0; input[i] != '\0'; i++)
+	{
+		if (isalnum(input[i]) == 0)
+		{
+			return (1);
+		}
+	}
+	return (0);
+}

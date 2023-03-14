@@ -150,6 +150,7 @@ int main(int argc, char **argv)
 						buf_full = ft_strjoin(buf_full, buf);
 						free(tmp);
 					} while (1);
+					// std::cout << buffer << std::endl;
 					user.userCommand(ft_substr(buf_full, 0, len), fds[i].fd);
 					if (close_conn == 1) {
 						close(fds[i].fd);
@@ -179,7 +180,6 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
 
 
 

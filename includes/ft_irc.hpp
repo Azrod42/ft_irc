@@ -47,10 +47,14 @@ char			**ft_split(char const *s, char c);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 int				ispass(int c);
+int				check_nickname(std::string input);
+std::string		rplwelcome(std::string nick, std::string user);
 std::string		error_alreadyregistred();
 std::string		error_pass(std::string pass);
 std::string		error_needmoreparams(std::string word);
 std::string		error_erroneusnickname(std::string nick);
 std::string		error_unknowcommand(std::string cmd);
+std::string		error_nonicknamegiven(void);
+std::string		error_nicknameinuse(std::string nick);
 
 #endif

@@ -23,12 +23,8 @@ class User {
 		void			disconectUser(unsigned int id);
 		std::string 	getGestname(void) const;
 		void			userCommand(char *prompt, unsigned int id);
-		void			userCommandfull(char *prompt, int id);
 		void			exeCommand(char *cmd_u, std::string full_cmd, unsigned int id);
-		void			exeNICK(char *nick, unsigned int id);
 		void			execLOG(std::string full_cmd, unsigned int id);
-		void			checkPASS(char *pass, unsigned int id);
-		void			checkUSER(char **cmd, unsigned int id);
 };
 
 #endif

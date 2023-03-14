@@ -70,7 +70,7 @@ int				User::addUser(const unsigned int id, std::string name) {
 	udef.id = id;
 	udef.name = name;
 	udef.nick = "";
-	udef.realname = "";
+	udef.realname = " ";
 	udef.is_log = 0;
 	udef.pass_ok = 0;
 	udef.mode = "";
@@ -108,8 +108,7 @@ void			User::userCommand(char *prompt, unsigned int id){
 	char *tmp;
 	int i = -1;
 
-	if (std::string(prompt).find("PASS ") < 200000){
-		std::cout << "IN" << std::endl;
+	if (std::string(prompt).find("PASS ") < std::string::npos || std::string(prompt).find("NICK ") < std::string::npos || std::string(prompt).find("USER ") < std::string::npos){
 		this->exeCommand(prompt, prompt, id);
 		return;
 }
@@ -137,171 +136,108 @@ void			User::userCommand(char *prompt, unsigned int id){
 	free(prompt);
 };
 
-void			User::userCommandfull(char *prompt, int id){
-	char **cmds = ft_split(prompt, '\n');
-	int i = -1;
-
-	while (cmds[++i]){
-		this->exeCommand(cmds[i], prompt, id);
-	}
-	// if (cmds);
-		// free(cmds);
-	free(prompt);
-};
-
 void			User::exeCommand(char *cmd_u, std::string full_cmd, unsigned int id) {
-	// char **cmd = ft_split(cmd_u, ' ');
 	(void)cmd_u;
 	std::vector<t_user>::iterator it = _user.begin();
-
 	// std::cout << "\n-------\n User " << id << " in exeCommand\n " << cmd_u << "\n----------" <<std::endl;
 	while (it != _user.end())
 	{
 		if (it->id == id){
-			if (it->pass_ok == 1){
-				// if (std::string(cmd[0]) == "PASS")
-				// 	return ;
-				// if (it->is_log == 2) {
-				// 	if (std::string(cmd[0]) == "cmd")
-				// 		(void)id;//commande a exex
-				// 	else{
-				// 		std::string rep = error_unknowcommand(cmd[0]);
-				// 		send(id, rep.c_str(), rep.size(), 0);
-				// 	}
-				// }
-				// // // // else {
-				// // // 	std::cout << "INIT PASS CALL" << std::endl;
-				// // 	if (full_cmd.find("PASS ") != std::string::npos)
-				// 		this->execLOG(full_cmd, id);
-					// if (std::string(cmd[0]) == "NICK" && cmd[1])
-					// 	this->exeNICK(cmd[1], id);
-					// else if (std::string(cmd[0]) == "USER")
-					// 	this->checkUSER(&cmd[1], id);
-					// else
-					// 	send(id, ":User not login\n", sizeof(":User not login\n"), 0);	
-				// }
+			if (it->is_log > 3)
+			{
+				std::cout << "User enter CMD : " << cmd_u << std::endl;
 				return ;
 			}
-			else{
-				if (full_cmd.find("PASS ") < std::string::npos)
-					this->execLOG(full_cmd, id);
-			}
-		}
-		it++;
-	}
-};
-
-void			User::exeNICK(char *nick, unsigned int id){
-	std::vector<t_user>::iterator it = _user.begin();
-
-	for (int i = 0; nick[i]; i++){
-		if (nick[i] == '\r' || nick[i] == '\n' || nick[i] == ' ' ||  nick[i] == '@'){
-			std::string rep = error_erroneusnickname(nick);
-			send(id, rep.c_str(), rep.size(), 0);
-			return ;
-		}
-	}
-	if (std::string(nick).size() < 3){
-			std::string rep = error_erroneusnickname(nick);
-			send(id, rep.c_str(), rep.size(), 0);
-	}
-	while (it != _user.end()){
-		if (it->id == id){
-			it->nick = nick;
-			it->is_log += 1;
-			return ;
-		}
-		it++;
-	}	
-};
-
-void			User::checkPASS(char *pass, unsigned int id){
-	std::vector<t_user>::iterator it = _user.begin();
-
-	if (!pass){
-		std::string rep = error_needmoreparams("PASS");
-		send(id, rep.c_str(), rep.size(), 0);
-		return;
-	}
-	while (it != _user.end())
-	{
-		if (it->id == id){
-			if (it->pass_ok == 1){
-				std::string rep = error_alreadyregistred();
-				send(id, rep.c_str(), rep.size(), 0);
-				return;
-			}
-		}
-		it++;
-	}
-	if (std::string(pass).size() == 0){
-		std::string rep = error_needmoreparams("PASS");
-		send(id, rep.c_str(), rep.size(), 0);
-	}
-	else if (std::string(pass) != this->_pass){
-		send(id, ":invalid password\n", strlen(":invalid password\n"), 0);
-	} else {
-		it = _user.begin();
-		while (it != _user.end())
-		{
-			if (it->id == id)
+			else
 			{
-				it->pass_ok = 1;
-				std::cout << "Valid pass THANKS" << std::endl;
+				this->execLOG(full_cmd, id);
 			}
-			it++;
-		}	
-	}
-};
-
-void			User::checkUSER(char **cmd, unsigned int id){
-	std::vector<t_user>::iterator it = _user.begin();
-	int i = -1;
-
-	if (!cmd){
-		std::string rep = error_needmoreparams("USER");
-		send(id, rep.c_str(), rep.size(), 0);
-		return;
-	}
-	while (cmd[++i])
-		;
-	if (i < 3){
-		std::string rep = error_needmoreparams("USER");
-		send(id, rep.c_str(), rep.size(), 0);
-		return;
-	}
-	while (it != _user.end()){
-		if (it->id == id){
-			it->name = cmd[0];
-			it->mode = cmd[1];
-			it->unused = cmd[2];
-			for (int i = 3; cmd[i]; i++){
-				if (i == 3)
-					it->realname += &cmd[i][1];
-				else
-					it->realname += cmd[i];
-				it->realname += " ";
-			}
-			it->is_log += 1;
-			// std::cout << "User id = " << id << " name : " << it->name << " mode : " << it->mode << " unused : " << it->unused << " realname : " << it->realname << std::endl; 
-			return ;
 		}
 		it++;
-	}	
+	}
 };
 
 void	User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
-	(void)full_cmd;
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "PASS :" << it->pass_ok <<  " \n"<< std::endl;
-	std::string cmd(full_cmd);
+	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
 	if (full_cmd.find("PASS ") < std::string::npos){
+		std::string cmd(full_cmd);
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PASS "), full_cmd.end());
 		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
 		if (cmd == this->_pass)
 			it->pass_ok = 1;
+		it->is_log += 1;
 	}
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "PASS :" << it->pass_ok <<  " \n"<< std::endl;
+	if (full_cmd.find("NICK ") < std::string::npos){
+		std::string cmd(full_cmd);
+		cmd = cmd.append(full_cmd.begin() + full_cmd.find("NICK "), full_cmd.end());
+		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		cmd.erase(cmd.begin(), cmd.begin() + 5);
+		//NO_NICK_GIVEN
+		if (cmd.find("\r\n") == 0){
+			std::string rep = error_nonicknamegiven();
+			send(id, rep.c_str(), rep.size(), 0);
+			return;
+		}
+		//NICK_ALREADY_USE
+		std::vector<t_user>::iterator itc = _user.begin();
+		while (itc != _user.end())
+		{
+			if (itc->nick == cmd)
+			{
+				std::string rep = error_nicknameinuse(cmd);
+				send(id, rep.c_str(), rep.size(), 0);
+				return;
+			}
+			itc++;
+		}
+		//CHECK_VALID_NICKNAME
+		if (check_nickname(cmd)) {
+			std::string rep = error_erroneusnickname(cmd);
+			send(id, rep.c_str(), rep.size(), 0);
+			return;
+		}
+		it->nick = cmd;
+		it->is_log += 1;
+	}
+	if (full_cmd.find("USER ") < std::string::npos){
+		std::string cmd(full_cmd);
+		cmd = cmd.append(full_cmd.begin() + full_cmd.find("USER "), full_cmd.end());
+		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		cmd.erase(cmd.begin(), cmd.begin() + 5);	
+		char **cmds = ft_split(cmd.c_str(), ' ');
+		int i = -1; while (cmds[++i]);
+		//NEED_MORE_PARAM
+		if (i < 3) {
+			std::string rep = error_needmoreparams("NICK");
+			send(id, rep.c_str(), rep.size(), 0);
+			return ;
+		}
+		//ALREADY_REGISTER
+		if (it->realname != " " || it->is_log == 1){
+			std::string rep = error_alreadyregistred();
+			send(id, rep.c_str(), rep.size(), 0);
+			return ;
+		}
+		//SET_VAL
+		it->name = cmds[0]; free(cmds[0]);
+		it->mode = cmds[1]; free(cmds[1]);
+		it->unused = cmds[2]; free(cmds[2]);
+		for (int i = 3; cmds[i]; i++){
+			if (i == 3){
+				it->realname = &cmds[i][1]; free(cmds[i]);}
+			else {
+				it->realname = cmds[i]; free(cmds[i]);}
+		}
+		free(cmds);
+		it->is_log += 1;
+	}
+	if (it->is_log == 3) {
+		it->is_log = 4;
+		std::string rep = rplwelcome(it->nick, it->name);
+		send(id, rep.c_str(), rep.size(), 0);
+	}
+	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
 };
