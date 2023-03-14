@@ -241,3 +241,4 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 	}
 	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
 };
+
