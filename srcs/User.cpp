@@ -294,12 +294,14 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
 	(void)full_cmd;
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << " \n"<< std::endl;
+	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "PASS :" << it->pass_ok <<  " \n"<< std::endl;
 	std::string cmd(full_cmd);
 	if (full_cmd.find("PASS ") < std::string::npos){
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PASS "), full_cmd.end());
-		cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
-		std::cout << "-" << cmd << "-" << std::endl;
-		std::cout << "----" << std::endl;
+		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		cmd.erase(cmd.begin(), cmd.begin() + 5);
+		if (cmd == this->_pass)
+			it->pass_ok = 1;
 	}
+	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "PASS :" << it->pass_ok <<  " \n"<< std::endl;
 };
