@@ -92,7 +92,7 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 
-int ispass(int c) {
+int		ispass(int c) {
 	if ((c <= '0' || c >= '9') && (c <= 'a' || c >= 'z') && (c <= 'A' || c >= 'Z')
 		&& c != '!' && c != '@'&& c != '#' && c != '$' && c != '%'&& c != '&')
 		return (0);
@@ -150,7 +150,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	return (dup);
 }
 
-int	check_nickname(std::string input)
+int		check_nickname(std::string input)
 {
 	for (int i = 0; input[i] != '\0'; i++)
 	{

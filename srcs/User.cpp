@@ -35,13 +35,11 @@ void			User::sendMessage(char *message, unsigned int id){
 }
 
 std::string		User::getName(unsigned int const id){
-	std::vector<t_user>::iterator it = _user.begin();
-	while (it++ != _user.end()){
-		if (it->id == id){
-			return (it->name);
-		}
-	}
-	return("Warning: User not found");
+	FINDUSER;
+
+	if (it == _user.end())
+		return("Warning: User not found");
+	return (it->name);
 };
 
 std::string		User::getNick(unsigned int const id){
@@ -69,12 +67,12 @@ int				User::addUser(const unsigned int id, std::string name) {
 	}
 	udef.id = id;
 	udef.name = name;
-	udef.nick = "";
+	udef.nick = " ";
 	udef.realname = " ";
 	udef.is_log = 0;
 	udef.pass_ok = 0;
-	udef.mode = "";
-	udef.unused = "";
+	udef.mode = " ";
+	udef.unused = " ";
 	udef.cmd = strdup("");
 	_user.push_back(udef);
 	std::cout << "New user connected : " << udef.name << std::endl;
@@ -160,7 +158,7 @@ void			User::exeCommand(char *cmd_u, std::string full_cmd, unsigned int id) {
 void	User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
-	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
+	//  std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
 	if (full_cmd.find("PASS ") < std::string::npos){
 		std::string cmd(full_cmd);
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PASS "), full_cmd.end());
@@ -234,7 +232,7 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 		free(cmds);
 		it->is_log += 1;
 	}
-	if (it->is_log == 3) {
+	if (it->name != " " && it->nick != " " && it->pass_ok == 1) {
 		it->is_log = 4;
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
