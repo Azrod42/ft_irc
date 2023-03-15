@@ -70,7 +70,9 @@ int				User::addUser(const unsigned int id, std::string name) {
 	udef.nick = " ";
 	udef.realname = " ";
 	udef.is_log = 0;
-	udef.pass_ok = 0;
+	udef.pass_ok = false;
+	udef.nick_ok = false;
+	udef.user_ok = false;
 	udef.mode = " ";
 	udef.unused = " ";
 	udef.cmd = strdup("");
@@ -165,8 +167,7 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
 		if (cmd == this->_pass)
-			it->pass_ok = 1;
-		it->is_log += 1;
+			it->pass_ok = true;
 	}
 	if (full_cmd.find("NICK ") < std::string::npos){
 		std::string cmd(full_cmd);
@@ -198,7 +199,7 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 			return;
 		}
 		it->nick = cmd;
-		it->is_log += 1;
+		it->nick_ok = true;
 	}
 	if (full_cmd.find("USER ") < std::string::npos){
 		std::string cmd(full_cmd);
@@ -230,9 +231,9 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 				it->realname = cmds[i]; free(cmds[i]);}
 		}
 		free(cmds);
-		it->is_log += 1;
+		it->user_ok = true;
 	}
-	if (it->name != " " && it->nick != " " && it->pass_ok == 1) {
+	if (it->nick_ok == true && it->pass_ok == true && it->user_ok == true) {
 		it->is_log = 4;
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);

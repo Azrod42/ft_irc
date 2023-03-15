@@ -37,7 +37,9 @@ typedef struct s_uer {
 	std::string		nick;
 	std::string		name;//user
 	std::string		realname;
-	int				pass_ok;
+	bool			pass_ok;
+	bool			nick_ok;
+	bool			user_ok;
 	int				is_log;
 	std::string		mode;
 	std::string		unused;
