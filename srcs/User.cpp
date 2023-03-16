@@ -5,19 +5,24 @@ User::User(){
 	udef.id = 1;
 	udef.name = "Default";
 	_user.push_back(udef);
+	_operator.insert(std::make_pair<std::string, std::string>("tom.sorabella@gmail.com", "root"));
+	_operator.insert(std::make_pair<std::string, std::string>("loan.fantinel@gmail.com", "root2"));
+	_operator.insert(std::make_pair<std::string, std::string>(std::string("test"), std::string("Pass321")));
 };
-User::~User(){};
+
+User::~User(){
+};
 
 User::User(const User &copy){
 	*this = copy;
 };
 
-User	&User::operator=(const User &copy) {
+User		   &User::operator=(const User &copy) {
 	this->_user = copy._user;
 	return (*this);
 };
 
-void User::getServerPass(std::string pass){
+void			User::getServerPass(std::string pass){
 	this->_pass = pass;
 }
 
@@ -99,6 +104,7 @@ void			User::userCommand(std::string prompt, unsigned int id){
 	FINDUSER
 	
 	it->cmd += prompt;
+	it->is_log = 4;
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
 	if (it->cmd.find("\r\n") < std::string::npos)
@@ -106,6 +112,8 @@ void			User::userCommand(std::string prompt, unsigned int id){
 		if (it->is_log == 4)
 		{
 			std::cout << "User enter CMD : " << it->cmd << std::endl;
+			if (it->cmd.find("OPER ") < std::string::npos)
+				this->execOPER(it->cmd, it->id);
 		}
 		else
 		{
@@ -115,7 +123,7 @@ void			User::userCommand(std::string prompt, unsigned int id){
 	}	
 }
 
-void	User::execLOG(std::string full_cmd, unsigned int id){
+void			User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
 	//  std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
@@ -220,3 +228,54 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
 };
 
+void			User::execOPER(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())
+	std::map<std::string, std::string>::iterator iter = _operator.begin();
+	std::string cmd1(cmd);
+	std::string cmd2(cmd);
+
+	if (nb_cmd < 3){
+		std::string rep = error_needmoreparams("OPER");
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;
+	}
+	if (_operator_allow == false){
+		std::string rep = error_nooperhost(it->nick);
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;
+	}
+	try {
+		cmd1.erase(cmd1.begin(), cmd1.begin() + 5);
+		cmd1.erase(cmd1.begin() + cmd1.find(" "), cmd1.end());
+		cmd2.erase(cmd2.begin(), cmd2.begin() + 5);
+		cmd2.erase(cmd2.begin(), cmd2.begin() + cmd2.find(" "));
+		while (cmd2[0] == ' ')
+			cmd2.erase(cmd2.begin());
+		if (cmd2.find(" ") < std::string::npos)
+			cmd2.erase(cmd2.begin() + cmd2.find(" "), cmd.end());
+		else {
+			if(cmd2.find("\r\n") < std::string::npos)
+				cmd2.erase(cmd2.begin() + cmd2.find("\r"), cmd2.end());
+			else
+				cmd2.erase(cmd2.begin() + cmd2.find("\n"), cmd2.end());
+		}
+	}
+	catch (std::exception &e){/* std::cerr << e.what() << std::endl; */}
+	for (; iter != _operator.end(); iter++){
+		std::cout << iter->first << " == " << cmd1 << " | " << iter->second << " == " << cmd2 << std::endl;
+		if (!std::string(iter->first).compare(cmd1)){
+			if (!std::string(iter->second).compare(cmd2)){
+				it->mode = "o";
+				std::string rep = rplyouroper(it->nick);
+				send(id, rep.c_str(), rep.size(), 0);
+				return ;
+			}
+			else{
+				std::string rep = error_pass(it->nick);
+				send(id, rep.c_str(), rep.size(), 0);
+				return ;
+			}
+		}
+	}
+};

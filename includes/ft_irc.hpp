@@ -15,6 +15,7 @@
 #include <fcntl.h>
 #include <poll.h>
 #include <vector>
+#include <map>
 
 #define	FINDUSER std::vector<t_user>::iterator it = _user.begin();\
 	while (it != _user.end()){ \
@@ -23,6 +24,11 @@
 		} \
 		it++; \
 	}
+#define NBARGUMENT(cmd) char **cmd_split = ft_split(cmd, ' '); \
+						int nb_cmd = -1; \
+						while (cmd_split[++nb_cmd]) \
+							free(cmd_split[nb_cmd]); \
+						free(cmd_split);
 
 typedef struct s_data {
 	unsigned short	port;
@@ -40,6 +46,7 @@ typedef struct s_uer {
 	bool			pass_ok;
 	bool			nick_ok;
 	bool			user_ok;
+	bool			is_operator;	
 	int				is_log;
 	std::string		mode;
 	std::string		unused;
@@ -52,12 +59,14 @@ int				ispass(int c);
 int				check_nickname(std::string input);
 int				check_empty(std::string input);
 std::string		rplwelcome(std::string nick, std::string user);
+std::string		rplyouroper(std::string nick);
 std::string		error_alreadyregistred();
-std::string		error_pass(std::string pass);
+std::string		error_pass(std::string nick);
 std::string		error_needmoreparams(std::string word);
 std::string		error_erroneusnickname(std::string nick);
 std::string		error_unknowcommand(std::string cmd);
 std::string		error_nonicknamegiven(void);
 std::string		error_nicknameinuse(std::string nick);
+std::string		error_nooperhost(std::string nick);
 
 #endif

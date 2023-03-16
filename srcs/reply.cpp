@@ -5,10 +5,10 @@
 #define ERR_UNKNOWCOMMAND " :Unknow command\n"
 
 //ERR_PASSWDMISMATCH
-std::string error_pass(std::string pass){
+std::string error_pass(std::string nick){
 	std::stringstream ss;
 
-	ss << ":" << IPADDR << " 464 " << pass << " :Password incorrect" << "\r\n";
+	ss << ":" << IPADDR << " 464 " << nick << " :Password incorrect" << "\r\n";
 	return (ss.str());
 }
 
@@ -65,5 +65,21 @@ std::string rplwelcome(std::string nick, std::string user){
 	std::stringstream ss;
 
 	ss << ":" << IPADDR << " 001 " << nick << " Welcome to the Internet Relay Network " << nick << "!" << user << "@" << IPADDR << "\r\n";
+	return (ss.str());
+}
+
+// #define RPL_YOUREOPER 381
+std::string rplyouroper(std::string nick){
+	std::stringstream ss;
+
+	ss << ":" << IPADDR << " 381 " << nick << " :You are now an IRC operator" << "\r\n";
+	return (ss.str());
+}
+
+// #define ERR_NOOPERHOST 491
+std::string error_nooperhost(std::string nick){
+	std::stringstream ss;
+
+	ss << ":" << IPADDR << " 491 " << nick << " :No O-lines for your host" << "\r\n";
 	return (ss.str());
 }

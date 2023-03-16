@@ -5,8 +5,10 @@
 
 class User {
 	private :
-		std::vector<t_user> _user;
-		std::string			_pass;
+		std::map<std::string, std::string>	_operator;
+		std::vector<t_user> 				_user;
+		std::string							_pass;
+		static const bool					_operator_allow = true;
 
 	public :
 		//CONSTRUCTOR
@@ -24,6 +26,7 @@ class User {
 		std::string 	getGestname(void) const;
 		void			userCommand(std::string prompt, unsigned int id);
 		void			execLOG(std::string full_cmd, unsigned int id);
+		void			execOPER(std::string cmd, unsigned int id);
 };
 
 #endif
