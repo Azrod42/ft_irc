@@ -32,7 +32,7 @@ typedef struct s_data {
 } t_data;
 
 typedef struct s_uer {
-	char			*cmd;
+	std::string		cmd;
 	unsigned int	id;
 	std::string		nick;
 	std::string		name;//user
@@ -50,6 +50,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 int				ispass(int c);
 int				check_nickname(std::string input);
+int				check_empty(std::string input);
 std::string		rplwelcome(std::string nick, std::string user);
 std::string		error_alreadyregistred();
 std::string		error_pass(std::string pass);

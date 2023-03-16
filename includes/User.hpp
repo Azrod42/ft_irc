@@ -22,8 +22,7 @@ class User {
 		int				addUser(const unsigned int id, std::string name);
 		void			disconectUser(unsigned int id);
 		std::string 	getGestname(void) const;
-		void			userCommand(char *prompt, unsigned int id);
-		void			exeCommand(char *cmd_u, std::string full_cmd, unsigned int id);
+		void			userCommand(std::string prompt, unsigned int id);
 		void			execLOG(std::string full_cmd, unsigned int id);
 };
 

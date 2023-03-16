@@ -75,22 +75,15 @@ int				User::addUser(const unsigned int id, std::string name) {
 	udef.user_ok = false;
 	udef.mode = " ";
 	udef.unused = " ";
-	udef.cmd = strdup("");
+	udef.cmd = "";
 	_user.push_back(udef);
 	std::cout << "New user connected : " << udef.name << std::endl;
 	return (0);
 };
 
 void			User::disconectUser(unsigned int id){
-	std::vector<t_user>::iterator it = _user.begin();
-
-	while (it != _user.end()){
-	if (it->id == id){
-		_user.erase(it);
-		return ;
-	}
-	it++;
-	}	
+	FINDUSER
+	_user.erase(it);
 };
 
 std::string 	User::getGestname(void) const {
@@ -102,60 +95,25 @@ std::string 	User::getGestname(void) const {
 	return (ret);
 };
 
-void			User::userCommand(char *prompt, unsigned int id){
-	std::vector<t_user>::iterator it = _user.begin();
-	char **cmds;
-	char *tmp;
-	int i = -1;
-
-	if (std::string(prompt).find("PASS ") < std::string::npos || std::string(prompt).find("NICK ") < std::string::npos || std::string(prompt).find("USER ") < std::string::npos){
-		this->exeCommand(prompt, prompt, id);
-		return;
-}
-	while (it != _user.end())
+void			User::userCommand(std::string prompt, unsigned int id){
+	FINDUSER
+	
+	it->cmd += prompt;
+	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
+		it->cmd.insert(it->cmd.find("\n"), "\r");
+	if (it->cmd.find("\r\n") < std::string::npos)
 	{
-		if (it->id == id)
+		if (it->is_log == 4)
 		{
-			tmp = it->cmd;
-			it->cmd = ft_strjoin(it->cmd, prompt);
-			free(tmp);
-			if (strchr(it->cmd, '\n') != NULL)
-			{
-				cmds = ft_split(it ->cmd, '\n');
-				while (cmds[++i]){
-					this->exeCommand(cmds[i], "", id);
-				}
-				free(it->cmd);
-				it->cmd = strdup("");
-			}
+			std::cout << "User enter CMD : " << it->cmd << std::endl;
 		}
-		it++;
-	}
-	// if (cmds);
-		// free(cmds);
-	free(prompt);
-};
-
-void			User::exeCommand(char *cmd_u, std::string full_cmd, unsigned int id) {
-	(void)cmd_u;
-	std::vector<t_user>::iterator it = _user.begin();
-	// std::cout << "\n-------\n User " << id << " in exeCommand\n " << cmd_u << "\n----------" <<std::endl;
-	while (it != _user.end())
-	{
-		if (it->id == id){
-			if (it->is_log > 3)
-			{
-				std::cout << "User enter CMD : " << cmd_u << std::endl;
-				return ;
-			}
-			else
-			{
-				this->execLOG(full_cmd, id);
-			}
+		else
+		{
+			this->execLOG(it->cmd, id);
 		}
-		it++;
-	}
-};
+		it->cmd = "";
+	}	
+}
 
 void	User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
@@ -164,18 +122,35 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 	if (full_cmd.find("PASS ") < std::string::npos){
 		std::string cmd(full_cmd);
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PASS "), full_cmd.end());
-		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		if (cmd.find("\r\n") < std::string::npos)
+			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		else
+			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
+		//ALREADY_REGISTER
+		if (it->pass_ok == 1){
+			std::string rep = error_alreadyregistred();
+			send(id, rep.c_str(), rep.size(), 0);
+		}
+		//NEED_MORE_PARAM
+		if (!check_empty(cmd)){
+			std::string rep = error_needmoreparams("PASS");
+			send(id, rep.c_str(), rep.size(), 0);
+			return;
+		}
 		if (cmd == this->_pass)
 			it->pass_ok = true;
 	}
 	if (full_cmd.find("NICK ") < std::string::npos){
 		std::string cmd(full_cmd);
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("NICK "), full_cmd.end());
-		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		if (cmd.find("\r\n") < std::string::npos)
+			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		else
+			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
 		//NO_NICK_GIVEN
-		if (cmd.find("\r\n") == 0){
+		if (!check_empty(cmd)){
 			std::string rep = error_nonicknamegiven();
 			send(id, rep.c_str(), rep.size(), 0);
 			return;
@@ -204,18 +179,21 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 	if (full_cmd.find("USER ") < std::string::npos){
 		std::string cmd(full_cmd);
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("USER "), full_cmd.end());
-		cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		if (cmd.find("\r\n") < std::string::npos)
+			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
+		else
+			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);	
 		char **cmds = ft_split(cmd.c_str(), ' ');
 		int i = -1; while (cmds[++i]);
 		//NEED_MORE_PARAM
-		if (i < 3) {
+		if (i < 4) {
 			std::string rep = error_needmoreparams("NICK");
 			send(id, rep.c_str(), rep.size(), 0);
 			return ;
 		}
 		//ALREADY_REGISTER
-		if (it->realname != " " || it->is_log == 1){
+		if (it->user_ok == true) {
 			std::string rep = error_alreadyregistred();
 			send(id, rep.c_str(), rep.size(), 0);
 			return ;
@@ -228,7 +206,8 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 			if (i == 3){
 				it->realname = &cmds[i][1]; free(cmds[i]);}
 			else {
-				it->realname = cmds[i]; free(cmds[i]);}
+				it->realname += cmds[i]; free(cmds[i]);}
+			it->realname += " ";
 		}
 		free(cmds);
 		it->user_ok = true;
@@ -238,6 +217,6 @@ void	User::execLOG(std::string full_cmd, unsigned int id){
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
+	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
 };
 

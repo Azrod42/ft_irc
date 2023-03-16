@@ -153,11 +153,15 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 int		check_nickname(std::string input)
 {
 	for (int i = 0; input[i] != '\0'; i++)
-	{
 		if (isalnum(input[i]) == 0)
-		{
 			return (1);
-		}
-	}
+	return (0);
+}
+
+int		check_empty(std::string input)
+{
+	for (int i = 0; input[i] != '\0'; i++)
+		if (input[i] != ' ' || input[i] != '\n' || input[i] != '\r' || input[i] != '\t')
+			return (1);
 	return (0);
 }
