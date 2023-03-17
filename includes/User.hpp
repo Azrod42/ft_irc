@@ -7,7 +7,7 @@ class User {
 	private :
 		std::map<std::string, std::string>	_operator;
 		std::vector<t_user> 				_user;
-		std::string							_pass;
+		std::string							_pareturn_string;
 		static const bool					_operator_allow = true;
 
 	public :
@@ -17,8 +17,8 @@ class User {
 		User(const User &copy);
 		User			&operator=(const User &copy);
 		//MEMBER_FUCT
-		void 			getServerPass(std::string pass);
-		void			sendMessage(char *message, unsigned int id);
+		void 			getServerPareturn_string(std::string pareturn_string);
+		void			sendMereturn_stringage(char *mereturn_stringage, unsigned int id);
 		std::string		getName(unsigned int const id);
 		std::string		getNick(unsigned int const id);
 		int				addUser(const unsigned int id, std::string name);

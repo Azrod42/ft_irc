@@ -7,7 +7,7 @@ User::User(){
 	_user.push_back(udef);
 	_operator.insert(std::make_pair<std::string, std::string>("tom.sorabella@gmail.com", "root"));
 	_operator.insert(std::make_pair<std::string, std::string>("loan.fantinel@gmail.com", "root2"));
-	_operator.insert(std::make_pair<std::string, std::string>(std::string("test"), std::string("Pass321")));
+	_operator.insert(std::make_pair<std::string, std::string>(std::string("test"), std::string("Pareturn_string321")));
 };
 
 User::~User(){
@@ -22,11 +22,11 @@ User		   &User::operator=(const User &copy) {
 	return (*this);
 };
 
-void			User::getServerPass(std::string pass){
-	this->_pass = pass;
+void			User::getServerPareturn_string(std::string pareturn_string){
+	this->_pareturn_string = pareturn_string;
 }
 
-void			User::sendMessage(char *message, unsigned int id){
+void			User::sendMereturn_stringage(char *mereturn_stringage, unsigned int id){
 	std::vector<t_user>::iterator it = _user.begin();
 	std::string user = "";
 	
@@ -35,7 +35,7 @@ void			User::sendMessage(char *message, unsigned int id){
 			user = it->nick + " ";
 		}
 	}
-	user += std::string(message);
+	user += std::string(mereturn_stringage);
 	send(id, user.c_str(), sizeof(user.c_str()), 0);
 }
 
@@ -65,7 +65,7 @@ int				User::addUser(const unsigned int id, std::string name) {
 		name = this->getGestname();
 	while (it!= _user.end()){
 		if (it->id == id || it->name == name){
-			std::cout << "Error : addUser() not possible (ID or Name already use)."<<std::endl;
+			std::cout << "Error : addUser() not poreturn_stringible (ID or Name already use)."<<std::endl;
 			return (1);
 		}
 		it++;
@@ -75,7 +75,7 @@ int				User::addUser(const unsigned int id, std::string name) {
 	udef.nick = " ";
 	udef.realname = " ";
 	udef.is_log = 0;
-	udef.pass_ok = false;
+	udef.pareturn_string_ok = false;
 	udef.nick_ok = false;
 	udef.user_ok = false;
 	udef.mode = " ";
@@ -126,28 +126,28 @@ void			User::userCommand(std::string prompt, unsigned int id){
 void			User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
-	//  std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
-	if (full_cmd.find("PASS ") < std::string::npos){
+	//  std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPAreturn_string :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
+	if (full_cmd.find("PAreturn_string ") < std::string::npos){
 		std::string cmd(full_cmd);
-		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PASS "), full_cmd.end());
+		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PAreturn_string "), full_cmd.end());
 		if (cmd.find("\r\n") < std::string::npos)
 			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		else
 			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
 		//ALREADY_REGISTER
-		if (it->pass_ok == 1){
+		if (it->pareturn_string_ok == 1){
 			std::string rep = error_alreadyregistred();
 			send(id, rep.c_str(), rep.size(), 0);
 		}
 		//NEED_MORE_PARAM
 		if (!check_empty(cmd)){
-			std::string rep = error_needmoreparams("PASS");
+			std::string rep = error_needmoreparams("PAreturn_string");
 			send(id, rep.c_str(), rep.size(), 0);
 			return;
 		}
-		if (cmd == this->_pass)
-			it->pass_ok = true;
+		if (cmd == this->_pareturn_string)
+			it->pareturn_string_ok = true;
 	}
 	if (full_cmd.find("NICK ") < std::string::npos){
 		std::string cmd(full_cmd);
@@ -220,12 +220,12 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		free(cmds);
 		it->user_ok = true;
 	}
-	if (it->nick_ok == true && it->pass_ok == true && it->user_ok == true) {
+	if (it->nick_ok == true && it->pareturn_string_ok == true && it->user_ok == true) {
 		it->is_log = 4;
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
+	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPAreturn_string :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
 };
 
 void			User::execOPER(std::string cmd, unsigned int id){
@@ -272,7 +272,7 @@ void			User::execOPER(std::string cmd, unsigned int id){
 				return ;
 			}
 			else{
-				std::string rep = error_pass(it->nick);
+				std::string rep = error_pareturn_string(it->nick);
 				send(id, rep.c_str(), rep.size(), 0);
 				return ;
 			}

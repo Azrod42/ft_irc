@@ -92,7 +92,7 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 
-int		ispass(int c) {
+int		ispareturn_string(int c) {
 	if ((c <= '0' || c >= '9') && (c <= 'a' || c >= 'z') && (c <= 'A' || c >= 'Z')
 		&& c != '!' && c != '@'&& c != '#' && c != '$' && c != '%'&& c != '&')
 		return (0);
@@ -164,4 +164,12 @@ int		check_empty(std::string input)
 		if (input[i] != ' ' || input[i] != '\n' || input[i] != '\r' || input[i] != '\t')
 			return (1);
 	return (0);
+}
+
+std::string	ip_itostr(in_addr_t brut)
+{
+	std::stringstream		ip;
+
+	ip	<< (brut >>  0 & 0xff) << "." << (brut >>  8 & 0xff)<< "." << (brut >> 16 & 0xff) << "."<< (brut >> 24 & 0xff);
+	return (ip.str());
 }

@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string.h>
 #include<string>
+#include<sstream>
 #include <stdio.h>
 #include <sys/socket.h>
 #include <stdlib.h>
@@ -32,7 +33,7 @@
 
 typedef struct s_data {
 	unsigned short	port;
-	std::string		pass;
+	std::string		pareturn_string;
 	int				rc;
 	int				fd_socket;
 } t_data;
@@ -43,7 +44,7 @@ typedef struct s_uer {
 	std::string		nick;
 	std::string		name;//user
 	std::string		realname;
-	bool			pass_ok;
+	bool			pareturn_string_ok;
 	bool			nick_ok;
 	bool			user_ok;
 	bool			is_operator;	
@@ -55,13 +56,13 @@ typedef struct s_uer {
 char			**ft_split(char const *s, char c);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
-int				ispass(int c);
+int				ispareturn_string(int c);
 int				check_nickname(std::string input);
 int				check_empty(std::string input);
 std::string		rplwelcome(std::string nick, std::string user);
 std::string		rplyouroper(std::string nick);
 std::string		error_alreadyregistred();
-std::string		error_pass(std::string nick);
+std::string		error_pareturn_string(std::string nick);
 std::string		error_needmoreparams(std::string word);
 std::string		error_erroneusnickname(std::string nick);
 std::string		error_unknowcommand(std::string cmd);
