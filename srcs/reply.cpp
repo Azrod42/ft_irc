@@ -83,3 +83,11 @@ std::string error_nooperhost(std::string nick){
 	ss << ":" << IPADDR << " 491 " << nick << " :No O-lines for your host" << "\r\n";
 	return (ss.str());
 }
+
+// #define ERR_NOSUCHSERVER 402
+std::string error_nosuchserver(std::string nick){
+	std::stringstream ss;
+
+	ss << ":" << IPADDR << " 402 " << nick << " :No such server" << "\r\n";
+	return (ss.str());
+}

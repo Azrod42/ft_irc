@@ -104,7 +104,7 @@ void			User::userCommand(std::string prompt, unsigned int id){
 	FINDUSER
 	
 	it->cmd += prompt;
-	it->is_log = 4;
+	// it->is_log = 4; //DEBUG_ONLY !!!
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
 	if (it->cmd.find("\r\n") < std::string::npos)
@@ -114,6 +114,8 @@ void			User::userCommand(std::string prompt, unsigned int id){
 			std::cout << "User enter CMD : " << it->cmd << std::endl;
 			if (it->cmd.find("OPER ") < std::string::npos)
 				this->execOPER(it->cmd, it->id);
+			if (it->cmd.find("MODE ") < std::string::npos)
+				std::cout << "Yes" << std::endl;
 		}
 		else
 		{
@@ -126,7 +128,6 @@ void			User::userCommand(std::string prompt, unsigned int id){
 void			User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
-	//  std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
 	if (full_cmd.find("PASS ") < std::string::npos){
 		std::string cmd(full_cmd);
 		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PASS "), full_cmd.end());
@@ -225,7 +226,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
+	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
 };
 
 void			User::execOPER(std::string cmd, unsigned int id){
@@ -263,15 +264,15 @@ void			User::execOPER(std::string cmd, unsigned int id){
 	}
 	catch (std::exception &e){/* std::cerr << e.what() << std::endl; */}
 	for (; iter != _operator.end(); iter++){
-		std::cout << iter->first << " == " << cmd1 << " | " << iter->second << " == " << cmd2 << std::endl;
-		if (!std::string(iter->first).compare(cmd1)){
+		// std::cout << iter->first << " == " << cmd1 << " | " << iter->second << " == " << cmd2 << std::endl;
+		if (!std::string(iter->first).compare(cmd1)) {
 			if (!std::string(iter->second).compare(cmd2)){
 				it->mode = "o";
 				std::string rep = rplyouroper(it->nick);
 				send(id, rep.c_str(), rep.size(), 0);
 				return ;
 			}
-			else{
+			else {
 				std::string rep = error_pass(it->nick);
 				send(id, rep.c_str(), rep.size(), 0);
 				return ;
@@ -279,3 +280,11 @@ void			User::execOPER(std::string cmd, unsigned int id){
 		}
 	}
 };
+
+void			User::execPING(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())
+
+	
+	(void)id;
+}
