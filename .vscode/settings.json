@@ -2,7 +2,7 @@
 	"files.exclude": {
 		"**/*.o": true
 	},
-	"files.associations": {
+	"files.areturn_stringociations": {
 		"ostream": "cpp",
 		"iostream": "cpp",
 		"__bit_reference": "cpp",
@@ -51,7 +51,7 @@
 		"new": "cpp",
 		"optional": "cpp",
 		"ratio": "cpp",
-		"sstream": "cpp",
+		"return_stringtream": "cpp",
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"string": "cpp",

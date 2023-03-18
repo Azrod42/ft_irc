@@ -21,20 +21,20 @@ int pars_port(t_data *dta, char **argv){
 	return (0);
 }
 
-int pars_pass(t_data *dta, char **av){
+int pars_pareturn_string(t_data *dta, char **av){
 	int j = 0;
 
 	for(int i = 0; av[2][i]; i++, j++){
-		if (!ispass(av[2][i])){
-			std::cout << "error : Invalid pass" << std::endl;
+		if (!ispareturn_string(av[2][i])){
+			std::cout << "error : Invalid pareturn_string" << std::endl;
 			return (1);
 		}
 	}
 	if (j < 3){
-		std::cout << "error : Invalid pass : pass_lenght as to be > 3" << std::endl;
+		std::cout << "error : Invalid pareturn_string : pareturn_string_lenght as to be > 3" << std::endl;
 		return (1);
 	}
-	dta->pass = av[2];
+	dta->pareturn_string = av[2];
 	return (0);
 }
 
@@ -62,10 +62,10 @@ int main(int argc, char **argv)
 	User				user;
 	t_data				dta;
 	t_user				uuser;
-	struct sockaddr_in	adresse;
+	struct sockaddr_in	adrereturn_stringe;
 	struct pollfd		fds[NB_CLIENT];
 	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
-	int					i, j, len, compress_array;
+	int					i, j, len, comprereturn_string_array;
 	int					timeout = 10 * 60 * 1000;
 	static char			buf[BUFFER_LEN + 1];
 	std::string			buffer;
@@ -73,15 +73,15 @@ int main(int argc, char **argv)
 	char				*tmp;
 
 	if (argc != 3) {
-		std::cout << "Usage : ./ircserv [port] [password]" << std::endl;
+		std::cout << "Usage : ./ircserv [port] [pareturn_stringword]" << std::endl;
 		return (1);
 	}
 	std::cout << "Server starting" << std::endl;
 	if (pars_port(&dta, argv)) return (1);
-	if (pars_pass(&dta, argv)) return (1);
-	user.getServerPass(dta.pass);
-	init_sockaddr(&adresse, dta.port);
-	if (init_socket(&dta, &adresse)) return (1);
+	if (pars_pareturn_string(&dta, argv)) return (1);
+	user.getServerPareturn_string(dta.pareturn_string);
+	init_sockaddr(&adrereturn_stringe, dta.port);
+	if (init_socket(&dta, &adrereturn_stringe)) return (1);
 	fds[0].fd = dta.fd_socket;
 	fds[0].events = POLLIN;
 	int ret = 0;
@@ -155,12 +155,12 @@ int main(int argc, char **argv)
 					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;
-						compress_array = 1;
+						comprereturn_string_array = 1;
 					}
 				}
 			}
-			if (compress_array == 1){
-				compress_array = 0;
+			if (comprereturn_string_array == 1){
+				comprereturn_string_array = 0;
 				for (i = 0; i < fdn; i++){
 					if (fds[i].fd == -1){
 						for (j = i; j < fdn; j++){
