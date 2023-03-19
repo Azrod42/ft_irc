@@ -380,10 +380,12 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 			}
 		}
 	}
+	//JOIN_CHANNEL_OR_CREATE
+	for (int i = 0; i < (int)chan.size(); i++){
+		
+	}
+
 	//AFFICHAGE_PARSING
-	// for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
-	// 	if (_channel[i])
-	// }
 	for(int i = 0; i < (int)chan.size(); i++){
 		std::cout << "--" << chan[i] << std::endl;
 	}
