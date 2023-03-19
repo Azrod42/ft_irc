@@ -7,7 +7,9 @@ class User {
 	private :
 		std::map<std::string, std::string>	_operator;
 		std::vector<t_user> 				_user;
-		std::string							_pareturn_string;
+		Channel								_channel[NUMBER_CHANNEL_MAX];
+		int									_channel_use;
+		std::string							_pass;
 		static const bool					_operator_allow = true;
 
 	public :
@@ -17,8 +19,8 @@ class User {
 		User(const User &copy);
 		User			&operator=(const User &copy);
 		//MEMBER_FUCT
-		void 			getServerPareturn_string(std::string pareturn_string);
-		void			sendMereturn_stringage(char *mereturn_stringage, unsigned int id);
+		void 			getServerPass(std::string pass);
+		void			sendMessage(char *message, unsigned int id);
 		std::string		getName(unsigned int const id);
 		std::string		getNick(unsigned int const id);
 		int				addUser(const unsigned int id, std::string name);
@@ -28,6 +30,7 @@ class User {
 		void			execLOG(std::string full_cmd, unsigned int id);
 		void			execOPER(std::string cmd, unsigned int id);
 		void			execPING(std::string cmd, unsigned int id);
+		void			execJOIN(std::string cmd, unsigned int id);
 };
 
 #endif

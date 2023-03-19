@@ -1,13 +1,13 @@
 #include"../includes/User.hpp"
 
-User::User(){
+User::User() : _channel_use(0){
 	t_user udef;
 	udef.id = 1;
 	udef.name = "Default";
 	_user.push_back(udef);
 	_operator.insert(std::make_pair<std::string, std::string>("tom.sorabella@gmail.com", "root"));
 	_operator.insert(std::make_pair<std::string, std::string>("loan.fantinel@gmail.com", "root2"));
-	_operator.insert(std::make_pair<std::string, std::string>(std::string("test"), std::string("Pareturn_string321")));
+	_operator.insert(std::make_pair<std::string, std::string>(std::string("test"), std::string("root")));
 };
 
 User::~User(){
@@ -19,14 +19,15 @@ User::User(const User &copy){
 
 User		   &User::operator=(const User &copy) {
 	this->_user = copy._user;
+	this->_channel_use = copy._channel_use;
 	return (*this);
 };
 
-void			User::getServerPareturn_string(std::string pareturn_string){
-	this->_pareturn_string = pareturn_string;
+void			User::getServerPass(std::string pass){
+	this->_pass = pass;
 }
 
-void			User::sendMereturn_stringage(char *mereturn_stringage, unsigned int id){
+void			User::sendMessage(char *message, unsigned int id){
 	std::vector<t_user>::iterator it = _user.begin();
 	std::string user = "";
 	
@@ -35,7 +36,7 @@ void			User::sendMereturn_stringage(char *mereturn_stringage, unsigned int id){
 			user = it->nick + " ";
 		}
 	}
-	user += std::string(mereturn_stringage);
+	user += std::string(message);
 	send(id, user.c_str(), sizeof(user.c_str()), 0);
 }
 
@@ -65,7 +66,7 @@ int				User::addUser(const unsigned int id, std::string name) {
 		name = this->getGestname();
 	while (it!= _user.end()){
 		if (it->id == id || it->name == name){
-			std::cout << "Error : addUser() not poreturn_stringible (ID or Name already use)."<<std::endl;
+			std::cout << "Error : addUser() not possible (ID or Name already use)." << std::endl;
 			return (1);
 		}
 		it++;
@@ -78,6 +79,7 @@ int				User::addUser(const unsigned int id, std::string name) {
 	udef.pareturn_string_ok = false;
 	udef.nick_ok = false;
 	udef.user_ok = false;
+	udef.is_operator = false;
 	udef.mode = " ";
 	udef.unused = " ";
 	udef.cmd = "";
@@ -114,13 +116,13 @@ void			User::userCommand(std::string prompt, unsigned int id){
 			std::cout << "User enter CMD : " << it->cmd << std::endl;
 			if (it->cmd.find("OPER ") < std::string::npos)
 				this->execOPER(it->cmd, it->id);
-			if (it->cmd.find("MODE ") < std::string::npos)
-				std::cout << "Yes" << std::endl;
+			if (it->cmd.find("PING ") < std::string::npos)
+				this->execPING(it->cmd, it->id);
+			if (it->cmd.find("JOIN ") < std::string::npos)
+				this->execJOIN(it->cmd, it->id);
 		}
 		else
-		{
 			this->execLOG(it->cmd, id);
-		}
 		it->cmd = "";
 	}	
 }
@@ -128,19 +130,19 @@ void			User::userCommand(std::string prompt, unsigned int id){
 void			User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
-<<<<<<< HEAD
+	//std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\n"<< full_cmd << std::endl;
 	if (full_cmd.find("PASS ") < std::string::npos){
-=======
-	//  std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPAreturn_string :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\n"<< std::endl;
-	if (full_cmd.find("PAreturn_string ") < std::string::npos){
->>>>>>> 8b3fbd194778ab03e648ded1b1d1249f7405f50c
 		std::string cmd(full_cmd);
-		cmd = cmd.append(full_cmd.begin() + full_cmd.find("PAreturn_string "), full_cmd.end());
+		// std::cout << "-" << cmd << std::endl;
+		while (cmd.find("PASS ") > 0)
+			cmd.erase(cmd.begin());
 		if (cmd.find("\r\n") < std::string::npos)
 			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		else
 			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
+		// std::cout << "-" << cmd << std::endl;
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
+		// std::cout << "-" << cmd << std::endl;
 		//ALREADY_REGISTER
 		if (it->pareturn_string_ok == 1){
 			std::string rep = error_alreadyregistred();
@@ -148,16 +150,17 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		}
 		//NEED_MORE_PARAM
 		if (!check_empty(cmd)){
-			std::string rep = error_needmoreparams("PAreturn_string");
+			std::string rep = error_needmoreparams("PASS");
 			send(id, rep.c_str(), rep.size(), 0);
 			return;
 		}
-		if (cmd == this->_pareturn_string)
+		if (cmd == this->_pass)
 			it->pareturn_string_ok = true;
 	}
 	if (full_cmd.find("NICK ") < std::string::npos){
 		std::string cmd(full_cmd);
-		cmd = cmd.append(full_cmd.begin() + full_cmd.find("NICK "), full_cmd.end());
+		while (cmd.find("NICK ") > 0)
+			cmd.erase(cmd.begin());
 		if (cmd.find("\r\n") < std::string::npos)
 			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		else
@@ -191,18 +194,19 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		it->nick_ok = true;
 	}
 	if (full_cmd.find("USER ") < std::string::npos){
-		std::string cmd(full_cmd);
-		cmd = cmd.append(full_cmd.begin() + full_cmd.find("USER "), full_cmd.end());
+		std::string cmd = full_cmd;
+		while (cmd.find("USER ") > 0)
+			cmd.erase(cmd.begin());
 		if (cmd.find("\r\n") < std::string::npos)
 			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		else
 			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
 		cmd.erase(cmd.begin(), cmd.begin() + 5);	
 		char **cmds = ft_split(cmd.c_str(), ' ');
-		int i = -1; while (cmds[++i]);
+		int i = -1; while (cmds[++i]) ;
 		//NEED_MORE_PARAM
 		if (i < 4) {
-			std::string rep = error_needmoreparams("NICK");
+			std::string rep = error_needmoreparams("USER ");
 			send(id, rep.c_str(), rep.size(), 0);
 			return ;
 		}
@@ -231,11 +235,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-<<<<<<< HEAD
 	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
-=======
-	std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPAreturn_string :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
->>>>>>> 8b3fbd194778ab03e648ded1b1d1249f7405f50c
 };
 
 void			User::execOPER(std::string cmd, unsigned int id){
@@ -277,17 +277,13 @@ void			User::execOPER(std::string cmd, unsigned int id){
 		if (!std::string(iter->first).compare(cmd1)) {
 			if (!std::string(iter->second).compare(cmd2)){
 				it->mode = "o";
+				it->is_operator = true;
 				std::string rep = rplyouroper(it->nick);
 				send(id, rep.c_str(), rep.size(), 0);
 				return ;
 			}
-<<<<<<< HEAD
 			else {
 				std::string rep = error_pass(it->nick);
-=======
-			else{
-				std::string rep = error_pareturn_string(it->nick);
->>>>>>> 8b3fbd194778ab03e648ded1b1d1249f7405f50c
 				send(id, rep.c_str(), rep.size(), 0);
 				return ;
 			}
@@ -296,9 +292,101 @@ void			User::execOPER(std::string cmd, unsigned int id){
 };
 
 void			User::execPING(std::string cmd, unsigned int id){
-	FINDUSER
-	NBARGUMENT(cmd.c_str())
+	(void)cmd;
+	std::string rep = rplping();
+	send(id, rep.c_str(), rep.size(), 0);
+}
 
-	
-	(void)id;
+void			User::execJOIN(std::string cmd, unsigned int id){
+	FINDUSER
+	std::cout << cmd.c_str() << std::endl;
+	NBARGUMENT(cmd.c_str())
+	std::vector<std::string> chan;
+	std::vector<std::string> key;
+
+	//ERROR_NEEDMOREPARAMS
+	std::cout << nb_cmd << std::endl;
+	if (nb_cmd < 2){
+		std::string rep = error_needmoreparams("JOIN");
+		send(id, rep.c_str(), rep.size(), 0);
+	}
+	//PARSING
+	else {
+	//USER_CHAN_PARSING
+		std::string dup(cmd);
+		for (int i = 0; i < 5; i++)
+			dup.erase(dup.begin());
+		if (dup.find(" ") < std::string::npos)
+			dup.erase(dup.begin() + dup.find(" "), dup.end());
+		while (dup.find(",") < std::string::npos){
+			std::string tmp = "";
+			for (int i = 0; i < (int)dup.find(","); i++)
+				tmp.insert(tmp.end(), dup[i]);	
+			chan.push_back(tmp);
+			for (int i = 0; i < (int)dup.find(",");){
+				dup.erase(dup.begin());
+			}
+			dup.erase(dup.begin());
+		}
+		if (dup.find(" ") < std::string::npos){
+			std::string tmp = "";
+			for (int i = 0; i < (int)dup.find(" "); i++)
+				tmp.insert(tmp.end(), dup[i]);
+			chan.push_back(tmp);
+		}
+		else {
+			std::string tmp = "";
+			int i = 0;
+			for (std::string::iterator iter = dup.begin(); iter != dup.end(); iter++, i++)
+				tmp.insert(tmp.end(), dup[i]);
+			chan.push_back(tmp);
+		}
+		//USER_KEY_PARSING
+		dup = cmd;
+		for (int i = 0; i < 5; i++)
+			dup.erase(dup.begin());
+		if (dup.find(" ") < std::string::npos)
+		{
+			for (int i = 0; i < (int)dup.find(" ");)
+				dup.erase(dup.begin());
+			dup.erase(dup.begin());
+			while (dup.find(",") < std::string::npos) {
+				std::string tmp = "";
+				for (int i = 0; i < (int)dup.find(","); i++)
+					tmp.insert(tmp.end(), dup[i]);	
+				key.push_back(tmp);
+				for (int i = 0; i < (int)dup.find(",");)
+					dup.erase(dup.begin());
+				dup.erase(dup.begin());
+			}	
+			if (dup.find(" ") < std::string::npos){
+				std::string tmp = "";
+				for (int i = 0; i < (int)dup.find(" "); i++)
+					tmp.insert(tmp.end(), dup[i]);
+				key.push_back(tmp);
+			}
+			else if (dup.find("\r") < std::string::npos){
+				std::string tmp = "";
+				for (int i = 0; i < (int)dup.find("\r"); i++)
+					tmp.insert(tmp.end(), dup[i]);
+				key.push_back(tmp);
+			}
+			else {
+				std::string tmpo = "";
+				int i = 0;
+				for (std::string::iterator iter = dup.begin(); iter != dup.end(); iter++, i++)
+					tmpo.insert(tmpo.end(), dup[i]);
+				key.push_back(tmpo);
+			}
+		}
+	}
+	//AFFICHAGE_PARSING
+	// for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
+	// 	if (_channel[i])
+	// }
+	for(int i = 0; i < (int)chan.size(); i++){
+		std::cout << "--" << chan[i] << std::endl;
+	}
+	for(int i = 0; i < (int)key.size(); i++)
+		std::cout << "==" << key[i] << std::endl;
 }

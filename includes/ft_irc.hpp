@@ -17,6 +17,9 @@
 #include <poll.h>
 #include <vector>
 #include <map>
+#include"../includes/Channel.hpp"
+
+#define NUMBER_CHANNEL_MAX 20
 
 #define	FINDUSER std::vector<t_user>::iterator it = _user.begin();\
 	while (it != _user.end()){ \
@@ -61,8 +64,9 @@ int				check_nickname(std::string input);
 int				check_empty(std::string input);
 std::string		rplwelcome(std::string nick, std::string user);
 std::string		rplyouroper(std::string nick);
+std::string		rplping(void);
 std::string		error_alreadyregistred();
-std::string		error_pareturn_string(std::string nick);
+std::string		error_pass(std::string nick);
 std::string		error_needmoreparams(std::string word);
 std::string		error_erroneusnickname(std::string nick);
 std::string		error_unknowcommand(std::string cmd);

@@ -68,18 +68,17 @@ int main(int argc, char **argv)
 	int					i, j, len, comprereturn_string_array;
 	int					timeout = 10 * 60 * 1000;
 	static char			buf[BUFFER_LEN + 1];
-	std::string			buffer;
 	char				*buf_full;
 	char				*tmp;
 
 	if (argc != 3) {
-		std::cout << "Usage : ./ircserv [port] [pareturn_stringword]" << std::endl;
+		std::cout << "Usage : ./ircserv [port] [pass]" << std::endl;
 		return (1);
 	}
 	std::cout << "Server starting" << std::endl;
 	if (pars_port(&dta, argv)) return (1);
 	if (pars_pareturn_string(&dta, argv)) return (1);
-	user.getServerPareturn_string(dta.pareturn_string);
+	user.getServerPass(dta.pareturn_string);
 	init_sockaddr(&adrereturn_stringe, dta.port);
 	if (init_socket(&dta, &adrereturn_stringe)) return (1);
 	fds[0].fd = dta.fd_socket;
@@ -125,7 +124,6 @@ int main(int argc, char **argv)
 				else {
 					std::cout << "Descriptor is readable : " << user.getNick(fds[i].fd) << std::endl;
 					close_conn = 0;
-					buffer = "";
 					buf_full = strdup("");
 					len = 0;
 					do {
@@ -145,7 +143,6 @@ int main(int argc, char **argv)
 						}
 						len += ret;
 						std::cout << ret << " byte received, total : " << len << std::endl;
-						buffer += buf;
 						tmp = buf_full;
 						buf_full = ft_strjoin(buf_full, buf);
 						free(tmp);
@@ -180,5 +177,3 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
-
-

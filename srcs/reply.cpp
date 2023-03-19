@@ -4,7 +4,7 @@
 #define ERR_UNKNOWCOMMAND " :Unknow command\n"
 
 //ERR_PAreturn_stringWDMISMATCH
-std::string error_pareturn_string(std::string nick){
+std::string error_pass(std::string nick){
 	std::stringstream return_string;
 
 	return_string << ":" << IPADDR << " 464 " << nick << " :Password incorrect" << "\r\n";
@@ -85,8 +85,16 @@ std::string error_nooperhost(std::string nick){
 
 // #define ERR_NOSUCHSERVER 402
 std::string error_nosuchserver(std::string nick){
-	std::stringstream ss;
+	std::stringstream return_string;
 
-	ss << ":" << IPADDR << " 402 " << nick << " :No such server" << "\r\n";
-	return (ss.str());
+	return_string << ":" << IPADDR << " 402 " << nick << " :No such server" << "\r\n";
+	return (return_string.str());
+}
+
+// PING REPLY
+std::string rplping(void){
+	std::stringstream return_string;
+
+	return_string << "PONG " << IPADDR << "\r\n";
+	return (return_string.str());
 }
