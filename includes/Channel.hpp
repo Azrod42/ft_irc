@@ -20,7 +20,12 @@ class Channel {
 		~Channel();
 		Channel(const Channel &copy);
 		Channel			&operator=(const Channel &copy);
-		//MEM_nameBER_FUCT
-		void			getName() const;
+		//ACCES
+		std::string		getName() const{return (_name);};
+		std::string		getKey() const {return (_key);}
+		bool			useKey() const {return (_use_key);};
+		//SETTER
+		void			useKeySetTrue() {_use_key = true};
+		void			useKeySetFalse() {_use_key = false};
 };
 #endif

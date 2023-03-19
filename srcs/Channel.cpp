@@ -23,7 +23,3 @@ Channel		   &Channel::operator=(const Channel &copy) {
 	return (*this);
 };
 
-
-void			Channel::getName() const {
-	std::cout << this->_name << std::endl;
-};

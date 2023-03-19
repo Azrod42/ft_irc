@@ -382,7 +382,12 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 	}
 	//JOIN_CHANNEL_OR_CREATE
 	for (int i = 0; i < (int)chan.size(); i++){
-		
+		int j = 0;
+		while (j < NUMBER_CHANNEL_MAX){
+			if (_channel[j].getName() == chan[i])
+				if (_channel[j])
+				
+		}
 	}
 
 	//AFFICHAGE_PARSING
