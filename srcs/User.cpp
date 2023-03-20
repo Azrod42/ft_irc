@@ -120,6 +120,8 @@ void			User::userCommand(std::string prompt, unsigned int id){
 				this->execPING(it->cmd, it->id);
 			if (it->cmd.find("JOIN ") < std::string::npos)
 				this->execJOIN(it->cmd, it->id);
+			if (it->cmd.find("PART ") < std::string::npos)
+				this->execPART(it->cmd, it->id);
 		}
 		else
 			this->execLOG(it->cmd, id);
@@ -299,13 +301,11 @@ void			User::execPING(std::string cmd, unsigned int id){
 
 void			User::execJOIN(std::string cmd, unsigned int id){
 	FINDUSER
-	std::cout << cmd.c_str() << std::endl;
 	NBARGUMENT(cmd.c_str())
 	std::vector<std::string> chan;
 	std::vector<std::string> key;
 
 	//ERROR_NEEDMOREPARAMS
-	std::cout << nb_cmd << std::endl;
 	if (nb_cmd < 2){
 		std::string rep = error_needmoreparams("JOIN");
 		send(id, rep.c_str(), rep.size(), 0);
@@ -331,6 +331,12 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 		if (dup.find(" ") < std::string::npos){
 			std::string tmp = "";
 			for (int i = 0; i < (int)dup.find(" "); i++)
+				tmp.insert(tmp.end(), dup[i]);
+			chan.push_back(tmp);
+		}
+		else if (dup.find("\r") < std::string::npos){
+			std::string tmp = "";
+			for (int i = 0; i < (int)dup.find("\r"); i++)
 				tmp.insert(tmp.end(), dup[i]);
 			chan.push_back(tmp);
 		}
@@ -380,20 +386,151 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 			}
 		}
 	}
+	// FILL_CHAN_WHITH_NO_KEY
+	if (key.size() < chan.size()) 
+		while (key.size() < chan.size())
+			key.push_back("__NOKEY__");
+	//AFFICHAGE_PARSING
+	// for(int i = 0; i < (int)chan.size(); i++){
+	// 	std::cout << "--" << chan[i] << std::endl;
+	// }
+	// for(int i = 0; i < (int)key.size(); i++)
+	// 	std::cout << "==" << key[i] << std::endl;
+
 	//JOIN_CHANNEL_OR_CREATE
+	std::cout << chan.size() << std::endl;
 	for (int i = 0; i < (int)chan.size(); i++){
-		int j = 0;
-		while (j < NUMBER_CHANNEL_MAX){
+		int j = -1;
+		while (++j < NUMBER_CHANNEL_MAX) {
+			std::cout << _channel[j].getName() << std::endl;
 			if (_channel[j].getName() == chan[i])
-				if (_channel[j])
-				
+				break;
+		}
+		if (j < NUMBER_CHANNEL_MAX){ //FIND_THE_CHANNEL
+			int ret = _channel[j].join(it->id, it->nick, key[j]);
+			std::string rep;
+			switch (ret)
+			{
+			case 1:
+				//RET 1 = ERR_BADCHANNELKEY
+				rep = error_badchannelkey(chan[i]);
+				send(id, rep.c_str(), rep.size(), 0);
+				break;
+			case 2:
+				//RET 2 = INVITE_LIST_USER_NOT_IN
+				rep = error_inviteonlychan(chan[i]);
+				send(id, rep.c_str(), rep.size(), 0);
+				break;
+			case 3:
+				//RET 3 = USER_BANNED_FORM_CHANNEL
+				rep = error_bannedformchan(chan[i]);
+				send(id, rep.c_str(), rep.size(), 0);
+				break;
+			case 4:
+				//RET 4 = USER_ALREADY_IN_CHANNEL
+				break;
+			default:
+				//RET 0 = USER_JOIN_CHANNEL
+				// std::cout << "Find channel : " << _channel[j].getName() << std::endl;
+				rep = rpljoin(it->nick, it->name, chan[i]);
+				send(id, rep.c_str(), rep.size(), 0);
+				if (_channel[j].istopic() == true){ //RPL_TOPIC
+					std::string rep = rpltopic(chan[i], _channel[j].getTopic());
+					send(id, rep.c_str(), rep.size(), 0);
+				} else { //RPL_NOTOPIC
+					std::string rep = rplnotopic(chan[i]);
+					send(id, rep.c_str(), rep.size(), 0);
+				}
+				break;
+			}
+		}
+		else { //CREATE_CHANNEL
+			if (_channel_use >= NUMBER_CHANNEL_MAX){// ERR_TOOMANYCHANNELS
+				std::string rep = error_toomanychannels(chan[i]);
+				send(id, rep.c_str(), rep.size(), 0);
+			}
+			else {
+				for(int k = 0; k < NUMBER_CHANNEL_MAX; k++){
+					if (_channel[k].inUse() == false){
+						_channel_use += 1;
+						_channel[k].initChannel(id, chan[i], key[i]);
+						std::string rep = rpljoin(it->nick, it->name, chan[i]);
+						send(id, rep.c_str(), rep.size(), 0);
+						if (_channel[k].istopic() == true){ //RPL_TOPIC
+							std::string rep = rpltopic(chan[i], _channel[k].getTopic());
+							send(id, rep.c_str(), rep.size(), 0);
+						} else { //RPL_NOTOPIC
+							std::string rep = rplnotopic(chan[i]);
+							send(id, rep.c_str(), rep.size(), 0);
+						}
+						break;
+					}
+				}
+			}
 		}
 	}
+}
 
-	//AFFICHAGE_PARSING
-	for(int i = 0; i < (int)chan.size(); i++){
-		std::cout << "--" << chan[i] << std::endl;
+void			User::execPART(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())
+
+	if (nb_cmd < 2){
+		std::string rep = error_needmoreparams("PART");
+		send(id, rep.c_str(), rep.size(), 0);
 	}
-	for(int i = 0; i < (int)key.size(); i++)
-		std::cout << "==" << key[i] << std::endl;
+	std::vector<std::string> chan;
+	std::string dup(cmd);
+
+	for (int i = 0; i < 5; i++)
+		dup.erase(dup.begin());
+	while (dup.find(",") < std::string::npos){
+		std::string tmp = "";
+		for (int i = 0; i < (int)dup.find(","); i++)
+			tmp.insert(tmp.end(), dup[i]);	
+		chan.push_back(tmp);
+		for (int i = 0; i < (int)dup.find(",");){
+			dup.erase(dup.begin());
+		}
+		dup.erase(dup.begin());
+	}
+	if (dup.find(" ") < std::string::npos){
+		std::string tmp = "";
+		for (int i = 0; i < (int)dup.find(" "); i++)
+			tmp.insert(tmp.end(), dup[i]);
+		chan.push_back(tmp);
+	}
+	else if (dup.find("\r") < std::string::npos){
+		std::string tmp = "";
+		for (int i = 0; i < (int)dup.find("\r"); i++)
+			tmp.insert(tmp.end(), dup[i]);
+		chan.push_back(tmp);
+	}
+	else {
+		std::string tmp = "";
+		int i = 0;
+		for (std::string::iterator iter = dup.begin(); iter != dup.end(); iter++, i++)
+			tmp.insert(tmp.end(), dup[i]);
+		chan.push_back(tmp);
+	}
+	for(int i = 0; i < (int)chan.size(); i++){
+		int j = -1;
+		while (++j < NUMBER_CHANNEL_MAX){
+			if (_channel[j].getName() == chan[i])
+				break;
+		}
+		if (j < NUMBER_CHANNEL_MAX){
+			if (_channel[j].userLeave(id)){
+				std::string ret = error_notonchannel(chan[i]);
+				send(id, ret.c_str(), ret.size(), 0);
+			}
+		} else {
+			std::string rep = error_nosuchchannel(chan[i]);
+			send(id, rep.c_str(), rep.size(), 0);
+		}
+	}
+	//AFFICHAGE_PARSING
+	// for(int i = 0; i < (int)chan.size(); i++){
+		// std::cout << "--" << chan[i] << std::endl;
+	// }
 }

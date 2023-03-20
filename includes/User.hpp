@@ -31,6 +31,7 @@ class User {
 		void			execOPER(std::string cmd, unsigned int id);
 		void			execPING(std::string cmd, unsigned int id);
 		void			execJOIN(std::string cmd, unsigned int id);
+		void			execPART(std::string cmd, unsigned int id);
 };
 
 #endif

@@ -98,3 +98,75 @@ std::string rplping(void){
 	return_string << "PONG " << IPADDR << "\r\n";
 	return (return_string.str());
 }
+
+// JOIN REPLY
+std::string rpljoin(std::string nick, std::string name, std::string channel){
+	std::stringstream return_string;
+
+	return_string << ":" << nick <<  "!" << name << "@" << IPADDR << " JOIN " << channel << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_TOOMANYCHANNELS 405
+std::string error_toomanychannels(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 405 " << channel_name << " :You have joined too many channels" << "\r\n";
+	return (return_string.str());
+}
+
+//#define RPL_NOTOPIC 331
+std::string rplnotopic(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 331 " << "a " << channel_name << "\r\n";
+	return (return_string.str());
+}
+
+//#define RPL_NOTOPIC 332
+std::string rpltopic(std::string channel_name, std::string topic){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 332 " << channel_name << " : " << topic << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_BADCHANNELKEY 475
+std::string error_badchannelkey(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 475 " << channel_name << " :Cannot join channel (+k)" << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_INVITEONLYCHAN 473
+std::string error_inviteonlychan(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 473 " << channel_name << " :Cannot join channel (+i)" << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_BANNEDFROMCHAN 474
+std::string error_bannedformchan(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 473 " << channel_name << " :Cannot join channel (+b)" << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_NOTONCHANNEL 442
+std::string error_notonchannel(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 442 " << channel_name << " :You're not on that channel" << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_NOSUCHCHANNEL 403
+std::string error_nosuchchannel(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 403 " << channel_name << " :No such channel" << "\r\n";
+	return (return_string.str());
+}	

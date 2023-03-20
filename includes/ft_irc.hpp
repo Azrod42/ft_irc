@@ -65,6 +65,9 @@ int				check_empty(std::string input);
 std::string		rplwelcome(std::string nick, std::string user);
 std::string		rplyouroper(std::string nick);
 std::string		rplping(void);
+std::string		rpljoin(std::string nick, std::string name, std::string channel);
+std::string		rplnotopic(std::string channel_name);
+std::string		rpltopic(std::string channel_name, std::string topic);
 std::string		error_alreadyregistred();
 std::string		error_pass(std::string nick);
 std::string		error_needmoreparams(std::string word);
@@ -73,5 +76,11 @@ std::string		error_unknowcommand(std::string cmd);
 std::string		error_nonicknamegiven(void);
 std::string		error_nicknameinuse(std::string nick);
 std::string		error_nooperhost(std::string nick);
+std::string		error_toomanychannels(std::string channel_name);
+std::string		error_badchannelkey(std::string channel_name);
+std::string		error_inviteonlychan(std::string channel_name);
+std::string		error_bannedformchan(std::string channel_name);
+std::string		error_notonchannel(std::string channel_name);
+std::string		error_nosuchchannel(std::string channel_name);
 
 #endif

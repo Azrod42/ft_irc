@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 	User				user;
 	t_data				dta;
 	t_user				uuser;
-	struct sockaddr_in	adrereturn_stringe;
+	struct sockaddr_in	adresse;
 	struct pollfd		fds[NB_CLIENT];
 	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
 	int					i, j, len, comprereturn_string_array;
@@ -79,8 +79,8 @@ int main(int argc, char **argv)
 	if (pars_port(&dta, argv)) return (1);
 	if (pars_pareturn_string(&dta, argv)) return (1);
 	user.getServerPass(dta.pareturn_string);
-	init_sockaddr(&adrereturn_stringe, dta.port);
-	if (init_socket(&dta, &adrereturn_stringe)) return (1);
+	init_sockaddr(&adresse, dta.port);
+	if (init_socket(&dta, &adresse)) return (1);
 	fds[0].fd = dta.fd_socket;
 	fds[0].events = POLLIN;
 	int ret = 0;
@@ -177,3 +177,4 @@ int main(int argc, char **argv)
 	}
 	return (0);
 }
+
