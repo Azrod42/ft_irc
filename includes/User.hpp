@@ -23,7 +23,7 @@ class User {
 		void			sendMessage(char *message, unsigned int id);
 		std::string		getName(unsigned int const id);
 		std::string		getNick(unsigned int const id);
-		int				addUser(const unsigned int id, std::string name);
+		int				addUser(const unsigned int id, std::string name, in_addr_t ip);
 		void			disconectUser(unsigned int id);
 		std::string 	getGestname(void) const;
 		void			userCommand(std::string prompt, unsigned int id);
@@ -32,6 +32,8 @@ class User {
 		void			execPING(std::string cmd, unsigned int id);
 		void			execJOIN(std::string cmd, unsigned int id);
 		void			execPART(std::string cmd, unsigned int id);
+		void			execPRIVMSGC(std::string cmd, unsigned int id);
+		void			execPRIVMSGU(std::string cmd, unsigned int id);
 };
 
 #endif

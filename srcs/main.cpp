@@ -115,7 +115,7 @@ int main(int argc, char **argv)
 							break;
 						}
 						std::cout << "New incoming connection on fd : " << new_sd << std::endl;
-						user.addUser(new_sd, "User");
+						user.addUser(new_sd, "User", adresse.sin_addr.s_addr);
 						fds[fdn].fd = new_sd;
 						fds[fdn].events = POLLIN;
 						fdn++;

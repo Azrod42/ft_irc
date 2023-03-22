@@ -170,3 +170,42 @@ std::string error_nosuchchannel(std::string channel_name){
 	return_string << ":" << IPADDR << " 403 " << channel_name << " :No such channel" << "\r\n";
 	return (return_string.str());
 }	
+
+std::string rpl(std::string nick, std::string channel, std::string name, std::string message){
+	std::stringstream return_string;
+
+	return_string << ":" << nick <<  "!" << name << "@" << IPADDR << " PRIVMSG "<< channel << " " << message << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_CANNOTSENDTOCHAN 404
+std::string error_cannotsendtochan(std::string channel_name){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 404 " << channel_name << " :Cannot send to channel" << "\r\n";
+	return (return_string.str());
+}	
+
+//#define ERR_NORECIPIENT 411
+std::string error_norecipient(std::string commande){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 411 " << ":No recipient given (" << commande << ")" << "\r\n";
+	return (return_string.str());
+}	
+
+//#define ERR_NOTEXTTOSEND 412
+std::string error_notexttosend(void){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 412 " << ":No text to send" << "\r\n";
+	return (return_string.str());
+}	
+
+//#define ERR_NOSUCHNICK 401
+std::string error_nosuchnick(std::string nick){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 401 " << nick << " :No such nick/channel" << "\r\n";
+	return (return_string.str());
+}	

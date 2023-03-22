@@ -80,3 +80,41 @@ int				Channel::userLeave(unsigned int id){
 	}
 	return (1);
 };
+
+//ret 1 = ERR_CANNOTSENDTOCHAN (user not in)
+int				Channel::sendMessage(std::string message ,std::string nick,std::string name, unsigned int id_s){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	std::vector<unsigned int>::iterator itin = _current_user.begin();
+	int user_in = 0;
+	
+	while (itin != _current_user.end()){
+		if (*itin == id_s)
+			user_in = 1;
+		itin++;
+	}
+	// std::cout << "User in :" << user_in << std::endl;
+	if (!user_in)
+		return (1);
+	while (it != _current_user.end()){
+		if (*it != id_s && *it != 99999){
+			std::string rep = rpl(nick, this->getName(), name, message);
+			// std::cout << "Message send to :" << *it << "\n" << rep << std::endl;
+			send(*it, rep.c_str(), rep.size(), 0);
+		}
+		it++;
+	}
+	return (0);
+};
+
+int				Channel::userDisconnect(unsigned int id){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+
+	while (it != _current_user.end()){
+		if (*it == id){
+			_current_user.erase(it);
+			return (0);
+		}
+		it++;
+	}
+	return (0);
+};

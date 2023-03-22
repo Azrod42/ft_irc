@@ -58,7 +58,7 @@ std::string		User::getNick(unsigned int const id){
 	return("Warning: User not found");
 };
 
-int				User::addUser(const unsigned int id, std::string name) {
+int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 	t_user udef;
 	std::vector<t_user>::iterator it = _user.begin();
 
@@ -72,6 +72,7 @@ int				User::addUser(const unsigned int id, std::string name) {
 		it++;
 	}
 	udef.id = id;
+	udef.ip = ip_itostr(ip);
 	udef.name = name;
 	udef.nick = " ";
 	udef.realname = " ";
@@ -91,6 +92,10 @@ int				User::addUser(const unsigned int id, std::string name) {
 void			User::disconectUser(unsigned int id){
 	FINDUSER
 	_user.erase(it);
+	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
+		if (_channel[i].inUse() == true)
+			_channel[i].userDisconnect(id);
+	}
 };
 
 std::string 	User::getGestname(void) const {
@@ -122,6 +127,10 @@ void			User::userCommand(std::string prompt, unsigned int id){
 				this->execJOIN(it->cmd, it->id);
 			if (it->cmd.find("PART ") < std::string::npos)
 				this->execPART(it->cmd, it->id);
+			if (it->cmd.find("PRIVMSG #") < std::string::npos)
+				this->execPRIVMSGC(it->cmd, it->id);
+			else if (it->cmd.find("PRIVMSG ") < std::string::npos)
+				this->execPRIVMSGU(it->cmd, it->id);
 		}
 		else
 			this->execLOG(it->cmd, id);
@@ -398,11 +407,9 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 	// 	std::cout << "==" << key[i] << std::endl;
 
 	//JOIN_CHANNEL_OR_CREATE
-	std::cout << chan.size() << std::endl;
 	for (int i = 0; i < (int)chan.size(); i++){
 		int j = -1;
 		while (++j < NUMBER_CHANNEL_MAX) {
-			std::cout << _channel[j].getName() << std::endl;
 			if (_channel[j].getName() == chan[i])
 				break;
 		}
@@ -534,3 +541,129 @@ void			User::execPART(std::string cmd, unsigned int id){
 		// std::cout << "--" << chan[i] << std::endl;
 	// }
 }
+
+void			User::execPRIVMSGC(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())	
+
+	std::string channel(cmd);
+
+	if (cmd.find("#") == std::string::npos){
+		std::string rep = error_norecipient("PRIVMSG");
+		send(id, rep.c_str(), rep.size(), 0);
+		return; 
+	}
+	if (cmd.find(":") == std::string::npos || nb_cmd < 3){
+		std::string rep = error_notexttosend();
+		send(id, rep.c_str(), rep.size(), 0);
+		return; 
+	}
+	channel.erase(0, 8);
+	if (channel.find("@") < std::string::npos){
+		std::string::iterator iter = channel.begin();
+		int i = -1;
+		while ((int)channel.find("@") > ++i)
+			iter++;
+		channel.erase(iter, channel.end());
+	}
+	if (channel.find("!") < std::string::npos){
+		std::string::iterator iter = channel.begin();
+		int i = -1;
+		while ((int)channel.find("!") > ++i)
+			iter++;
+		channel.erase(iter, channel.end());
+	}
+	if (channel.find("%") < std::string::npos){
+		std::string::iterator iter = channel.begin();
+		int i = -1;
+		while ((int)channel.find("%") > ++i)
+			iter++;
+		channel.erase(iter, channel.end());
+	}
+	if (channel.find(" ") < std::string::npos){
+		std::string::iterator iter = channel.begin();
+		int i = -1;
+		while ((int)channel.find(" ") > ++i)
+			iter++;
+		channel.erase(iter, channel.end());
+	}
+	std::string message(cmd);
+	
+	if (message.find(":") < std::string::npos){
+		std::string::iterator iter = message.begin();
+		int i = -1;
+		while ((int)message.find(":") > ++i)
+			iter++;
+		iter++;
+		message.erase(message.begin(), iter);
+	}
+	std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
+	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
+		if (_channel[i].getName() == channel) {
+			std::string rep;
+			int ret = _channel[i].sendMessage(message, it->nick, it->name, id);
+			switch (ret)
+			{
+			case 1:
+				rep = error_cannotsendtochan(_channel[i].getName());
+				send(id, rep.c_str(), rep.size(), 0);
+				break;
+			default:
+				break;
+			}
+			return ;
+		}
+	}
+	std::string rep = error_nosuchchannel(channel);
+	send(id, rep.c_str(), rep.size(), 0);
+};
+
+void			User::execPRIVMSGU(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())	
+
+	std::string user(cmd);
+	std::string message(cmd);
+	
+	if (user.find(":") == std::string::npos){
+		std::string rep = error_notexttosend();
+		send(id, rep.c_str(), rep.size(), 0);
+	}
+	if (nb_cmd < 3){
+		std::string rep = error_norecipient("PRIVMSG");
+		send(id, rep.c_str(), rep.size(), 0);
+	}
+	user.erase(0, 8);
+	if (user.find(" ") < std::string::npos && user.find(" ") < user.find(":")){
+		std::string::iterator iter = user.begin();
+		int i = -1;
+		while (++i < (int)user.find(" "))
+			iter++;
+		user.erase(iter, user.end());
+	} else {
+		std::string rep = error_norecipient("PRIVMSG");
+		send(id, rep.c_str(), rep.size(), 0);
+	}
+	if (message.find(":") < std::string::npos){
+		std::string::iterator iter = message.begin();
+		int i = -1;
+		while (++i < (int)message.find(":"))
+			iter++;
+		message.erase(message.begin(), iter);
+	}
+	std::vector<t_user>::iterator iter = _user.begin();
+
+	while (iter != _user.end()){
+		if (iter->nick == user){
+			std::string rep = rpl(it->nick, it->nick, it->name, message);
+			send(iter->id, rep.c_str(), rep.size(), 0);
+			return ;
+		}
+		iter++;
+	}
+	if (iter == _user.end()){
+		std::string rep = error_nosuchnick(user);
+		send(id, rep.c_str(), rep.size(), 0);
+	}
+	std::cout << "Message prive pour :" << user << "\nLe message est " << message << std::endl;
+};

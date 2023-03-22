@@ -6,3 +6,11 @@ PART
 OPER
 KILL
 DIE
+
+JOIN #oui
+:Azrod!~u@78vwwjhdt3xm4.irc JOIN #oui
+:ergo.test 353 Azrod = #oui :@tsorabel Azrod
+:ergo.test 366 Azrod #oui :End of NAMES list
+
+
+tsorabel!~u@78vwwjhdt3xm4.irc PRIVMSG #oui :salut

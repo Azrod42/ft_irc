@@ -54,6 +54,7 @@ typedef struct s_uer {
 	int				is_log;
 	std::string		mode;
 	std::string		unused;
+	std::string		ip;
 } t_user;
 
 char			**ft_split(char const *s, char c);
@@ -62,6 +63,8 @@ char			*ft_substr(const char *s, unsigned int start, size_t len);
 int				ispareturn_string(int c);
 int				check_nickname(std::string input);
 int				check_empty(std::string input);
+std::string		ip_itostr(in_addr_t brut);
+std::string		rpl(std::string nick, std::string channel, std::string name, std::string message);
 std::string		rplwelcome(std::string nick, std::string user);
 std::string		rplyouroper(std::string nick);
 std::string		rplping(void);
@@ -82,5 +85,9 @@ std::string		error_inviteonlychan(std::string channel_name);
 std::string		error_bannedformchan(std::string channel_name);
 std::string		error_notonchannel(std::string channel_name);
 std::string		error_nosuchchannel(std::string channel_name);
+std::string		error_cannotsendtochan(std::string channel_name);
+std::string		error_norecipient(std::string commande);
+std::string		error_notexttosend(void);
+std::string		error_nosuchnick(std::string nick);
 
 #endif
