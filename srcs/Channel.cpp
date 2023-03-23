@@ -118,3 +118,39 @@ int				Channel::userDisconnect(unsigned int id){
 	}
 	return (0);
 };
+
+int				Channel::userKick(unsigned int id, unsigned int trig, std::string user){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	std::vector<unsigned int>::iterator it2 = _current_user.begin();
+
+	int trigger_in = 0;
+	int kicked_in = 0;
+	while (it != _current_user.end()){
+		if (*it == id){
+			kicked_in = 1;
+			break;
+		}
+		it++;
+	}
+	while (it2 != _current_user.end()){
+		if (*it2 == trig){
+			trigger_in = 1;
+			break;
+		}
+		it2++;
+	}
+	if (trigger_in == 1 && kicked_in == 1){
+		std::vector<unsigned int>::iterator it3 = _current_user.begin();
+		std::string rep = rplkicked(user, this->getName());
+		while (it3 != _current_user.end()){
+			std::cout << "Send to :" << *it3 << std::endl;
+			send(*it3, rep.c_str(), rep.size(), 0);
+			it3++;
+		}
+		_current_user.erase(it);
+		return 0;
+	} else if (!trigger_in){
+		return 2;
+	}
+	return (1);
+};

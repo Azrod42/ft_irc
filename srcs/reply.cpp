@@ -209,3 +209,35 @@ std::string error_nosuchnick(std::string nick){
 	return_string << ":" << IPADDR << " 401 " << nick << " :No such nick/channel" << "\r\n";
 	return (return_string.str());
 }	
+
+// KILL REPLY
+std::string rplkill(void){
+	std::stringstream return_string;
+
+	return_string << "KILL tsorabel!tsorabel@127.0.0.1" << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_USERNOTINCHANNEL 441
+std::string error_usernotinchannel(std::string nick, std::string channel){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << nick << " " << channel << " :They aren't on that channel" << "\r\n";
+	return (return_string.str());
+}	
+
+//#define ERR_CHANOPRIVSNEEDED 482
+std::string error_chanoprivsneeded(std::string chann){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 482 " << chann << " :You're not channel operator" << "\r\n";
+	return (return_string.str());
+}	
+
+//#define RPL_SERVICEINFO 231
+std::string rplkicked(std::string nick, std::string channel){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 231 " << nick << " :was kick form " << channel << "\r\n";
+	return (return_string.str());
+}

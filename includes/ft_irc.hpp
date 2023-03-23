@@ -19,7 +19,7 @@
 #include <map>
 #include"../includes/Channel.hpp"
 
-#define NUMBER_CHANNEL_MAX 20
+#define NUMBER_CHANNEL_MAX 200
 
 #define	FINDUSER std::vector<t_user>::iterator it = _user.begin();\
 	while (it != _user.end()){ \
@@ -65,7 +65,9 @@ int				check_nickname(std::string input);
 int				check_empty(std::string input);
 std::string		ip_itostr(in_addr_t brut);
 std::string		rpl(std::string nick, std::string channel, std::string name, std::string message);
+std::string		rplkill(void);
 std::string		rplwelcome(std::string nick, std::string user);
+std::string		rplkicked(std::string nick, std::string channel);
 std::string		rplyouroper(std::string nick);
 std::string		rplping(void);
 std::string		rpljoin(std::string nick, std::string name, std::string channel);
@@ -89,5 +91,7 @@ std::string		error_cannotsendtochan(std::string channel_name);
 std::string		error_norecipient(std::string commande);
 std::string		error_notexttosend(void);
 std::string		error_nosuchnick(std::string nick);
+std::string		error_usernotinchannel(std::string nick, std::string channel);
+std::string		error_chanoprivsneeded(std::string chann);
 
 #endif

@@ -127,6 +127,10 @@ void			User::userCommand(std::string prompt, unsigned int id){
 				this->execJOIN(it->cmd, it->id);
 			if (it->cmd.find("PART ") < std::string::npos)
 				this->execPART(it->cmd, it->id);
+			if (it->cmd.find("NICK ") < std::string::npos)
+				this->execLOG(it->cmd, it->id);
+			if (it->cmd.find("KICK ") < std::string::npos)
+				this->execKICK(it->cmd, it->id);
 			if (it->cmd.find("PRIVMSG #") < std::string::npos)
 				this->execPRIVMSGC(it->cmd, it->id);
 			else if (it->cmd.find("PRIVMSG ") < std::string::npos)
@@ -400,11 +404,11 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 		while (key.size() < chan.size())
 			key.push_back("__NOKEY__");
 	//AFFICHAGE_PARSING
-	// for(int i = 0; i < (int)chan.size(); i++){
-	// 	std::cout << "--" << chan[i] << std::endl;
-	// }
-	// for(int i = 0; i < (int)key.size(); i++)
-	// 	std::cout << "==" << key[i] << std::endl;
+	for(int i = 0; i < (int)chan.size(); i++){
+		std::cout << "--" << chan[i] << std::endl;
+	}
+	for(int i = 0; i < (int)key.size(); i++)
+		std::cout << "==" << key[i] << std::endl;
 
 	//JOIN_CHANNEL_OR_CREATE
 	for (int i = 0; i < (int)chan.size(); i++){
@@ -667,3 +671,94 @@ void			User::execPRIVMSGU(std::string cmd, unsigned int id){
 	}
 	std::cout << "Message prive pour :" << user << "\nLe message est " << message << std::endl;
 };
+
+void			User::execKICK(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())	
+
+	if (nb_cmd < 3) {
+		std::string rep = error_needmoreparams("KICK");
+		send(id, rep.c_str(), rep.size(), 0);
+		return;
+	}
+	std::string channel(cmd);
+	std::string user(cmd);
+	std::string reason(cmd);
+
+	channel.erase(0, 5);
+	user.erase(0, 5);
+	if (nb_cmd > 3){
+		std::string::iterator iter = channel.begin();
+		std::string::iterator iter2 = user.begin();
+		std::string::iterator iter3 = reason.begin();
+		while (*iter != ' '){
+			iter++; iter2++;}
+		channel.erase(iter, channel.end());
+		user.erase(user.begin(), iter2);
+		while (*iter2 != ' ')
+			iter2++;
+		user.erase(iter2, user.end());
+		user.erase(user.begin());
+		if (nb_cmd > 3) {
+			while (*iter3 != ':')
+				iter3++;
+			reason.erase(reason.begin(), iter3);
+			iter3 = reason.begin();
+			while (*iter3 != '\r')
+				iter3++;
+			reason.erase(iter3, reason.end());
+		}
+	} else {
+		std::string::iterator iter = channel.begin();
+		std::string::iterator iter2 = user.begin();
+		std::string::iterator iter3 = user.begin();
+		while (*iter != ' '){
+			iter++; iter2++;}
+		channel.erase(iter, channel.end());
+		user.erase(user.begin(), iter2);
+		while (*iter3 != '\r')
+			iter3++;
+		user.erase(iter3, user.end());
+		reason.clear();
+	}
+	std::cout << "Channel :" << channel << std::endl;
+	std::cout << "User :" << user << std::endl;
+	std::cout << "Reason :" << reason << std::endl;
+	if (it->is_operator == false) {
+		std::string rep = error_chanoprivsneeded(channel);
+		send(id, rep.c_str(), rep.size(), 0);
+		return;
+	}
+	std::vector<t_user>::iterator iter = _user.begin();
+	while (iter != _user.end()){
+		if (iter->nick == user)
+			break;
+		iter++;
+	}
+	if (iter == _user.end()){
+		std::string rep = error_nosuchchannel(channel);
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;
+	}
+	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++) {
+		// std::cout << _channel[i].getName() << " " << channel << std::endl;
+		if (_channel[i].getName() == channel){
+			int ret = _channel[i].userKick(iter->id, id, user);
+			if (ret == 1){
+				std::string rep = error_usernotinchannel(user, channel);
+				send(id, rep.c_str(), rep.size(), 0);
+				return ;
+			} else if (ret == 2) {
+				std::string rep = error_notonchannel(channel);
+				send(id, rep.c_str(), rep.size(), 0);
+				return ;
+			}
+			return;
+		}
+		if (i == NUMBER_CHANNEL_MAX - 1){
+			std::string rep = error_nosuchchannel(channel);
+			send(id, rep.c_str(), rep.size(), 0);
+			return ;
+		}
+	}
+}

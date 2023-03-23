@@ -43,6 +43,7 @@ class Channel {
 		int				initChannel(unsigned int id, std::string channel_name, std::string channel_key);
 		int				userLeave(unsigned int id);
 		int				userDisconnect(unsigned int id);
+		int				userKick(unsigned int id, unsigned int trig, std::string user);
 		int				sendMessage(std::string message,std::string nick,std::string name, unsigned int id_s);
 };
 #endif
