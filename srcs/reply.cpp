@@ -241,3 +241,10 @@ std::string rplkicked(std::string nick, std::string channel){
 	return_string << ":" << IPADDR << " 231 " << nick << " :was kick form " << channel << "\r\n";
 	return (return_string.str());
 }
+
+std::string rplkill(std::string nick, std::string reason){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 361 " << nick << " :was kicked. (reason: " << reason << "\r\n";
+	return (return_string.str());
+}

@@ -99,11 +99,12 @@ int main(int argc, char **argv)
 					continue;
 				if (fds[i].revents == 17) {
 					std::cout << "User disconect : " << fds[i].fd << std::endl;
-				} else if (fds[i].revents != POLLIN) {
+				} else if (fds[i].revents != POLLIN && fds[i].revents != 32) {
 					std::cout << "Error! events = " << fds[i].revents << std::endl;
+					perror(strerror(fds[i].revents));
 					return -1;
 				}
-				if (fds[i].fd == dta.fd_socket) {
+				if (fds[i].fd == dta.fd_socket && fds[i].revents != 32) {
 					std::cout << "Listening socket is readable" << std::endl;
 					do {
 						new_sd = accept(dta.fd_socket, NULL, NULL);
@@ -121,7 +122,7 @@ int main(int argc, char **argv)
 						fdn++;
 					} while (new_sd != -1);
 				}
-				else {
+				else if (fds[i].revents != 32){
 					std::cout << "Descriptor is readable : " << user.getNick(fds[i].fd) << std::endl;
 					close_conn = 0;
 					buf_full = strdup("");
