@@ -91,11 +91,11 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 
 void			User::disconectUser(unsigned int id){
 	FINDUSER
-	_user.erase(it);
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
 		if (_channel[i].inUse() == true)
 			_channel[i].userDisconnect(id);
 	}
+	_user.erase(it);
 };
 
 std::string 	User::getGestname(void) const {
@@ -603,7 +603,7 @@ void			User::execPRIVMSGC(std::string cmd, unsigned int id){
 		iter++;
 		message.erase(message.begin(), iter);
 	}
-	std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
+	// std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
 		if (_channel[i].getName() == channel) {
 			std::string rep;
