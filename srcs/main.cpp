@@ -26,12 +26,12 @@ int pars_pareturn_string(t_data *dta, char **av){
 
 	for(int i = 0; av[2][i]; i++, j++){
 		if (!ispareturn_string(av[2][i])){
-			std::cout << "error : Invalid pareturn_string" << std::endl;
+			std::cout << "error : Invalid pass" << std::endl;
 			return (1);
 		}
 	}
 	if (j < 3){
-		std::cout << "error : Invalid pareturn_string : pareturn_string_lenght as to be > 3" << std::endl;
+		std::cout << "error : Invalid pass : pass_lenght as to be > 3" << std::endl;
 		return (1);
 	}
 	dta->pareturn_string = av[2];
@@ -51,8 +51,6 @@ int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 	if (listen(dta->fd_socket, BACKLOG) != 0){
 		std::cout << "Error : During listen" << std::endl; return (1);}
 	fcntl(dta->fd_socket, F_SETFL, O_NONBLOCK);
-	// if (connect(dta->fd_socket, (struct sockaddr *) addr, sizeof(* addr)) < 0){
-	// 	std::cout << "Error : During connect" << std::endl; return (1);}
 	std::cout << "Server running" << std::endl;
 	return (0);
 }
@@ -66,7 +64,7 @@ int main(int argc, char **argv)
 	struct pollfd		fds[NB_CLIENT];
 	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
 	int					i, j, len, compress_array;
-	int					timeout = 10 * 60 * 1000;
+	int					timeout = 1 * 60 * 1000;
 	static char			buf[BUFFER_LEN + 1];
 	char				*buf_full;
 	char				*tmp;
@@ -106,8 +104,6 @@ int main(int argc, char **argv)
 				}
 				if (fds[i].fd == dta.fd_socket && fds[i].revents != 32) {
 					std::cout << "Listening socket is readable" << std::endl;
-					std::cout << "i = " << i << std::endl;
-					std::cout << "fdn = " << fdn << std::endl;
 					do {
 						new_sd = accept(dta.fd_socket, NULL, NULL);
 						if (new_sd < 0){
@@ -156,18 +152,15 @@ int main(int argc, char **argv)
 					free(tmp);
 					free(buf_full);
 					if (ret == 1000){
-						std::cout << "DIE TRIGERED" << std::endl;
 						end_server = 1;
 					} else if (ret != 999){
 						int p = 0;
-						std::cout << "====" << ret << "===" << std::endl;
 						while (p < NB_CLIENT) {
 							if (fds[p].fd == (int)ret)
 								break;
 							p++;
 						}
 						if (p != 256) {
-						std::cout << fds[p].fd  << " " << p << std::endl;
 						close(fds[p].fd);
 						fds[p].fd = -1;
 						compress_array = 1;

@@ -85,7 +85,7 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 	udef.unused = " ";
 	udef.cmd = "";
 	_user.push_back(udef);
-	// std::cout << "New user connected : " << udef.name << std::endl;
+	std::cout << "New user connected : " << udef.name << std::endl;
 	return (0);
 };
 
@@ -726,9 +726,9 @@ void			User::execKICK(std::string cmd, unsigned int id){
 		user.erase(iter3, user.end());
 		reason.clear();
 	}
-	std::cout << "Channel :" << channel << std::endl;
-	std::cout << "User :" << user << std::endl;
-	std::cout << "Reason :" << reason << std::endl;
+	// std::cout << "Channel :" << channel << std::endl;
+	// std::cout << "User :" << user << std::endl;
+	// std::cout << "Reason :" << reason << std::endl;
 	if (it->is_operator == false) {
 		std::string rep = error_chanoprivsneeded(channel);
 		send(id, rep.c_str(), rep.size(), 0);
@@ -804,7 +804,7 @@ unsigned int				User::execKILL(std::string cmd, unsigned int id){
 		std::string rep = rplkill(iter->nick, reason);
 		send(id, rep.c_str(), rep.size(), 0);
 		send(iter->id, rep.c_str(), rep.size(), 0);
-		std::cout << "Close de l'user : " << iter->nick << " " << ret << std::endl;
+		// std::cout << "Close de l'user : " << iter->nick << " " << ret << std::endl;
 		this->disconectUser(ret);
 		return (ret);
 	}
