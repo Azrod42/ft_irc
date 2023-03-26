@@ -88,6 +88,11 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 	int user_in = 0;
 	
 	while (itin != _current_user.end()){
+		std::cout << "user :" <<  *itin << std::endl;
+		itin++;
+	}
+	itin = _current_user.begin();
+	while (itin != _current_user.end()){
 		if (*itin == id_s)
 			user_in = 1;
 		itin++;
@@ -112,7 +117,7 @@ int				Channel::userDisconnect(unsigned int id){
 	while (it != _current_user.end()){
 		if (*it == id){
 			_current_user.erase(it);
-			return (0);
+			// return (0);
 		}
 		it++;
 	}

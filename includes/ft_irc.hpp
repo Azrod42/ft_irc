@@ -65,7 +65,7 @@ int				check_nickname(std::string input);
 int				check_empty(std::string input);
 std::string		ip_itostr(in_addr_t brut);
 std::string		rpl(std::string nick, std::string channel, std::string name, std::string message);
-std::string		rplkill(void);
+std::string		rplkill(std::string nick, std::string reason);
 std::string		rplwelcome(std::string nick, std::string user);
 std::string		rplkicked(std::string nick, std::string channel, std::string reason);
 std::string		rplyouroper(std::string nick);

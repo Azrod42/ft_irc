@@ -29,6 +29,7 @@ class User {
 		void			userCommand(std::string prompt, unsigned int id);
 		void			execLOG(std::string full_cmd, unsigned int id);
 		void			execKICK(std::string cmd, unsigned int id);
+		void			execKILL(std::string cmd, unsigned int id);
 		void			execOPER(std::string cmd, unsigned int id);
 		void			execPING(std::string cmd, unsigned int id);
 		void			execJOIN(std::string cmd, unsigned int id);

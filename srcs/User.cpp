@@ -91,11 +91,11 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 
 void			User::disconectUser(unsigned int id){
 	FINDUSER
-	_user.erase(it);
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
 		if (_channel[i].inUse() == true)
 			_channel[i].userDisconnect(id);
 	}
+	_user.erase(it);
 };
 
 std::string 	User::getGestname(void) const {
@@ -131,6 +131,8 @@ void			User::userCommand(std::string prompt, unsigned int id){
 				this->execLOG(it->cmd, it->id);
 			if (it->cmd.find("KICK ") < std::string::npos)
 				this->execKICK(it->cmd, it->id);
+			if (it->cmd.find("KILL ") < std::string::npos)
+				this->execKILL(it->cmd, it->id);
 			if (it->cmd.find("PRIVMSG #") < std::string::npos)
 				this->execPRIVMSGC(it->cmd, it->id);
 			else if (it->cmd.find("PRIVMSG ") < std::string::npos)
@@ -601,7 +603,7 @@ void			User::execPRIVMSGC(std::string cmd, unsigned int id){
 		iter++;
 		message.erase(message.begin(), iter);
 	}
-	std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
+	// std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
 		if (_channel[i].getName() == channel) {
 			std::string rep;
@@ -762,3 +764,32 @@ void			User::execKICK(std::string cmd, unsigned int id){
 		}
 	}
 }
+
+void			User::execKILL(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())	
+
+	std::string	reason;
+	if (cmd.find(":") != std::string::npos)
+		reason = cmd.substr(cmd.find(":") + 1);
+	std::string	user = cmd.substr(5, (cmd.find(" ", 5) - 5));
+
+	std::vector<t_user>::iterator iter = _user.begin();
+	while (iter != _user.end()){
+		if (iter->nick == user)
+			break;
+		iter++;
+	}
+	if (iter == _user.end()){
+		std::string rep = error_nosuchnick(user);
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;
+	}else 
+	{
+		std::string rep = rplkill(iter->nick, reason);
+		send(id, rep.c_str(), rep.size(), 0);
+		send(iter->id, rep.c_str(), rep.size(), 0);
+		this->disconectUser(iter->id);
+		close(iter->id);
+	}
+};
