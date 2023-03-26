@@ -113,7 +113,7 @@ int main(int argc, char **argv)
 							}
 							break;
 						}
-						std::cout << "New incoming connection on fd : " << new_sd << std::endl;
+						std::cout << "New incoming connection" << std::endl;//on fd : " << new_sd << std::endl;
 						user.addUser(new_sd, "User", adresse.sin_addr.s_addr);
 						fds[fdn].fd = new_sd;
 						fds[fdn].events = POLLIN;
@@ -121,7 +121,7 @@ int main(int argc, char **argv)
 					} while (new_sd != -1);
 				}
 				else if (fds[i].revents != 32){
-					std::cout << "Descriptor is readable : " << user.getNick(fds[i].fd) << std::endl;
+					// std::cout << "Descriptor is readable : " << user.getNick(fds[i].fd) << std::endl;
 					close_conn = 0;
 					buf_full = strdup("");
 					len = 0;

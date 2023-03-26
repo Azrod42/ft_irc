@@ -85,7 +85,7 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 	udef.unused = " ";
 	udef.cmd = "";
 	_user.push_back(udef);
-	std::cout << "New user connected : " << udef.name << std::endl;
+	// std::cout << "New user connected : " << udef.name << std::endl;
 	return (0);
 };
 
@@ -118,7 +118,7 @@ unsigned int		User::userCommand(std::string prompt, unsigned int id){
 	{
 		if (it->is_log == 4)
 		{
-			std::cout << "User enter CMD : " << it->cmd << std::endl;
+			// std::cout << "User enter CMD : " << it->cmd << std::endl;
 			if (it->cmd.find("OPER ") < std::string::npos)
 				this->execOPER(it->cmd, it->id);
 			if (it->cmd.find("PING ") < std::string::npos)
@@ -409,24 +409,24 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 		while (key.size() < chan.size())
 			key.push_back("__NOKEY__");
 	//AFFICHAGE_PARSING
-	for(int i = 0; i < (int)chan.size(); i++){
-		std::cout << "--" << chan[i] << std::endl;
-	}
-	for(int i = 0; i < (int)key.size(); i++)
-		std::cout << "==" << key[i] << std::endl;
+	// for(int i = 0; i < (int)chan.size(); i++){
+	// 	std::cout << "--" << chan[i] << std::endl;
+	// }
+	// for(int i = 0; i < (int)key.size(); i++)
+	// 	std::cout << "==" << key[i] << std::endl;
 
 	//JOIN_CHANNEL_OR_CREATE
 	for (int i = 0; i < (int)chan.size(); i++){
 		int j = -1;
 		while (++j < NUMBER_CHANNEL_MAX) {
 			if (_channel[j].getName() == chan[i]){
-				std::cout << "Find channel :" << chan[i] << " " << _channel[j].getName() << std::endl;
+				// std::cout << "Find channel :" << chan[i] << " " << _channel[j].getName() << std::endl;
 				break;
 			}
 		}
 		if (j < NUMBER_CHANNEL_MAX - 1){ //FIND_THE_CHANNEL
 			int ret = _channel[j].join(it->id, it->nick, key[j]);
-			std::cout << "Code : " << ret << std::endl;
+			// std::cout << "Code : " << ret << std::endl;
 			std::string rep;
 			switch (ret)
 			{
@@ -674,7 +674,7 @@ void			User::execPRIVMSGU(std::string cmd, unsigned int id){
 		std::string rep = error_nosuchnick(user);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	std::cout << "Message prive pour :" << user << "\nLe message est " << message << std::endl;
+	// std::cout << "Message prive pour :" << user << "\nLe message est " << message << std::endl;
 };
 
 void			User::execKICK(std::string cmd, unsigned int id){
