@@ -141,7 +141,7 @@ int main(int argc, char **argv)
 							break;
 						}
 						len += ret;
-						std::cout << ret << " byte received, total : " << len << std::endl;
+						std::cout << ret << " byte received" << std::endl;
 						tmp = buf_full;
 						buf_full = ft_strjoin(buf_full, buf);
 						free(tmp);
