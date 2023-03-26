@@ -1,0 +1,77 @@
+2023-03-26 08:38:52		New key binding (context "default"): meta-B => /buflist toggle
+2023-03-26 08:38:52		New key binding (context "default"): meta-OP => /bar scroll buflist * -100%
+2023-03-26 08:38:52		New key binding (context "default"): meta2-11~ => /bar scroll buflist * -100%
+2023-03-26 08:38:52		New key binding (context "default"): meta-OQ => /bar scroll buflist * +100%
+2023-03-26 08:38:52		New key binding (context "default"): meta2-12~ => /bar scroll buflist * +100%
+2023-03-26 08:38:52		New key binding (context "default"): meta2-11^ => /bar scroll buflist * -100%
+2023-03-26 08:38:52		New key binding (context "default"): meta2-1;5P => /bar scroll buflist * -100%
+2023-03-26 08:38:52		New key binding (context "default"): meta2-12^ => /bar scroll buflist * +100%
+2023-03-26 08:38:52		New key binding (context "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2023-03-26 08:38:52		New key binding (context "default"): meta-meta-OP => /bar scroll buflist * b
+2023-03-26 08:38:52		New key binding (context "default"): meta-meta2-11~ => /bar scroll buflist * b
+2023-03-26 08:38:52		New key binding (context "default"): meta2-1;3P => /bar scroll buflist * b
+2023-03-26 08:38:52		New key binding (context "default"): meta-meta-OQ => /bar scroll buflist * e
+2023-03-26 08:38:52		New key binding (context "default"): meta-meta2-12~ => /bar scroll buflist * e
+2023-03-26 08:38:52		New key binding (context "default"): meta2-1;3Q => /bar scroll buflist * e
+2023-03-26 08:38:52		Plugins loaded: alias, buflist, charset, exec, fifo, fset, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, typing, xfer
+2023-03-26 08:39:09		irc: server added: K
+2023-03-26 08:40:12	=!=	Error with command "/server remove K" (help on command: /help server)
+2023-03-26 08:40:22		
+2023-03-26 08:40:22		[irc]  /server  list|listfull [<name>]
+2023-03-26 08:40:22		                add <name> <hostname>[/<port>] [-temp] [-<option>[=<value>]] [-no<option>]
+2023-03-26 08:40:22		                copy|rename <name> <new_name>
+2023-03-26 08:40:22		                reorder <name> [<name>...]
+2023-03-26 08:40:22		                open <name>|-all [<name>...]
+2023-03-26 08:40:22		                del|keep <name>
+2023-03-26 08:40:22		                deloutq|jump
+2023-03-26 08:40:22		                raw [<filter>]
+2023-03-26 08:40:22		
+2023-03-26 08:40:22		list, add or remove IRC servers
+2023-03-26 08:40:22		
+2023-03-26 08:40:22		    list: list servers (without argument, this list is displayed)
+2023-03-26 08:40:22		listfull: list servers with detailed info for each server
+2023-03-26 08:40:22		     add: add a new server
+2023-03-26 08:40:22		    name: server name, for internal and display use; this name is used to connect to the server (/connect name) and to set server options: irc.server.name.xxx
+2023-03-26 08:40:22		hostname: name or IP address of server, with optional port (default: 6667), many addresses can be separated by a comma
+2023-03-26 08:40:22		   -temp: add a temporary server (not saved)
+2023-03-26 08:40:22		  option: set option for server (for boolean option, value can be omitted)
+2023-03-26 08:40:22		nooption: set boolean option to 'off' (for example: -nossl)
+2023-03-26 08:40:22		    copy: duplicate a server
+2023-03-26 08:40:22		  rename: rename a server
+2023-03-26 08:40:22		 reorder: reorder list of servers
+2023-03-26 08:40:22		    open: open the server buffer without connecting
+2023-03-26 08:40:22		    keep: keep server in config file (for temporary servers only)
+2023-03-26 08:40:22		     del: delete a server
+2023-03-26 08:40:22		 deloutq: delete messages out queue for all servers (all messages WeeChat is currently sending)
+2023-03-26 08:40:22		    jump: jump to server buffer
+2023-03-26 08:40:22		     raw: open buffer with raw IRC data
+2023-03-26 08:40:22		  filter: set a new filter to see only matching messages (this filter can be used as input in raw IRC data buffer as well); allowed formats are:
+2023-03-26 08:40:22		            *       show all messages (no filter)
+2023-03-26 08:40:22		            xxx     show only messages containing "xxx"
+2023-03-26 08:40:22		            s:xxx   show only messages for server "xxx"
+2023-03-26 08:40:22		            f:xxx   show only messages with a flag: recv (message received), sent (message sent), modified (message modified by a modifier), redirected (message redirected)
+2023-03-26 08:40:22		            m:xxx   show only IRC command "xxx"
+2023-03-26 08:40:22		            c:xxx   show only messages matching the evaluated condition "xxx", using following variables: output of function irc_message_parse (like nick, command, channel, text, etc., see function info_get_hashtable in plugin API reference for the list of all variables), date (format: "yyyy-mm-dd hh:mm:ss"), server, recv, sent, modified, redirected
+2023-03-26 08:40:22		
+2023-03-26 08:40:22		Examples:
+2023-03-26 08:40:22		  /server listfull
+2023-03-26 08:40:22		  /server add libera irc.libera.chat
+2023-03-26 08:40:22		  /server add libera irc.libera.chat/6697 -ssl -autoconnect
+2023-03-26 08:40:22		  /server add chatspike irc.chatspike.net/6667,irc.duckspike.net/6667
+2023-03-26 08:40:22		  /server copy libera libera-test
+2023-03-26 08:40:22		  /server rename libera-test libera2
+2023-03-26 08:40:22		  /server reorder libera2 libera
+2023-03-26 08:40:22		  /server del libera
+2023-03-26 08:40:22		  /server deloutq
+2023-03-26 08:40:22		  /server raw
+2023-03-26 08:40:22		  /server raw s:libera
+2023-03-26 08:40:22		  /server raw c:${recv} && ${command}==PRIVMSG && ${nick}==foo
+2023-03-26 08:40:36		irc: server K has been deleted
+2023-03-26 08:40:45		irc: server added: K
+2023-03-26 11:50:21	=!=	irc: command "kill" must be executed on connected irc server
+2023-03-26 14:06:31	=!=	irc: command "kill" must be executed on connected irc server
+2023-03-26 14:54:06	=!=	irc: command "die" must be executed on connected irc server
+2023-03-26 14:58:31	=!=	irc: command "oper" must be executed on connected irc server
+2023-03-26 15:01:57	=!=	Too few arguments for command "/oper" (help on command: /help oper)
+2023-03-26 15:09:24	=!=	Too few arguments for command "/kill" (help on command: /help kill)
+2023-03-26 15:23:38	=!=	Too few arguments for command "/oper" (help on command: /help oper)

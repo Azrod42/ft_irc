@@ -1,0 +1,33 @@
+[2023-03-26 15:43:31] WeeChat 3.8 (compiled on Mar 16 2023 14:43:13)
+[2023-03-26 15:43:31] Reading configuration file sec.conf
+[2023-03-26 15:43:31] Reading configuration file weechat.conf
+[2023-03-26 15:43:31] Reading configuration file plugins.conf
+[2023-03-26 15:43:31] Reading configuration file charset.conf
+[2023-03-26 15:43:31] Reading configuration file logger.conf
+[2023-03-26 15:43:31] Reading configuration file exec.conf
+[2023-03-26 15:43:31] Reading configuration file trigger.conf
+[2023-03-26 15:43:31] Reading configuration file spell.conf
+[2023-03-26 15:43:31] Reading configuration file alias.conf
+[2023-03-26 15:43:31] Reading configuration file buflist.conf
+[2023-03-26 15:43:31] Reading configuration file fifo.conf
+[2023-03-26 15:43:31] Reading configuration file typing.conf
+[2023-03-26 15:43:31] Reading configuration file xfer.conf
+[2023-03-26 15:43:31] Reading configuration file irc.conf
+[2023-03-26 15:43:31] Reading configuration file relay.conf
+[2023-03-26 15:43:31] Reading configuration file lua.conf
+[2023-03-26 15:43:31] Reading configuration file perl.conf
+[2023-03-26 15:43:31] Reading configuration file python.conf
+[2023-03-26 15:43:31] Reading configuration file ruby.conf
+[2023-03-26 15:43:31] Reading configuration file tcl.conf
+[2023-03-26 15:43:31] Reading configuration file script.conf
+[2023-03-26 15:43:31] Reading configuration file fset.conf
+[2023-03-26 15:43:41] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:44:51] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:44:55] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:47:10] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:47:51] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:47:58] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:51:59] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:58:55] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 15:59:15] irc: connecting to server 127.0.0.1/3232...
+[2023-03-26 16:00:48] irc: connecting to server 127.0.0.1/3232...

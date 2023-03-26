@@ -1,0 +1,27 @@
+2023-03-26 11:55:18		New key binding (context "default"): meta-B => /buflist toggle
+2023-03-26 11:55:18		New key binding (context "default"): meta-OP => /bar scroll buflist * -100%
+2023-03-26 11:55:18		New key binding (context "default"): meta2-11~ => /bar scroll buflist * -100%
+2023-03-26 11:55:18		New key binding (context "default"): meta-OQ => /bar scroll buflist * +100%
+2023-03-26 11:55:18		New key binding (context "default"): meta2-12~ => /bar scroll buflist * +100%
+2023-03-26 11:55:18		New key binding (context "default"): meta2-11^ => /bar scroll buflist * -100%
+2023-03-26 11:55:18		New key binding (context "default"): meta2-1;5P => /bar scroll buflist * -100%
+2023-03-26 11:55:18		New key binding (context "default"): meta2-12^ => /bar scroll buflist * +100%
+2023-03-26 11:55:18		New key binding (context "default"): meta2-1;5Q => /bar scroll buflist * +100%
+2023-03-26 11:55:18		New key binding (context "default"): meta-meta-OP => /bar scroll buflist * b
+2023-03-26 11:55:18		New key binding (context "default"): meta-meta2-11~ => /bar scroll buflist * b
+2023-03-26 11:55:18		New key binding (context "default"): meta2-1;3P => /bar scroll buflist * b
+2023-03-26 11:55:18		New key binding (context "default"): meta-meta-OQ => /bar scroll buflist * e
+2023-03-26 11:55:18		New key binding (context "default"): meta-meta2-12~ => /bar scroll buflist * e
+2023-03-26 11:55:18		New key binding (context "default"): meta2-1;3Q => /bar scroll buflist * e
+2023-03-26 11:55:19		Plugins loaded: alias, buflist, charset, exec, fifo, fset, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, typing, xfer
+2023-03-26 11:55:45		Plugins loaded: alias, buflist, charset, exec, fifo, fset, irc, logger, lua, perl, python, relay, ruby, script, spell, tcl, trigger, typing, xfer
+2023-03-26 11:56:00		irc: server added: K
+2023-03-26 14:16:26	=!=	Error with command "/nick Jean Bbousaad" (help on command: /help nick)
+2023-03-26 15:56:59		
+2023-03-26 15:56:59		Buffers list:
+2023-03-26 15:56:59		  [1] core.weechat (notify: all)
+2023-03-26 15:56:59		  [1] irc.server.K (notify: all)
+2023-03-26 15:56:59		  [2] irc.K.#re (notify: all)
+2023-03-26 15:56:59		  [3] irc.K.#rere (notify: all)
+2023-03-26 15:56:59		  [4] irc.K.#opop (notify: all)
+2023-03-26 15:56:59		  [5] irc.K.#iop (notify: all)

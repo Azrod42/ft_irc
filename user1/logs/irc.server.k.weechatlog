@@ -1,0 +1,1665 @@
+2023-03-26 08:39:57	--	irc: connecting to server 127.0.0.1/6667...
+2023-03-26 08:39:57	=!=	irc: connection refused
+2023-03-26 08:39:57	--	irc: reconnecting to server in 10 seconds
+2023-03-26 08:40:07	--	irc: reconnecting to server...
+2023-03-26 08:40:07	--	irc: connecting to server 127.0.0.1/6667...
+2023-03-26 08:40:07	=!=	irc: connection refused
+2023-03-26 08:40:07	--	irc: reconnecting to server in 20 seconds
+2023-03-26 08:40:27	--	irc: reconnecting to server...
+2023-03-26 08:40:27	--	irc: connecting to server 127.0.0.1/6667...
+2023-03-26 08:40:27	=!=	irc: connection refused
+2023-03-26 08:40:27	--	irc: reconnecting to server in 40 seconds
+2023-03-26 08:40:47	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:40:47	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 08:40:51	--	irc: disconnected from server
+2023-03-26 08:41:00	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:41:00	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 08:41:00	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 08:43:08	=!=	irc: too few parameters received in command "401" (received: 1, expected: at least 2)
+2023-03-26 08:43:08	=!=	irc: failed to parse command "401" (please report to developers): ":127.0.0.1 401 Jean"
+2023-03-26 08:43:08	=!=	irc: command "such" not found: ":No such nick/channel"
+2023-03-26 08:43:54	--	Jean was kicked. (reason: aller hop
+2023-03-26 08:44:37	--	was kicked. (reason: hophophop
+2023-03-26 08:45:01	=!=	irc: reading data on socket: error 54 Connection reset by peer
+2023-03-26 08:45:01	--	irc: disconnecting from server...
+2023-03-26 08:45:01	--	irc: disconnected from server
+2023-03-26 08:45:01	--	irc: reconnecting to server in 10 seconds
+2023-03-26 08:45:11	--	irc: reconnecting to server...
+2023-03-26 08:45:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:45:11	=!=	irc: connection refused
+2023-03-26 08:45:11	--	irc: reconnecting to server in 20 seconds
+2023-03-26 08:45:31	--	irc: reconnecting to server...
+2023-03-26 08:45:31	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:45:31	=!=	irc: connection refused
+2023-03-26 08:45:31	--	irc: reconnecting to server in 40 seconds
+2023-03-26 08:46:11	--	irc: reconnecting to server...
+2023-03-26 08:46:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:46:11	=!=	irc: connection refused
+2023-03-26 08:46:11	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 08:47:31	--	irc: reconnecting to server...
+2023-03-26 08:47:31	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:47:31	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 08:47:31	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 08:58:44	--	tomtom was kicked. (reason: ciao
+2023-03-26 08:58:44	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 08:58:44	--	irc: disconnecting from server...
+2023-03-26 08:58:44	--	irc: disconnected from server
+2023-03-26 08:58:44	--	irc: reconnecting to server in 10 seconds
+2023-03-26 08:58:54	--	irc: reconnecting to server...
+2023-03-26 08:58:54	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:58:54	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 08:58:54	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 08:58:54	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 08:58:55	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 08:58:55	--	irc: disconnecting from server...
+2023-03-26 08:58:55	--	irc: disconnected from server
+2023-03-26 08:58:55	--	irc: reconnecting to server in 20 seconds
+2023-03-26 08:59:15	--	irc: reconnecting to server...
+2023-03-26 08:59:15	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 08:59:15	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 08:59:15	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:04:00	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:04:00	--	irc: disconnecting from server...
+2023-03-26 09:04:00	--	irc: disconnected from server
+2023-03-26 09:04:00	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:04:10	--	irc: reconnecting to server...
+2023-03-26 09:04:10	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:04:10	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:04:10	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:07:28	--	tomtom was kicked. (reason: ciao
+2023-03-26 09:08:28	--	tomtom was kicked. (reason: ciao
+2023-03-26 09:08:38	--	tomtomy: No such nick/channel
+2023-03-26 09:09:12	--	was kicked. (reason: ciao
+2023-03-26 09:13:05	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:13:05	=!=	irc: connection refused
+2023-03-26 09:13:05	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:13:15	--	irc: reconnecting to server...
+2023-03-26 09:13:15	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:13:15	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:13:15	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:27:34	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:27:34	--	irc: disconnecting from server...
+2023-03-26 09:27:34	--	irc: disconnected from server
+2023-03-26 09:27:34	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:27:44	--	irc: reconnecting to server...
+2023-03-26 09:27:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:27:44	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:27:44	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:30:30	=!=	irc: reading data on socket: error 54 Connection reset by peer
+2023-03-26 09:30:30	--	irc: disconnecting from server...
+2023-03-26 09:30:30	--	irc: disconnected from server
+2023-03-26 09:30:30	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:30:40	--	irc: reconnecting to server...
+2023-03-26 09:30:40	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:30:40	=!=	irc: connection refused
+2023-03-26 09:30:40	--	irc: reconnecting to server in 20 seconds
+2023-03-26 09:31:00	--	irc: reconnecting to server...
+2023-03-26 09:31:00	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:31:00	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:31:00	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:31:14	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:31:14	--	irc: disconnecting from server...
+2023-03-26 09:31:14	--	irc: disconnected from server
+2023-03-26 09:31:14	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:31:24	--	irc: reconnecting to server...
+2023-03-26 09:31:24	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:31:24	=!=	irc: connection refused
+2023-03-26 09:31:24	--	irc: reconnecting to server in 20 seconds
+2023-03-26 09:31:44	--	irc: reconnecting to server...
+2023-03-26 09:31:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:31:44	=!=	irc: connection refused
+2023-03-26 09:31:44	--	irc: reconnecting to server in 40 seconds
+2023-03-26 09:32:24	--	irc: reconnecting to server...
+2023-03-26 09:32:24	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:32:24	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:32:24	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:32:31	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:32:31	--	irc: disconnecting from server...
+2023-03-26 09:32:31	--	irc: disconnected from server
+2023-03-26 09:32:31	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:32:41	--	irc: reconnecting to server...
+2023-03-26 09:32:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:32:41	=!=	irc: connection refused
+2023-03-26 09:32:41	--	irc: reconnecting to server in 20 seconds
+2023-03-26 09:33:01	--	irc: reconnecting to server...
+2023-03-26 09:33:01	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:33:01	=!=	irc: connection refused
+2023-03-26 09:33:01	--	irc: reconnecting to server in 40 seconds
+2023-03-26 09:33:41	--	irc: reconnecting to server...
+2023-03-26 09:33:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:33:41	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:33:41	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:33:46	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:33:46	--	irc: disconnecting from server...
+2023-03-26 09:33:46	--	irc: disconnected from server
+2023-03-26 09:33:46	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:33:56	--	irc: reconnecting to server...
+2023-03-26 09:33:56	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:33:56	=!=	irc: connection refused
+2023-03-26 09:33:56	--	irc: reconnecting to server in 20 seconds
+2023-03-26 09:34:16	--	irc: reconnecting to server...
+2023-03-26 09:34:16	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:34:16	=!=	irc: connection refused
+2023-03-26 09:34:16	--	irc: reconnecting to server in 40 seconds
+2023-03-26 09:34:56	--	irc: reconnecting to server...
+2023-03-26 09:34:56	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:34:56	=!=	irc: connection refused
+2023-03-26 09:34:56	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 09:36:16	--	irc: reconnecting to server...
+2023-03-26 09:36:16	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:36:16	=!=	irc: connection refused
+2023-03-26 09:36:16	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2023-03-26 09:38:50	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:38:50	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:38:50	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:48:46	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:48:46	--	irc: disconnecting from server...
+2023-03-26 09:48:46	--	irc: disconnected from server
+2023-03-26 09:48:46	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:48:56	--	irc: reconnecting to server...
+2023-03-26 09:48:56	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:48:56	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:48:56	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:50:53	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 09:50:53	--	irc: disconnecting from server...
+2023-03-26 09:50:53	--	irc: disconnected from server
+2023-03-26 09:50:53	--	irc: reconnecting to server in 10 seconds
+2023-03-26 09:51:03	--	irc: reconnecting to server...
+2023-03-26 09:51:03	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 09:51:03	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 09:51:03	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 09:51:36	--	#ew: No such channel
+2023-03-26 10:04:53	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:04:53	--	irc: disconnecting from server...
+2023-03-26 10:04:53	--	irc: disconnected from server
+2023-03-26 10:04:53	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:05:03	--	irc: reconnecting to server...
+2023-03-26 10:05:03	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:05:03	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:05:03	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:05:05	--	#ew: No such channel
+2023-03-26 10:05:16	--	#yey: You're not on that channel
+2023-03-26 10:08:41	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:08:41	--	irc: disconnecting from server...
+2023-03-26 10:08:41	--	irc: disconnected from server
+2023-03-26 10:08:41	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:08:51	--	irc: reconnecting to server...
+2023-03-26 10:08:51	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:08:51	=!=	irc: connection refused
+2023-03-26 10:08:51	--	irc: reconnecting to server in 20 seconds
+2023-03-26 10:09:11	--	irc: reconnecting to server...
+2023-03-26 10:09:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:09:11	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:09:11	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:13:08	--	tomtom was kicked. (reason: Spam
+2023-03-26 10:13:54	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:13:54	--	irc: disconnecting from server...
+2023-03-26 10:13:54	--	irc: disconnected from server
+2023-03-26 10:13:54	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:14:04	--	irc: reconnecting to server...
+2023-03-26 10:14:04	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:14:04	=!=	irc: connection refused
+2023-03-26 10:14:04	--	irc: reconnecting to server in 20 seconds
+2023-03-26 10:14:24	--	irc: reconnecting to server...
+2023-03-26 10:14:24	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:14:24	=!=	irc: connection refused
+2023-03-26 10:14:24	--	irc: reconnecting to server in 40 seconds
+2023-03-26 10:15:04	--	irc: reconnecting to server...
+2023-03-26 10:15:04	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:15:04	=!=	irc: connection refused
+2023-03-26 10:15:04	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 10:16:24	--	irc: reconnecting to server...
+2023-03-26 10:16:24	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:16:24	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:16:24	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:21:13	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:21:14	--	irc: disconnecting from server...
+2023-03-26 10:21:14	--	irc: disconnected from server
+2023-03-26 10:21:14	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:21:24	--	irc: reconnecting to server...
+2023-03-26 10:21:24	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:21:24	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:21:24	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:21:31	--	#yey: No such channel
+2023-03-26 10:24:02	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:24:02	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:24:02	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:24:16	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:24:16	--	irc: disconnecting from server...
+2023-03-26 10:24:16	--	irc: disconnected from server
+2023-03-26 10:24:16	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:24:26	--	irc: reconnecting to server...
+2023-03-26 10:24:26	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:24:26	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:24:26	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:31:05	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:31:05	--	irc: disconnecting from server...
+2023-03-26 10:31:05	--	irc: disconnected from server
+2023-03-26 10:31:05	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:31:15	--	irc: reconnecting to server...
+2023-03-26 10:31:15	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:31:15	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:31:15	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:34:37	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 10:34:37	--	irc: disconnecting from server...
+2023-03-26 10:34:37	--	irc: disconnected from server
+2023-03-26 10:34:37	--	irc: reconnecting to server in 10 seconds
+2023-03-26 10:34:47	--	irc: reconnecting to server...
+2023-03-26 10:34:47	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 10:34:47	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 10:34:47	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 10:44:03	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:10:16	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:30:05	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:30:05	--	irc: disconnecting from server...
+2023-03-26 11:30:05	--	irc: disconnected from server
+2023-03-26 11:30:05	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:30:15	--	irc: reconnecting to server...
+2023-03-26 11:30:15	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:30:15	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:30:15	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:30:33	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:30:34	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:30:34	--	irc: disconnecting from server...
+2023-03-26 11:30:34	--	irc: disconnected from server
+2023-03-26 11:30:34	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:30:44	--	irc: reconnecting to server...
+2023-03-26 11:30:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:30:44	=!=	irc: connection refused
+2023-03-26 11:30:44	--	irc: reconnecting to server in 20 seconds
+2023-03-26 11:31:04	--	irc: reconnecting to server...
+2023-03-26 11:31:04	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:31:04	=!=	irc: connection refused
+2023-03-26 11:31:04	--	irc: reconnecting to server in 40 seconds
+2023-03-26 11:31:44	--	irc: reconnecting to server...
+2023-03-26 11:31:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:31:44	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:31:44	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:32:02	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:32:02	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:32:02	--	irc: disconnecting from server...
+2023-03-26 11:32:02	--	irc: disconnected from server
+2023-03-26 11:32:02	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:32:12	--	irc: reconnecting to server...
+2023-03-26 11:32:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:32:12	=!=	irc: connection refused
+2023-03-26 11:32:12	--	irc: reconnecting to server in 20 seconds
+2023-03-26 11:32:32	--	irc: reconnecting to server...
+2023-03-26 11:32:32	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:32:32	=!=	irc: connection refused
+2023-03-26 11:32:32	--	irc: reconnecting to server in 40 seconds
+2023-03-26 11:33:12	--	irc: reconnecting to server...
+2023-03-26 11:33:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:33:12	=!=	irc: connection refused
+2023-03-26 11:33:12	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 11:34:32	--	irc: reconnecting to server...
+2023-03-26 11:34:32	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:34:32	=!=	irc: connection refused
+2023-03-26 11:34:32	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2023-03-26 11:37:12	--	irc: reconnecting to server...
+2023-03-26 11:37:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:37:12	=!=	irc: connection refused
+2023-03-26 11:37:12	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2023-03-26 11:42:06	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:42:06	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:42:06	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:43:14	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:43:14	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:43:14	--	irc: disconnecting from server...
+2023-03-26 11:43:14	--	irc: disconnected from server
+2023-03-26 11:43:14	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:43:24	--	irc: reconnecting to server...
+2023-03-26 11:43:24	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:43:24	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:43:24	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:45:30	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:45:30	--	irc: disconnecting from server...
+2023-03-26 11:45:30	--	irc: disconnected from server
+2023-03-26 11:45:30	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:45:40	--	irc: reconnecting to server...
+2023-03-26 11:45:40	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:45:40	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:45:40	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:46:01	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:46:01	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:46:01	--	irc: disconnecting from server...
+2023-03-26 11:46:01	--	irc: disconnected from server
+2023-03-26 11:46:01	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:46:11	--	irc: reconnecting to server...
+2023-03-26 11:46:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:46:11	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:46:11	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:47:12	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:47:12	--	irc: disconnecting from server...
+2023-03-26 11:47:12	--	irc: disconnected from server
+2023-03-26 11:47:12	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:47:22	--	irc: reconnecting to server...
+2023-03-26 11:47:22	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:47:22	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:47:22	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:47:26	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:47:29	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:47:29	--	irc: disconnecting from server...
+2023-03-26 11:47:29	--	irc: disconnected from server
+2023-03-26 11:47:29	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:47:39	--	irc: reconnecting to server...
+2023-03-26 11:47:39	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:47:39	=!=	irc: connection refused
+2023-03-26 11:47:39	--	irc: reconnecting to server in 20 seconds
+2023-03-26 11:47:59	--	irc: reconnecting to server...
+2023-03-26 11:47:59	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:47:59	=!=	irc: connection refused
+2023-03-26 11:47:59	--	irc: reconnecting to server in 40 seconds
+2023-03-26 11:48:39	--	irc: reconnecting to server...
+2023-03-26 11:48:39	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:48:39	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:48:39	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:48:45	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:48:46	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:48:46	--	irc: disconnecting from server...
+2023-03-26 11:48:46	--	irc: disconnected from server
+2023-03-26 11:48:46	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:48:56	--	irc: reconnecting to server...
+2023-03-26 11:48:56	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:48:56	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:48:56	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:49:20	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:49:20	--	irc: disconnecting from server...
+2023-03-26 11:49:20	--	irc: disconnected from server
+2023-03-26 11:49:20	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:49:30	--	irc: reconnecting to server...
+2023-03-26 11:49:30	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:49:30	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:49:30	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:49:34	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:49:37	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:49:37	--	irc: disconnecting from server...
+2023-03-26 11:49:37	--	irc: disconnected from server
+2023-03-26 11:49:37	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:49:47	--	irc: reconnecting to server...
+2023-03-26 11:49:47	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:49:47	=!=	irc: connection refused
+2023-03-26 11:49:47	--	irc: reconnecting to server in 20 seconds
+2023-03-26 11:50:07	--	irc: reconnecting to server...
+2023-03-26 11:50:07	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:50:07	=!=	irc: connection refused
+2023-03-26 11:50:07	--	irc: reconnecting to server in 40 seconds
+2023-03-26 11:50:47	--	irc: reconnecting to server...
+2023-03-26 11:50:47	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:50:47	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:50:47	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:51:34	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:51:36	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:51:36	--	irc: disconnecting from server...
+2023-03-26 11:51:36	--	irc: disconnected from server
+2023-03-26 11:51:36	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:51:46	--	irc: reconnecting to server...
+2023-03-26 11:51:46	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:51:46	=!=	irc: connection refused
+2023-03-26 11:51:46	--	irc: reconnecting to server in 20 seconds
+2023-03-26 11:52:06	--	irc: reconnecting to server...
+2023-03-26 11:52:06	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:52:06	=!=	irc: connection refused
+2023-03-26 11:52:06	--	irc: reconnecting to server in 40 seconds
+2023-03-26 11:52:46	--	irc: reconnecting to server...
+2023-03-26 11:52:46	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:52:46	=!=	irc: connection refused
+2023-03-26 11:52:46	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 11:53:57	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:53:57	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:53:57	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 11:54:47	--	tomtom was kicked. (reason: ciao
+2023-03-26 11:54:50	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 11:54:50	--	irc: disconnecting from server...
+2023-03-26 11:54:50	--	irc: disconnected from server
+2023-03-26 11:54:50	--	irc: reconnecting to server in 10 seconds
+2023-03-26 11:55:00	--	irc: reconnecting to server...
+2023-03-26 11:55:00	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:55:00	=!=	irc: connection refused
+2023-03-26 11:55:00	--	irc: reconnecting to server in 20 seconds
+2023-03-26 11:55:20	--	irc: reconnecting to server...
+2023-03-26 11:55:20	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:55:20	=!=	irc: connection refused
+2023-03-26 11:55:20	--	irc: reconnecting to server in 40 seconds
+2023-03-26 11:56:00	--	irc: reconnecting to server...
+2023-03-26 11:56:00	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:56:00	=!=	irc: connection refused
+2023-03-26 11:56:00	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 11:57:20	--	irc: reconnecting to server...
+2023-03-26 11:57:20	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 11:57:20	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 11:57:20	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:01:48	--	Bbousaad was kicked. (reason: ciao mon pote
+2023-03-26 12:01:51	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 12:01:51	--	irc: disconnecting from server...
+2023-03-26 12:01:51	--	irc: disconnected from server
+2023-03-26 12:01:51	--	irc: reconnecting to server in 10 seconds
+2023-03-26 12:02:01	--	irc: reconnecting to server...
+2023-03-26 12:02:01	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:02:01	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 12:02:01	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:02:47	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 12:02:47	--	irc: disconnecting from server...
+2023-03-26 12:02:47	--	irc: disconnected from server
+2023-03-26 12:02:47	--	irc: reconnecting to server in 10 seconds
+2023-03-26 12:02:57	--	irc: reconnecting to server...
+2023-03-26 12:02:57	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:02:57	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 12:02:57	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:04:52	--	Bbousaad was kicked. (reason: ciao mon pote
+2023-03-26 12:09:57	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 12:09:57	--	irc: disconnecting from server...
+2023-03-26 12:09:57	--	irc: disconnected from server
+2023-03-26 12:09:57	--	irc: reconnecting to server in 10 seconds
+2023-03-26 12:10:07	--	irc: reconnecting to server...
+2023-03-26 12:10:07	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:10:07	=!=	irc: connection refused
+2023-03-26 12:10:07	--	irc: reconnecting to server in 20 seconds
+2023-03-26 12:10:27	--	irc: reconnecting to server...
+2023-03-26 12:10:27	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:10:27	=!=	irc: connection refused
+2023-03-26 12:10:27	--	irc: reconnecting to server in 40 seconds
+2023-03-26 12:11:07	--	irc: reconnecting to server...
+2023-03-26 12:11:07	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:11:07	=!=	irc: connection refused
+2023-03-26 12:11:07	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 12:12:27	--	irc: reconnecting to server...
+2023-03-26 12:12:27	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:12:27	=!=	irc: connection refused
+2023-03-26 12:12:27	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2023-03-26 12:15:07	--	irc: reconnecting to server...
+2023-03-26 12:15:07	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:15:07	=!=	irc: connection refused
+2023-03-26 12:15:07	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2023-03-26 12:15:31	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:15:31	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 12:15:31	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:16:50	--	tomtom was kicked. (reason: language
+2023-03-26 12:22:42	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 12:22:42	--	irc: disconnecting from server...
+2023-03-26 12:22:42	--	irc: disconnected from server
+2023-03-26 12:22:42	--	irc: reconnecting to server in 10 seconds
+2023-03-26 12:22:52	--	irc: reconnecting to server...
+2023-03-26 12:22:52	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:22:52	=!=	irc: connection refused
+2023-03-26 12:22:52	--	irc: reconnecting to server in 20 seconds
+2023-03-26 12:23:12	--	irc: reconnecting to server...
+2023-03-26 12:23:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:23:12	=!=	irc: connection refused
+2023-03-26 12:23:12	--	irc: reconnecting to server in 40 seconds
+2023-03-26 12:23:52	--	irc: reconnecting to server...
+2023-03-26 12:23:52	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:23:52	=!=	irc: connection refused
+2023-03-26 12:23:52	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 12:25:12	--	irc: reconnecting to server...
+2023-03-26 12:25:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:25:12	=!=	irc: connection refused
+2023-03-26 12:25:12	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2023-03-26 12:27:52	--	irc: reconnecting to server...
+2023-03-26 12:27:52	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:27:52	=!=	irc: connection refused
+2023-03-26 12:27:52	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2023-03-26 12:33:12	--	irc: reconnecting to server...
+2023-03-26 12:33:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:33:12	=!=	irc: connection refused
+2023-03-26 12:33:12	--	irc: reconnecting to server in 10 minutes
+2023-03-26 12:43:12	--	irc: reconnecting to server...
+2023-03-26 12:43:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:43:12	=!=	irc: connection refused
+2023-03-26 12:43:12	--	irc: reconnecting to server in 10 minutes
+2023-03-26 12:53:12	--	irc: reconnecting to server...
+2023-03-26 12:53:12	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:53:12	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 12:53:12	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:57:13	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 12:57:13	--	irc: disconnecting from server...
+2023-03-26 12:57:13	--	irc: disconnected from server
+2023-03-26 12:57:13	--	irc: reconnecting to server in 10 seconds
+2023-03-26 12:57:23	--	irc: reconnecting to server...
+2023-03-26 12:57:23	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:57:23	=!=	irc: connection refused
+2023-03-26 12:57:23	--	irc: reconnecting to server in 20 seconds
+2023-03-26 12:57:43	--	irc: reconnecting to server...
+2023-03-26 12:57:43	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:57:43	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 12:57:43	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:57:51	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:57:51	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 12:57:51	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 12:58:53	--	tomtom was kicked. (reason: language
+2023-03-26 12:58:56	--	tomtom: No such nick/channel
+2023-03-26 12:59:03	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 12:59:03	--	irc: disconnecting from server...
+2023-03-26 12:59:03	--	irc: disconnected from server
+2023-03-26 12:59:03	--	irc: reconnecting to server in 10 seconds
+2023-03-26 12:59:13	--	irc: reconnecting to server...
+2023-03-26 12:59:13	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:59:13	=!=	irc: connection refused
+2023-03-26 12:59:13	--	irc: reconnecting to server in 20 seconds
+2023-03-26 12:59:33	--	irc: reconnecting to server...
+2023-03-26 12:59:33	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 12:59:33	=!=	irc: connection refused
+2023-03-26 12:59:33	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:00:13	--	irc: reconnecting to server...
+2023-03-26 13:00:13	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:00:13	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:00:13	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 13:00:52	--	tomtom was kicked. (reason: merde
+2023-03-26 13:00:52	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:00:52	--	irc: disconnecting from server...
+2023-03-26 13:00:52	--	irc: disconnected from server
+2023-03-26 13:00:52	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:01:02	--	irc: reconnecting to server...
+2023-03-26 13:01:02	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:01:02	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel" is already in use, trying nickname "tsorabel1"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel1" is already in use, trying nickname "tsorabel2"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel2" is already in use, trying nickname "tsorabel3"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel3" is already in use, trying nickname "tsorabel4"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel4" is already in use, trying nickname "tsorabel_"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel_" is already in use, trying nickname "tsorabel1"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel1" is already in use, trying nickname "tsorabel2"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel2" is already in use, trying nickname "tsorabel3"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel3" is already in use, trying nickname "tsorabel4"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel4" is already in use, trying nickname "tsorabel5"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel5" is already in use, trying nickname "tsorabel6"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel6" is already in use, trying nickname "tsorabel7"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel7" is already in use, trying nickname "tsorabel8"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel8" is already in use, trying nickname "tsorabel9"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabel9" is already in use, trying nickname "tsorabe10"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe10" is already in use, trying nickname "tsorabe11"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe11" is already in use, trying nickname "tsorabe12"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe12" is already in use, trying nickname "tsorabe13"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe13" is already in use, trying nickname "tsorabe14"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe14" is already in use, trying nickname "tsorabe15"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe15" is already in use, trying nickname "tsorabe16"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe16" is already in use, trying nickname "tsorabe17"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe17" is already in use, trying nickname "tsorabe18"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe18" is already in use, trying nickname "tsorabe19"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe19" is already in use, trying nickname "tsorabe20"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe20" is already in use, trying nickname "tsorabe21"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe21" is already in use, trying nickname "tsorabe22"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe22" is already in use, trying nickname "tsorabe23"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe23" is already in use, trying nickname "tsorabe24"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe24" is already in use, trying nickname "tsorabe25"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe25" is already in use, trying nickname "tsorabe26"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe26" is already in use, trying nickname "tsorabe27"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe27" is already in use, trying nickname "tsorabe28"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe28" is already in use, trying nickname "tsorabe29"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe29" is already in use, trying nickname "tsorabe30"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe30" is already in use, trying nickname "tsorabe31"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe31" is already in use, trying nickname "tsorabe32"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe32" is already in use, trying nickname "tsorabe33"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe33" is already in use, trying nickname "tsorabe34"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe34" is already in use, trying nickname "tsorabe35"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe35" is already in use, trying nickname "tsorabe36"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe36" is already in use, trying nickname "tsorabe37"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe37" is already in use, trying nickname "tsorabe38"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe38" is already in use, trying nickname "tsorabe39"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe39" is already in use, trying nickname "tsorabe40"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe40" is already in use, trying nickname "tsorabe41"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe41" is already in use, trying nickname "tsorabe42"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe42" is already in use, trying nickname "tsorabe43"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe43" is already in use, trying nickname "tsorabe44"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe44" is already in use, trying nickname "tsorabe45"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe45" is already in use, trying nickname "tsorabe46"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe46" is already in use, trying nickname "tsorabe47"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe47" is already in use, trying nickname "tsorabe48"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe48" is already in use, trying nickname "tsorabe49"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe49" is already in use, trying nickname "tsorabe50"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe50" is already in use, trying nickname "tsorabe51"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe51" is already in use, trying nickname "tsorabe52"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe52" is already in use, trying nickname "tsorabe53"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe53" is already in use, trying nickname "tsorabe54"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe54" is already in use, trying nickname "tsorabe55"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe55" is already in use, trying nickname "tsorabe56"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe56" is already in use, trying nickname "tsorabe57"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe57" is already in use, trying nickname "tsorabe58"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe58" is already in use, trying nickname "tsorabe59"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe59" is already in use, trying nickname "tsorabe60"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe60" is already in use, trying nickname "tsorabe61"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe61" is already in use, trying nickname "tsorabe62"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe62" is already in use, trying nickname "tsorabe63"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe63" is already in use, trying nickname "tsorabe64"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe64" is already in use, trying nickname "tsorabe65"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe65" is already in use, trying nickname "tsorabe66"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe66" is already in use, trying nickname "tsorabe67"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe67" is already in use, trying nickname "tsorabe68"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe68" is already in use, trying nickname "tsorabe69"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe69" is already in use, trying nickname "tsorabe70"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe70" is already in use, trying nickname "tsorabe71"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe71" is already in use, trying nickname "tsorabe72"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe72" is already in use, trying nickname "tsorabe73"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe73" is already in use, trying nickname "tsorabe74"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe74" is already in use, trying nickname "tsorabe75"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe75" is already in use, trying nickname "tsorabe76"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe76" is already in use, trying nickname "tsorabe77"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe77" is already in use, trying nickname "tsorabe78"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe78" is already in use, trying nickname "tsorabe79"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe79" is already in use, trying nickname "tsorabe80"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe80" is already in use, trying nickname "tsorabe81"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe81" is already in use, trying nickname "tsorabe82"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe82" is already in use, trying nickname "tsorabe83"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe83" is already in use, trying nickname "tsorabe84"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe84" is already in use, trying nickname "tsorabe85"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe85" is already in use, trying nickname "tsorabe86"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe86" is already in use, trying nickname "tsorabe87"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe87" is already in use, trying nickname "tsorabe88"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe88" is already in use, trying nickname "tsorabe89"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe89" is already in use, trying nickname "tsorabe90"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe90" is already in use, trying nickname "tsorabe91"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe91" is already in use, trying nickname "tsorabe92"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe92" is already in use, trying nickname "tsorabe93"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe93" is already in use, trying nickname "tsorabe94"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe94" is already in use, trying nickname "tsorabe95"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe95" is already in use, trying nickname "tsorabe96"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe96" is already in use, trying nickname "tsorabe97"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe97" is already in use, trying nickname "tsorabe98"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	--	irc: nickname "tsorabe98" is already in use, trying nickname "tsorabe99"
+2023-03-26 13:01:02	--	tomtom: No such nick/channel
+2023-03-26 13:01:02	=!=	irc: too few parameters received in command "462" (received: 1, expected: at least 2)
+2023-03-26 13:01:02	=!=	irc: failed to parse command "462" (please report to developers): ":127.0.0.1 462  :Unauthorized command (already registered)"
+2023-03-26 13:01:02	=!=	irc: all declared nicknames are already in use, closing connection with server
+2023-03-26 13:01:02	--	irc: disconnected from server
+2023-03-26 13:01:02	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:01:22	--	irc: reconnecting to server...
+2023-03-26 13:01:22	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:01:22	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:01:22	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:02:23	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:02:23	--	irc: disconnecting from server...
+2023-03-26 13:02:23	--	irc: disconnected from server
+2023-03-26 13:02:23	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:02:33	--	irc: reconnecting to server...
+2023-03-26 13:02:33	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:02:33	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:02:33	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:04:41	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:04:41	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:04:41	--	irc: disconnecting from server...
+2023-03-26 13:04:41	--	irc: disconnected from server
+2023-03-26 13:04:41	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:04:51	--	irc: reconnecting to server...
+2023-03-26 13:04:51	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:04:51	=!=	irc: connection refused
+2023-03-26 13:04:51	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:05:11	--	irc: reconnecting to server...
+2023-03-26 13:05:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:05:11	=!=	irc: connection refused
+2023-03-26 13:05:11	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:05:51	--	irc: reconnecting to server...
+2023-03-26 13:05:51	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:05:51	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:05:51	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:16:10	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:16:10	--	irc: disconnecting from server...
+2023-03-26 13:16:10	--	irc: disconnected from server
+2023-03-26 13:16:10	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:16:20	--	irc: reconnecting to server...
+2023-03-26 13:16:20	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:16:20	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:16:20	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:23:44	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:23:44	--	irc: disconnecting from server...
+2023-03-26 13:23:44	--	irc: disconnected from server
+2023-03-26 13:23:44	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:23:54	--	irc: reconnecting to server...
+2023-03-26 13:23:54	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:23:54	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:23:54	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:25:50	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:25:50	--	irc: disconnecting from server...
+2023-03-26 13:25:50	--	irc: disconnected from server
+2023-03-26 13:25:50	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:26:00	--	irc: reconnecting to server...
+2023-03-26 13:26:00	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:26:00	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:26:00	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:26:55	--	tomtom was kicked. (reason: ciao
+2023-03-26 13:26:56	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:26:56	--	irc: disconnecting from server...
+2023-03-26 13:26:56	--	irc: disconnected from server
+2023-03-26 13:26:56	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:27:06	--	irc: reconnecting to server...
+2023-03-26 13:27:06	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:27:06	=!=	irc: connection refused
+2023-03-26 13:27:06	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:27:26	--	irc: reconnecting to server...
+2023-03-26 13:27:26	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:27:26	=!=	irc: connection refused
+2023-03-26 13:27:26	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:28:06	--	irc: reconnecting to server...
+2023-03-26 13:28:06	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:28:06	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:28:06	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:29:59	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:29:59	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:29:59	--	irc: disconnecting from server...
+2023-03-26 13:29:59	--	irc: disconnected from server
+2023-03-26 13:29:59	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:30:09	--	irc: reconnecting to server...
+2023-03-26 13:30:09	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:30:09	=!=	irc: connection refused
+2023-03-26 13:30:09	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:30:29	--	irc: reconnecting to server...
+2023-03-26 13:30:29	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:30:29	=!=	irc: connection refused
+2023-03-26 13:30:29	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:31:09	--	irc: reconnecting to server...
+2023-03-26 13:31:09	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:31:09	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:31:09	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:31:49	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:31:49	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:31:49	--	irc: disconnecting from server...
+2023-03-26 13:31:49	--	irc: disconnected from server
+2023-03-26 13:31:49	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:31:59	--	irc: reconnecting to server...
+2023-03-26 13:31:59	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:31:59	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:31:59	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:33:23	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:33:23	--	irc: disconnecting from server...
+2023-03-26 13:33:23	--	irc: disconnected from server
+2023-03-26 13:33:23	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:33:33	--	irc: reconnecting to server...
+2023-03-26 13:33:33	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:33:33	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:33:33	--	Welcome to the Internet Relay Network tsorabe99!tsorabel@127.0.0.1
+2023-03-26 13:34:31	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:34:33	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:34:33	=!=	irc: reading data on socket: error 54 Connection reset by peer
+2023-03-26 13:34:33	--	irc: disconnecting from server...
+2023-03-26 13:34:33	--	irc: disconnected from server
+2023-03-26 13:34:33	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:34:43	--	irc: reconnecting to server...
+2023-03-26 13:34:43	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:34:43	=!=	irc: connection refused
+2023-03-26 13:34:43	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:35:03	--	irc: reconnecting to server...
+2023-03-26 13:35:03	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:35:03	=!=	irc: connection refused
+2023-03-26 13:35:03	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:35:31	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:35:31	=!=	irc: connection refused
+2023-03-26 13:35:31	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:35:41	--	irc: reconnecting to server...
+2023-03-26 13:35:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:35:41	=!=	irc: connection refused
+2023-03-26 13:35:41	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:36:01	--	irc: reconnecting to server...
+2023-03-26 13:36:01	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:36:01	=!=	irc: connection refused
+2023-03-26 13:36:01	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:36:41	--	irc: reconnecting to server...
+2023-03-26 13:36:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:36:41	=!=	irc: connection refused
+2023-03-26 13:36:41	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 13:38:01	--	irc: reconnecting to server...
+2023-03-26 13:38:01	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:38:01	=!=	irc: connection refused
+2023-03-26 13:38:01	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2023-03-26 13:40:41	--	irc: reconnecting to server...
+2023-03-26 13:40:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:40:41	=!=	irc: connection refused
+2023-03-26 13:40:41	--	irc: reconnecting to server in 5 minutes, 20 seconds
+2023-03-26 13:44:21	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:44:21	=!=	irc: connection refused
+2023-03-26 13:44:21	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:44:31	--	irc: reconnecting to server...
+2023-03-26 13:44:31	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:44:31	=!=	irc: connection refused
+2023-03-26 13:44:31	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:44:51	--	irc: reconnecting to server...
+2023-03-26 13:44:51	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:44:51	=!=	irc: connection refused
+2023-03-26 13:44:51	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:45:31	--	irc: reconnecting to server...
+2023-03-26 13:45:31	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:45:31	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:45:31	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 13:47:48	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:48:31	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:48:31		PONG
+2023-03-26 13:48:31	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:48:31		PONG
+2023-03-26 13:48:31		PONG
+2023-03-26 13:48:31	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:48:31		PONG
+2023-03-26 13:48:31		PONG
+2023-03-26 13:48:31	=!=	irc: reading data on socket: error 54 Connection reset by peer
+2023-03-26 13:48:31	--	irc: disconnecting from server...
+2023-03-26 13:48:31	--	irc: disconnected from server
+2023-03-26 13:48:31	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:48:41	--	irc: reconnecting to server...
+2023-03-26 13:48:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:48:41	=!=	irc: connection refused
+2023-03-26 13:48:41	--	irc: reconnecting to server in 20 seconds
+2023-03-26 13:49:01	--	irc: reconnecting to server...
+2023-03-26 13:49:01	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:49:01	=!=	irc: connection refused
+2023-03-26 13:49:01	--	irc: reconnecting to server in 40 seconds
+2023-03-26 13:49:41	--	irc: reconnecting to server...
+2023-03-26 13:49:41	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:49:41	=!=	irc: connection refused
+2023-03-26 13:49:41	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 13:50:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:50:44	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:50:44	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 13:53:24	--	Bbous: No such nick/channel
+2023-03-26 13:53:44	--	Bbous: No such nick/channel
+2023-03-26 13:53:59		PONG
+2023-03-26 13:53:59	--	Bbous: No such nick/channel
+2023-03-26 13:54:24		PONG
+2023-03-26 13:54:24	--	Bbous: No such nick/channel
+2023-03-26 13:54:44	--	Bbous: No such nick/channel
+2023-03-26 13:55:01		PONG
+2023-03-26 13:55:01	--	Bbous: No such nick/channel
+2023-03-26 13:55:03		PONG
+2023-03-26 13:55:03	--	Bbous: No such nick/channel
+2023-03-26 13:55:05		PONG
+2023-03-26 13:55:05	--	Bbous: No such nick/channel
+2023-03-26 13:55:07		PONG
+2023-03-26 13:55:07	--	Bbous: No such nick/channel
+2023-03-26 13:55:17		PONG
+2023-03-26 13:55:17	--	Bbous: No such nick/channel
+2023-03-26 13:55:44	--	Bbous: No such nick/channel
+2023-03-26 13:56:37	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:56:37	--	irc: disconnecting from server...
+2023-03-26 13:56:37	--	irc: disconnected from server
+2023-03-26 13:56:37	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:56:47	--	irc: reconnecting to server...
+2023-03-26 13:56:47	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:56:47	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:56:47	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 13:56:55	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 13:58:10	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 13:58:10	--	irc: disconnecting from server...
+2023-03-26 13:58:10	--	irc: disconnected from server
+2023-03-26 13:58:10	--	irc: reconnecting to server in 10 seconds
+2023-03-26 13:58:20	--	irc: reconnecting to server...
+2023-03-26 13:58:20	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 13:58:20	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 13:58:20	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 13:58:28	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 14:00:18	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:00:18	--	irc: disconnecting from server...
+2023-03-26 14:00:18	--	irc: disconnected from server
+2023-03-26 14:00:18	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:00:28	--	irc: reconnecting to server...
+2023-03-26 14:00:28	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:00:28	=!=	irc: connection refused
+2023-03-26 14:00:28	--	irc: reconnecting to server in 20 seconds
+2023-03-26 14:00:48	--	irc: reconnecting to server...
+2023-03-26 14:00:48	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:00:48	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:00:48	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:01:01	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:01:01	--	irc: disconnecting from server...
+2023-03-26 14:01:01	--	irc: disconnected from server
+2023-03-26 14:01:01	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:01:11	--	irc: reconnecting to server...
+2023-03-26 14:01:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:01:11	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:01:11	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:01:31	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 14:02:34	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:02:34	--	irc: disconnecting from server...
+2023-03-26 14:02:34	--	irc: disconnected from server
+2023-03-26 14:02:34	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:02:44	--	irc: reconnecting to server...
+2023-03-26 14:02:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:02:44	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:02:44	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:02:59	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 14:03:34	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:03:34	--	irc: disconnecting from server...
+2023-03-26 14:03:34	--	irc: disconnected from server
+2023-03-26 14:03:34	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:03:44	--	irc: reconnecting to server...
+2023-03-26 14:03:44	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:03:44	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:03:44	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:03:50	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 14:04:45	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:04:45	--	irc: disconnecting from server...
+2023-03-26 14:04:45	--	irc: disconnected from server
+2023-03-26 14:04:45	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:04:55	--	irc: reconnecting to server...
+2023-03-26 14:04:55	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:04:55	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:04:55	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:05:18	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 14:06:16	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:06:16	--	irc: disconnecting from server...
+2023-03-26 14:06:16	--	irc: disconnected from server
+2023-03-26 14:06:16	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:06:26	--	irc: reconnecting to server...
+2023-03-26 14:06:26	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:06:26	=!=	irc: connection refused
+2023-03-26 14:06:26	--	irc: reconnecting to server in 20 seconds
+2023-03-26 14:06:46	--	irc: reconnecting to server...
+2023-03-26 14:06:46	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:06:46	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:06:46	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:06:54	--	Bbousaad was kicked. (reason: ciao
+2023-03-26 14:07:22	--	Bbousaad: No such nick/channel
+2023-03-26 14:11:40	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:11:40	--	irc: disconnecting from server...
+2023-03-26 14:11:40	--	irc: disconnected from server
+2023-03-26 14:11:40	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:11:50	--	irc: reconnecting to server...
+2023-03-26 14:11:50	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:11:50	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:11:50	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:12:05	--	Bbousaad: No such nick/channel
+2023-03-26 14:13:06	--	tomtom was kicked. (reason: ciao
+2023-03-26 14:13:30	--	tomtom was kicked. (reason: ciao
+2023-03-26 14:14:24	=!=	irc: too few parameters received in command "401" (received: 1, expected: at least 2)
+2023-03-26 14:14:24	=!=	irc: failed to parse command "401" (please report to developers): ":127.0.0.1 401 tsorabel1"
+2023-03-26 14:14:24	=!=	irc: command "such" not found: ":No such nick/channel"
+2023-03-26 14:14:36	--	tsorabel1 was kicked. (reason: language
+2023-03-26 14:15:01	--	was kicked. (reason: mdr
+2023-03-26 14:15:01	--	was kicked. (reason: mdr
+2023-03-26 14:15:01	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:15:01	--	irc: disconnecting from server...
+2023-03-26 14:15:01	--	irc: disconnected from server
+2023-03-26 14:15:01	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:15:11	--	irc: reconnecting to server...
+2023-03-26 14:15:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:15:11	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:15:11	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:15:23	--	was kicked. (reason: cheh
+2023-03-26 14:15:23	--	was kicked. (reason: cheh
+2023-03-26 14:15:23	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:15:23	--	irc: disconnecting from server...
+2023-03-26 14:15:23	--	irc: disconnected from server
+2023-03-26 14:15:23	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:15:33	--	irc: reconnecting to server...
+2023-03-26 14:15:33	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:15:33	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:15:33	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:25:24	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:25:24	--	irc: disconnecting from server...
+2023-03-26 14:25:24	--	irc: disconnected from server
+2023-03-26 14:25:24	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:25:34	--	irc: reconnecting to server...
+2023-03-26 14:25:34	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:25:34	=!=	irc: connection refused
+2023-03-26 14:25:34	--	irc: reconnecting to server in 20 seconds
+2023-03-26 14:25:54	--	irc: reconnecting to server...
+2023-03-26 14:25:54	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:25:54	=!=	irc: connection refused
+2023-03-26 14:25:54	--	irc: reconnecting to server in 40 seconds
+2023-03-26 14:26:35	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:26:35	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:26:35	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:27:14	=!=	irc: too few parameters received in command "481" (received: 1, expected: at least 2)
+2023-03-26 14:27:14	=!=	irc: failed to parse command "481" (please report to developers): ":127.0.0.1 481  :Permission Denied- You're not an IRC operator "
+2023-03-26 14:28:59	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:28:59	--	irc: disconnecting from server...
+2023-03-26 14:28:59	--	irc: disconnected from server
+2023-03-26 14:28:59	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:29:09	--	irc: reconnecting to server...
+2023-03-26 14:29:09	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:29:09	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:29:09	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:30:38	--	a: Permission Denied- You're not an IRC operator
+2023-03-26 14:32:38	--	a: Permission Denied- You're not an IRC operator
+2023-03-26 14:32:52	--	You are now an IRC operator
+2023-03-26 14:32:55	--	tomtom was kicked. (reason: ciao
+2023-03-26 14:33:22	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:33:22	--	irc: disconnecting from server...
+2023-03-26 14:33:22	--	irc: disconnected from server
+2023-03-26 14:33:22	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:33:32	--	irc: reconnecting to server...
+2023-03-26 14:33:32	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:33:32	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:33:32	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:34:01	--	You are now an IRC operator
+2023-03-26 14:34:16	--	tomtom was kicked. (reason: ciao
+2023-03-26 14:34:16	=!=	irc: command ")" not found: ")"
+2023-03-26 14:34:30	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:34:30	--	irc: disconnecting from server...
+2023-03-26 14:34:30	--	irc: disconnected from server
+2023-03-26 14:34:30	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:34:40	--	irc: reconnecting to server...
+2023-03-26 14:34:40	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:34:40	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:34:40	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:34:45	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 14:34:53	--	You are now an IRC operator
+2023-03-26 14:34:56	--	tomtom was kicked. (reason: ciao
+2023-03-26 14:34:56	=!=	irc: command ")" not found: ") "
+2023-03-26 14:35:53	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:35:53	--	irc: disconnecting from server...
+2023-03-26 14:35:53	--	irc: disconnected from server
+2023-03-26 14:35:53	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:36:03	--	irc: reconnecting to server...
+2023-03-26 14:36:03	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:36:03	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:36:03	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:36:37	--	You are now an IRC operator
+2023-03-26 14:36:41	--	tomtom was kicked. reason: ciao
+2023-03-26 14:36:58	--	KICK: Not enough parameters
+2023-03-26 14:37:03	--	tomto: No such nick/channel
+2023-03-26 14:37:06	--	KICK: Not enough parameters
+2023-03-26 14:37:13	--	KICK: Not enough parameters
+2023-03-26 14:37:19	--	tomtom was kicked. reason: de
+2023-03-26 14:53:58	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:53:58	--	irc: disconnecting from server...
+2023-03-26 14:53:58	--	irc: disconnected from server
+2023-03-26 14:53:58	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:54:08	--	irc: reconnecting to server...
+2023-03-26 14:54:08	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:54:08	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:54:08	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:54:57	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:54:57	--	irc: disconnecting from server...
+2023-03-26 14:54:57	--	irc: disconnected from server
+2023-03-26 14:54:57	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:55:07	--	irc: reconnecting to server...
+2023-03-26 14:55:07	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:55:07	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:55:07	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:56:08	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:56:08	--	irc: disconnecting from server...
+2023-03-26 14:56:08	--	irc: disconnected from server
+2023-03-26 14:56:08	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:56:18	--	irc: reconnecting to server...
+2023-03-26 14:56:18	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:56:18	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:56:18	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:56:20	--	KICK: Not enough parameters
+2023-03-26 14:56:23	--	KICK: Not enough parameters
+2023-03-26 14:57:08	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:57:08	--	irc: disconnecting from server...
+2023-03-26 14:57:08	--	irc: disconnected from server
+2023-03-26 14:57:08	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:57:18	--	irc: reconnecting to server...
+2023-03-26 14:57:18	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:57:18	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:57:18	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:57:20	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 14:57:22	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 14:57:33	--	You are now an IRC operator
+2023-03-26 14:57:35	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:57:35	--	irc: disconnecting from server...
+2023-03-26 14:57:35	--	irc: disconnected from server
+2023-03-26 14:57:35	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:57:45	--	irc: reconnecting to server...
+2023-03-26 14:57:45	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:57:45	=!=	irc: connection refused
+2023-03-26 14:57:45	--	irc: reconnecting to server in 20 seconds
+2023-03-26 14:58:05	--	irc: reconnecting to server...
+2023-03-26 14:58:05	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:58:05	=!=	irc: connection refused
+2023-03-26 14:58:05	--	irc: reconnecting to server in 40 seconds
+2023-03-26 14:58:45	--	irc: reconnecting to server...
+2023-03-26 14:58:45	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:58:45	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:58:45	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:58:51	--	You are now an IRC operator
+2023-03-26 14:59:00	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:59:00	--	irc: disconnecting from server...
+2023-03-26 14:59:00	--	irc: disconnected from server
+2023-03-26 14:59:00	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:59:10	--	irc: reconnecting to server...
+2023-03-26 14:59:10	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:59:10	=!=	irc: connection refused
+2023-03-26 14:59:10	--	irc: reconnecting to server in 20 seconds
+2023-03-26 14:59:30	--	irc: reconnecting to server...
+2023-03-26 14:59:30	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:59:30	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 14:59:30	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 14:59:36	--	You are now an IRC operator
+2023-03-26 14:59:39	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 14:59:39	--	irc: disconnecting from server...
+2023-03-26 14:59:39	--	irc: disconnected from server
+2023-03-26 14:59:39	--	irc: reconnecting to server in 10 seconds
+2023-03-26 14:59:49	--	irc: reconnecting to server...
+2023-03-26 14:59:49	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 14:59:49	=!=	irc: connection refused
+2023-03-26 14:59:49	--	irc: reconnecting to server in 20 seconds
+2023-03-26 15:00:09	--	irc: reconnecting to server...
+2023-03-26 15:00:09	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:00:09	=!=	irc: connection refused
+2023-03-26 15:00:09	--	irc: reconnecting to server in 40 seconds
+2023-03-26 15:00:49	--	irc: reconnecting to server...
+2023-03-26 15:00:49	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:00:49	=!=	irc: connection refused
+2023-03-26 15:00:49	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 15:01:26	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:01:26	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:01:26	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:01:45	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 15:01:48	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 15:02:04	--	You are now an IRC operator
+2023-03-26 15:02:07	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:02:07	--	irc: disconnecting from server...
+2023-03-26 15:02:07	--	irc: disconnected from server
+2023-03-26 15:02:07	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:02:17	--	irc: reconnecting to server...
+2023-03-26 15:02:17	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:02:17	=!=	irc: connection refused
+2023-03-26 15:02:17	--	irc: reconnecting to server in 20 seconds
+2023-03-26 15:02:37	--	irc: reconnecting to server...
+2023-03-26 15:02:37	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:02:37	=!=	irc: connection refused
+2023-03-26 15:02:37	--	irc: reconnecting to server in 40 seconds
+2023-03-26 15:03:17	--	irc: reconnecting to server...
+2023-03-26 15:03:17	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:03:17	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:03:17	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:04:49	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:04:49	--	irc: disconnecting from server...
+2023-03-26 15:04:49	--	irc: disconnected from server
+2023-03-26 15:04:49	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:04:59	--	irc: reconnecting to server...
+2023-03-26 15:04:59	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:04:59	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:04:59	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:05:45	--	You are now an IRC operator
+2023-03-26 15:05:47	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:05:47	--	irc: disconnecting from server...
+2023-03-26 15:05:47	--	irc: disconnected from server
+2023-03-26 15:05:47	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:05:57	--	irc: reconnecting to server...
+2023-03-26 15:05:57	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:05:57	=!=	irc: connection refused
+2023-03-26 15:05:57	--	irc: reconnecting to server in 20 seconds
+2023-03-26 15:06:17	--	irc: reconnecting to server...
+2023-03-26 15:06:17	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:06:17	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:06:17	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:07:26	--	You are now an IRC operator
+2023-03-26 15:08:25	--	tomto: No such nick/channel
+2023-03-26 15:08:27	--	KICK: Not enough parameters
+2023-03-26 15:08:52	--	tomtom was kicked. reason: language de merde
+2023-03-26 15:08:55	=!=	irc: this buffer is not a channel!
+2023-03-26 15:09:16	--	tomtom was kicked. reason: language de merde
+2023-03-26 15:09:16	=!=	irc: command "privmsg" received without nick
+2023-03-26 15:09:16	=!=	irc: failed to parse command "privmsg" (please report to developers): "PRIVMSG #re :re bg"
+2023-03-26 15:09:16	--	tom: No such channel
+2023-03-26 15:09:32	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:09:32	--	irc: disconnecting from server...
+2023-03-26 15:09:32	--	irc: disconnected from server
+2023-03-26 15:09:32	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:09:42	--	irc: reconnecting to server...
+2023-03-26 15:09:42	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:09:42	=!=	irc: connection refused
+2023-03-26 15:09:42	--	irc: reconnecting to server in 20 seconds
+2023-03-26 15:10:02	--	irc: reconnecting to server...
+2023-03-26 15:10:02	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:10:02	=!=	irc: connection refused
+2023-03-26 15:10:02	--	irc: reconnecting to server in 40 seconds
+2023-03-26 15:10:42	--	irc: reconnecting to server...
+2023-03-26 15:10:42	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:10:42	=!=	irc: connection refused
+2023-03-26 15:10:42	--	irc: reconnecting to server in 1 minute, 20 seconds
+2023-03-26 15:12:02	--	irc: reconnecting to server...
+2023-03-26 15:12:02	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:12:02	=!=	irc: connection refused
+2023-03-26 15:12:02	--	irc: reconnecting to server in 2 minutes, 40 seconds
+2023-03-26 15:13:56	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:13:56	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:13:56	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:16:59	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:16:59	--	irc: disconnecting from server...
+2023-03-26 15:16:59	--	irc: disconnected from server
+2023-03-26 15:16:59	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:17:09	--	irc: reconnecting to server...
+2023-03-26 15:17:09	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:17:09	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:17:09	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:17:54	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:17:54	--	irc: disconnecting from server...
+2023-03-26 15:17:54	--	irc: disconnected from server
+2023-03-26 15:17:54	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:18:04	--	irc: reconnecting to server...
+2023-03-26 15:18:04	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:18:04	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:18:04	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:19:24	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:19:24	--	irc: disconnecting from server...
+2023-03-26 15:19:24	--	irc: disconnected from server
+2023-03-26 15:19:24	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:19:34	--	irc: reconnecting to server...
+2023-03-26 15:19:34	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:19:34	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:19:34	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:20:01	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:20:01	--	irc: disconnecting from server...
+2023-03-26 15:20:01	--	irc: disconnected from server
+2023-03-26 15:20:01	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:20:11	--	irc: reconnecting to server...
+2023-03-26 15:20:11	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:20:11	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:20:11	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:20:52	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:20:52	--	irc: disconnecting from server...
+2023-03-26 15:20:52	--	irc: disconnected from server
+2023-03-26 15:20:52	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:21:02	--	irc: reconnecting to server...
+2023-03-26 15:21:02	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:21:02	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:21:02	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:21:36	=!=	irc: this buffer is not a channel!
+2023-03-26 15:22:04	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:22:04	--	irc: disconnecting from server...
+2023-03-26 15:22:04	--	irc: disconnected from server
+2023-03-26 15:22:04	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:22:14	--	irc: reconnecting to server...
+2023-03-26 15:22:14	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:22:14	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:22:14	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:23:40	--	You are now an IRC operator
+2023-03-26 15:23:48	--	tomtom was kicked. reason: cheh
+2023-03-26 15:24:51	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:24:51	--	irc: disconnecting from server...
+2023-03-26 15:24:51	--	irc: disconnected from server
+2023-03-26 15:24:51	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:25:01	--	irc: reconnecting to server...
+2023-03-26 15:25:01	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:25:01	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:25:01	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:33:14	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 15:33:27	--	KILL: Permission Denied- You're not an IRC operator
+2023-03-26 15:34:33	--	You are now an IRC operator
+2023-03-26 15:35:45	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:35:45	--	irc: disconnecting from server...
+2023-03-26 15:35:45	--	irc: disconnected from server
+2023-03-26 15:35:45	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:35:55	--	irc: reconnecting to server...
+2023-03-26 15:35:55	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:35:55	=!=	irc: connection refused
+2023-03-26 15:35:55	--	irc: reconnecting to server in 20 seconds
+2023-03-26 15:36:15	--	irc: reconnecting to server...
+2023-03-26 15:36:15	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:36:15	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:36:15	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:41:08	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:41:08	--	irc: disconnecting from server...
+2023-03-26 15:41:08	--	irc: disconnected from server
+2023-03-26 15:41:08	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:41:18	--	irc: reconnecting to server...
+2023-03-26 15:41:18	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:41:18	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:41:18	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:47:00	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:47:00	--	irc: disconnecting from server...
+2023-03-26 15:47:00	--	irc: disconnected from server
+2023-03-26 15:47:00	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:47:10	--	irc: reconnecting to server...
+2023-03-26 15:47:10	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:47:10	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:47:10	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:48:49	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:48:49	--	irc: disconnecting from server...
+2023-03-26 15:48:49	--	irc: disconnected from server
+2023-03-26 15:48:49	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:48:59	--	irc: reconnecting to server...
+2023-03-26 15:48:59	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:48:59	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:48:59	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:49:13	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:49:13	--	irc: disconnecting from server...
+2023-03-26 15:49:13	--	irc: disconnected from server
+2023-03-26 15:49:13	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:49:23	--	irc: reconnecting to server...
+2023-03-26 15:49:23	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:49:23	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:49:23	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:49:32	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:49:32	--	irc: disconnecting from server...
+2023-03-26 15:49:32	--	irc: disconnected from server
+2023-03-26 15:49:32	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:49:42	--	irc: reconnecting to server...
+2023-03-26 15:49:42	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:49:42	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:49:42	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:50:58	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:50:58	--	irc: disconnecting from server...
+2023-03-26 15:50:58	--	irc: disconnected from server
+2023-03-26 15:50:58	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:51:08	--	irc: reconnecting to server...
+2023-03-26 15:51:08	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:51:08	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:51:08	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 15:53:00	--	You are now an IRC operator
+2023-03-26 15:53:17	--	Bbousaad was kick form #iop comment :cheh mec
+2023-03-26 15:57:28	--	MSG(Bbousaad): salut bg
+2023-03-26 15:58:33	--	#iop: You're not on that channel
+2023-03-26 15:58:45	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 15:58:45	--	irc: disconnecting from server...
+2023-03-26 15:58:45	--	irc: disconnected from server
+2023-03-26 15:58:45	--	irc: reconnecting to server in 10 seconds
+2023-03-26 15:58:55	--	irc: reconnecting to server...
+2023-03-26 15:58:55	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:58:55	=!=	irc: connection refused
+2023-03-26 15:58:55	--	irc: reconnecting to server in 20 seconds
+2023-03-26 15:59:15	--	irc: reconnecting to server...
+2023-03-26 15:59:15	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 15:59:15	--	irc: connected to 127.0.0.1/3232 (127.0.0.1)
+2023-03-26 15:59:15	--	Welcome to the Internet Relay Network tsorabel!tsorabel@127.0.0.1
+2023-03-26 16:00:38	=!=	irc: reading data on socket: error 22 (connection closed by peer)
+2023-03-26 16:00:38	--	irc: disconnecting from server...
+2023-03-26 16:00:38	--	irc: disconnected from server
+2023-03-26 16:00:38	--	irc: reconnecting to server in 10 seconds
+2023-03-26 16:00:48	--	irc: reconnecting to server...
+2023-03-26 16:00:48	--	irc: connecting to server 127.0.0.1/3232...
+2023-03-26 16:00:48	=!=	irc: connection refused
+2023-03-26 16:00:48	--	irc: reconnecting to server in 20 seconds
