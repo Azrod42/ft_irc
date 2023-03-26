@@ -235,9 +235,9 @@ std::string error_chanoprivsneeded(std::string chann){
 }	
 
 //#define RPL_SERVICEINFO 231
-std::string rplkicked(std::string nick, std::string channel){
+std::string rplkicked(std::string nick, std::string channel, std::string reason){
 	std::stringstream return_string;
 
-	return_string << ":" << IPADDR << " 231 " << nick << " :was kick form " << channel << "\r\n";
+	return_string << ":" << IPADDR << " 231 " << ":" << nick << " was kick form " << channel << " comment " << reason << "\r\n";
 	return (return_string.str());
 }

@@ -743,7 +743,7 @@ void			User::execKICK(std::string cmd, unsigned int id){
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++) {
 		// std::cout << _channel[i].getName() << " " << channel << std::endl;
 		if (_channel[i].getName() == channel){
-			int ret = _channel[i].userKick(iter->id, id, user);
+			int ret = _channel[i].userKick(iter->id, id, user, reason);
 			if (ret == 1){
 				std::string rep = error_usernotinchannel(user, channel);
 				send(id, rep.c_str(), rep.size(), 0);

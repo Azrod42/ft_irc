@@ -119,10 +119,15 @@ int				Channel::userDisconnect(unsigned int id){
 	return (0);
 };
 
-int				Channel::userKick(unsigned int id, unsigned int trig, std::string user){
+int				Channel::userKick(unsigned int id, unsigned int trig, std::string user, std::string message){
 	std::vector<unsigned int>::iterator it = _current_user.begin();
 	std::vector<unsigned int>::iterator it2 = _current_user.begin();
+	std::string mess;
 
+	if (message.size() < 1)
+		mess = "nan";
+	else
+		mess = message;
 	int trigger_in = 0;
 	int kicked_in = 0;
 	while (it != _current_user.end()){
@@ -141,9 +146,8 @@ int				Channel::userKick(unsigned int id, unsigned int trig, std::string user){
 	}
 	if (trigger_in == 1 && kicked_in == 1){
 		std::vector<unsigned int>::iterator it3 = _current_user.begin();
-		std::string rep = rplkicked(user, this->getName());
+		std::string rep = rplkicked(user, this->getName(), mess);
 		while (it3 != _current_user.end()){
-			std::cout << "Send to :" << *it3 << std::endl;
 			send(*it3, rep.c_str(), rep.size(), 0);
 			it3++;
 		}

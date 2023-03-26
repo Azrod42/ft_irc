@@ -67,7 +67,7 @@ std::string		ip_itostr(in_addr_t brut);
 std::string		rpl(std::string nick, std::string channel, std::string name, std::string message);
 std::string		rplkill(void);
 std::string		rplwelcome(std::string nick, std::string user);
-std::string		rplkicked(std::string nick, std::string channel);
+std::string		rplkicked(std::string nick, std::string channel, std::string reason);
 std::string		rplyouroper(std::string nick);
 std::string		rplping(void);
 std::string		rpljoin(std::string nick, std::string name, std::string channel);
