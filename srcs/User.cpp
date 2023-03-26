@@ -460,7 +460,7 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 					std::string rep = rplnotopic(chan[i]);
 					send(id, rep.c_str(), rep.size(), 0);
 				}
-				break;
+				// break;
 			}
 		}
 		else { //CREATE_CHANNEL
