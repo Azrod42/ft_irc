@@ -34,6 +34,7 @@ Channel		   &Channel::operator=(const Channel &copy) {
 //RET 3 = USER_BANNED_FORM_CHANNEL
 //RET 4 = USER_ALREADY_IN_CHANNEL
 int				Channel::join(unsigned int id, std::string nick, std::string key){
+	std::cout<< "channel join " << std::endl;
 	if (_use_key == true)
 		if (key != _key)
 			return (1);
@@ -52,6 +53,7 @@ int				Channel::join(unsigned int id, std::string nick, std::string key){
 	std::vector<unsigned int>::iterator it2 = _current_user.begin();
 	for (; it2!= _current_user.end(); it2++) { if (*it2 == id) return (4);}
 	_current_user.push_back(id);
+	std::cout<< "OK join" << std::endl;
 	return (0);
 };
 
@@ -63,6 +65,7 @@ int				Channel::initChannel(unsigned int id, std::string channel_name, std::stri
 		this->useKeySetTrue();
 		this->setKey(channel_key);
 	}
+	_current_user.clear();
 	_current_user.push_back(id);
 	std::cout << "Channel created\nNAME : " << channel_name <<  "\nKEY : " << channel_key << std::endl;
 	return (0);
@@ -91,6 +94,12 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 		std::cout << "user :" <<  *itin << std::endl;
 		itin++;
 	}
+	// this->checkMU();
+	// itin = _current_user.begin();
+	// while (itin != _current_user.end()){
+	// 	std::cout << "user :" <<  *itin << std::endl;
+	// 	itin++;
+	// }
 	itin = _current_user.begin();
 	while (itin != _current_user.end()){
 		if (*itin == id_s)
@@ -114,10 +123,14 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 int				Channel::userDisconnect(unsigned int id){
 	std::vector<unsigned int>::iterator it = _current_user.begin();
 
+	std::cout << "UI " << _current_user.size() << " id : " << id << std::endl;
+	if (_current_user.size() < 1)
+		return (0);
 	while (it != _current_user.end()){
+		std::cout << this->_name << *it << std::endl;
 		if (*it == id){
 			_current_user.erase(it);
-			// return (0);
+			return (0);
 		}
 		it++;
 	}
@@ -162,4 +175,20 @@ int				Channel::userKick(unsigned int id, unsigned int trig, std::string user, s
 		return 2;
 	}
 	return (1);
+};
+
+void			Channel::checkMU(){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	for (;it != _current_user.end(); it++) {
+		std::vector<unsigned int>::iterator it2 = _current_user.begin();
+		std::cout << *it << " at " << &it << "\n" << *it2 << " at " << &it2 << std::endl;
+		while (it2 != _current_user.end()) {
+			if (*it == *it2 && it != it2){
+				std::cout << "IN" << std::endl;
+				_current_user.erase(it2);
+				it2--;
+			}
+			it2++;
+		}
+	}
 };

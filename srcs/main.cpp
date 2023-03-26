@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 	struct sockaddr_in	adresse;
 	struct pollfd		fds[NB_CLIENT];
 	int					current_size = 1, new_sd = -1, close_conn = -1, end_server = 0, fdn = 1;
-	int					i, j, len, comprereturn_string_array;
+	int					i, j, len, compress_array;
 	int					timeout = 10 * 60 * 1000;
 	static char			buf[BUFFER_LEN + 1];
 	char				*buf_full;
@@ -106,6 +106,8 @@ int main(int argc, char **argv)
 				}
 				if (fds[i].fd == dta.fd_socket && fds[i].revents != 32) {
 					std::cout << "Listening socket is readable" << std::endl;
+					std::cout << "i = " << i << std::endl;
+					std::cout << "fdn = " << fdn << std::endl;
 					do {
 						new_sd = accept(dta.fd_socket, NULL, NULL);
 						if (new_sd < 0){
@@ -149,16 +151,37 @@ int main(int argc, char **argv)
 						free(tmp);
 					} while (1);
 					// std::cout << buffer << std::endl;
-					user.userCommand(ft_substr(buf_full, 0, len), fds[i].fd);
+					tmp = ft_substr(buf_full, 0, len); 
+					unsigned int ret = user.userCommand(tmp, fds[i].fd);
+					free(tmp);
+					free(buf_full);
+					if (ret == 1000){
+						std::cout << "DIE TRIGERED" << std::endl;
+						end_server = 1;
+					} else if (ret != 999){
+						int p = 0;
+						std::cout << "====" << ret << "===" << std::endl;
+						while (p < NB_CLIENT) {
+							if (fds[p].fd == (int)ret)
+								break;
+							p++;
+						}
+						if (p != 256) {
+						std::cout << fds[p].fd  << " " << p << std::endl;
+						close(fds[p].fd);
+						fds[p].fd = -1;
+						compress_array = 1;
+						}
+					}
 					if (close_conn == 1) {
 						close(fds[i].fd);
 						fds[i].fd = -1;
-						comprereturn_string_array = 1;
+						compress_array = 1;
 					}
 				}
 			}
-			if (comprereturn_string_array == 1){
-				comprereturn_string_array = 0;
+			if (compress_array == 1){
+				compress_array = 0;
 				for (i = 0; i < fdn; i++){
 					if (fds[i].fd == -1){
 						for (j = i; j < fdn; j++){
@@ -176,6 +199,7 @@ int main(int argc, char **argv)
 			close(fds[i].fd);
 		}
 	}
+	system("leaks ircserv");
 	return (0);
 }
 

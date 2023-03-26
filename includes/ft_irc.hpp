@@ -93,5 +93,6 @@ std::string		error_notexttosend(void);
 std::string		error_nosuchnick(std::string nick);
 std::string		error_usernotinchannel(std::string nick, std::string channel);
 std::string		error_chanoprivsneeded(std::string chann);
+std::string		error_noprivileges(void);
 
 #endif

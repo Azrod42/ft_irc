@@ -26,10 +26,11 @@ class User {
 		int				addUser(const unsigned int id, std::string name, in_addr_t ip);
 		void			disconectUser(unsigned int id);
 		std::string 	getGestname(void) const;
-		void			userCommand(std::string prompt, unsigned int id);
+		unsigned int	userCommand(std::string prompt, unsigned int id);
 		void			execLOG(std::string full_cmd, unsigned int id);
 		void			execKICK(std::string cmd, unsigned int id);
-		void			execKILL(std::string cmd, unsigned int id);
+		unsigned int	execKILL(std::string cmd, unsigned int id);
+		unsigned int	execDIE(std::string cmd, unsigned int id);
 		void			execOPER(std::string cmd, unsigned int id);
 		void			execPING(std::string cmd, unsigned int id);
 		void			execJOIN(std::string cmd, unsigned int id);

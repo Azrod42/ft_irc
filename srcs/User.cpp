@@ -85,14 +85,13 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 	udef.unused = " ";
 	udef.cmd = "";
 	_user.push_back(udef);
-	std::cout << "New user connected : " << udef.name << std::endl;
+	// std::cout << "New user connected : " << udef.name << std::endl;
 	return (0);
 };
 
 void			User::disconectUser(unsigned int id){
 	FINDUSER
-	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
-		if (_channel[i].inUse() == true)
+	for (int i = 0; i < NUMBER_CHANNEL_MAX - 1; i++){
 			_channel[i].userDisconnect(id);
 	}
 	_user.erase(it);
@@ -107,10 +106,11 @@ std::string 	User::getGestname(void) const {
 	return (ret);
 };
 
-void			User::userCommand(std::string prompt, unsigned int id){
+unsigned int		User::userCommand(std::string prompt, unsigned int id){
 	FINDUSER
 	
 	it->cmd += prompt;
+	int ret = 999;
 	// it->is_log = 4; //DEBUG_ONLY !!!
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
@@ -132,7 +132,9 @@ void			User::userCommand(std::string prompt, unsigned int id){
 			if (it->cmd.find("KICK ") < std::string::npos)
 				this->execKICK(it->cmd, it->id);
 			if (it->cmd.find("KILL ") < std::string::npos)
-				this->execKILL(it->cmd, it->id);
+				ret = this->execKILL(it->cmd, it->id);
+			if (it->cmd.find("DIE") == 0)
+				ret = this->execDIE(it->cmd, it->id);
 			if (it->cmd.find("PRIVMSG #") < std::string::npos)
 				this->execPRIVMSGC(it->cmd, it->id);
 			else if (it->cmd.find("PRIVMSG ") < std::string::npos)
@@ -142,6 +144,7 @@ void			User::userCommand(std::string prompt, unsigned int id){
 			this->execLOG(it->cmd, id);
 		it->cmd = "";
 	}	
+	return (ret);
 }
 
 void			User::execLOG(std::string full_cmd, unsigned int id){
@@ -416,11 +419,14 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 	for (int i = 0; i < (int)chan.size(); i++){
 		int j = -1;
 		while (++j < NUMBER_CHANNEL_MAX) {
-			if (_channel[j].getName() == chan[i])
+			if (_channel[j].getName() == chan[i]){
+				std::cout << "Find channel :" << chan[i] << " " << _channel[j].getName() << std::endl;
 				break;
+			}
 		}
-		if (j < NUMBER_CHANNEL_MAX){ //FIND_THE_CHANNEL
+		if (j < NUMBER_CHANNEL_MAX - 1){ //FIND_THE_CHANNEL
 			int ret = _channel[j].join(it->id, it->nick, key[j]);
+			std::cout << "Code : " << ret << std::endl;
 			std::string rep;
 			switch (ret)
 			{
@@ -463,22 +469,19 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 				send(id, rep.c_str(), rep.size(), 0);
 			}
 			else {
-				for(int k = 0; k < NUMBER_CHANNEL_MAX; k++){
-					if (_channel[k].inUse() == false){
-						_channel_use += 1;
-						_channel[k].initChannel(id, chan[i], key[i]);
-						std::string rep = rpljoin(it->nick, it->name, chan[i]);
-						send(id, rep.c_str(), rep.size(), 0);
-						if (_channel[k].istopic() == true){ //RPL_TOPIC
-							std::string rep = rpltopic(chan[i], _channel[k].getTopic());
-							send(id, rep.c_str(), rep.size(), 0);
-						} else { //RPL_NOTOPIC
-							std::string rep = rplnotopic(chan[i]);
-							send(id, rep.c_str(), rep.size(), 0);
-						}
-						break;
-					}
-				}
+				int k = _channel_use;
+				_channel[k].initChannel(id, chan[i], key[i]);
+				std::string rep = rpljoin(it->nick, it->name, chan[i]);
+				send(id, rep.c_str(), rep.size(), 0);
+				// if (_channel[k].istopic() == true){ //RPL_TOPIC
+				// 	std::string rep = rpltopic(chan[i], _channel[k].getTopic());
+				// 	send(id, rep.c_str(), rep.size(), 0);
+				// } else { //RPL_NOTOPIC
+				// 	std::string rep = rplnotopic(chan[i]);
+				// 	send(id, rep.c_str(), rep.size(), 0);
+				// }
+				_channel_use += 1;
+				break;
 			}
 		}
 	}
@@ -765,10 +768,21 @@ void			User::execKICK(std::string cmd, unsigned int id){
 	}
 }
 
-void			User::execKILL(std::string cmd, unsigned int id){
+unsigned int				User::execKILL(std::string cmd, unsigned int id){
 	FINDUSER
 	NBARGUMENT(cmd.c_str())	
 
+	int ret = 999;
+	if (nb_cmd < 3) {
+		std::string rep = error_needmoreparams("KICK");
+		send(id, rep.c_str(), rep.size(), 0);
+		return ret;
+	}
+	if (it->is_operator == false) {
+		std::string rep = error_noprivileges();
+		send(id, rep.c_str(), rep.size(), 0);
+		return ret;
+	}
 	std::string	reason;
 	if (cmd.find(":") != std::string::npos)
 		reason = cmd.substr(cmd.find(":") + 1);
@@ -783,13 +797,29 @@ void			User::execKILL(std::string cmd, unsigned int id){
 	if (iter == _user.end()){
 		std::string rep = error_nosuchnick(user);
 		send(id, rep.c_str(), rep.size(), 0);
-		return ;
+		return (-1);
 	}else 
 	{
+		ret = iter->id;
 		std::string rep = rplkill(iter->nick, reason);
 		send(id, rep.c_str(), rep.size(), 0);
 		send(iter->id, rep.c_str(), rep.size(), 0);
-		this->disconectUser(iter->id);
-		close(iter->id);
+		std::cout << "Close de l'user : " << iter->nick << " " << ret << std::endl;
+		this->disconectUser(ret);
+		return (ret);
 	}
+	return (999);
+};
+
+unsigned int	User::execDIE(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())	
+
+	int ret = 999;
+	if (it->is_operator == false) {
+		std::string rep = error_noprivileges();
+		send(id, rep.c_str(), rep.size(), 0);
+		return ret;
+	}
+	return (1000);
 };

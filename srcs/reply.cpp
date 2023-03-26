@@ -245,6 +245,14 @@ std::string rplkicked(std::string nick, std::string channel, std::string reason)
 std::string rplkill(std::string nick, std::string reason){
 	std::stringstream return_string;
 
-	return_string << ":" << IPADDR << " 361 " << nick << " :was kicked. (reason: " << reason << "\r\n";
+	return_string << ":" << IPADDR << " 361 " << nick << " :was kicked. reason: " << reason << "\r\n";
+	return (return_string.str());
+}
+
+//#define ERR_NOPRIVILEGES 481
+std::string error_noprivileges(void){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 481 KILL" << " :Permission Denied- You're not an IRC operator " << "\r\n";
 	return (return_string.str());
 }

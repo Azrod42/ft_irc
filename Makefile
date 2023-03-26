@@ -65,11 +65,11 @@ git_next: git_add
 re: fclean all
 
 ree: fclean all
-	@./${NAME} 6667 root
+	@./${NAME} 3232 root
 	@rm ./$(NAME)
 
 reee: fclean all
-	@./${NAME} 6667 root
+	@./${NAME} 3232 root
 
 flag_use:
 	@echo "${_BOLD}${_BLUE}============================= FLAGS USE =============================${_END}"
