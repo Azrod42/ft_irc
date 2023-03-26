@@ -96,7 +96,7 @@ int main(int argc, char **argv)
 				if (fds[i].revents == 0)
 					continue;
 				if (fds[i].revents == 17) {
-					std::cout << "User disconect : " << fds[i].fd << std::endl;
+					std::cout << "User disconect" << std::endl;// : " << fds[i].fd << std::endl;
 				} else if (fds[i].revents != POLLIN && fds[i].revents != 32) {
 					std::cout << "Error! events = " << fds[i].revents << std::endl;
 					perror(strerror(fds[i].revents));
@@ -192,7 +192,7 @@ int main(int argc, char **argv)
 			close(fds[i].fd);
 		}
 	}
-	system("leaks ircserv");
+	// system("leaks ircserv");
 	return (0);
 }
 
