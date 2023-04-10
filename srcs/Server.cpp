@@ -64,7 +64,7 @@ int	Server::CreateServer()
 		std::cout << "\033[31m" << "error : during binding IP" << "\033[0" << std::endl;
 		return -1;
 	}
-	if (listen(_socketFd, 32) == -1)
+	if (listen(_socketFd, BACKLOG) == -1)
 	{
 		std::cout << "\033[31m" << "error : during starting to listen" << "\033[0" << std::endl;
 		return -1;
@@ -89,7 +89,7 @@ int	Server::StartServer(){
 			break ;
 		}
 		else if (rp == 0){
-			std::cout << "Poll: timeout !" << std::endl;
+			std::cout << "Error : poll() timed out." << std::endl;
 			break ;
 		}
 		size_t	current_size = this->_fds.size();
