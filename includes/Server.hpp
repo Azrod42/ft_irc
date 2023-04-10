@@ -21,7 +21,7 @@ public:
 
 	// ACTIONS
 	int		CreateServer();
-	int		StartServer();
+	int		StartServer(User &user);
 
 private:
 	int			_port;

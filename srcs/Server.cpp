@@ -79,7 +79,7 @@ int	Server::CreateServer()
 	return (1);
 }
 
-int	Server::StartServer(){
+int	Server::StartServer(User &user){
 	this->_ON = true;
 	do
 	{
@@ -91,85 +91,88 @@ int	Server::StartServer(){
 		else if (rp == 0){
 			std::cout << "Error : poll() timed out." << std::endl;
 			break ;
-		}
-		size_t	current_size = this->_fds.size();
-		for (size_t i = 0; i < current_size; i++)
-		{
-			if (this->_fds[i].revents == 0)
-				continue;
-			if (this->_fds[i].revents != POLLIN){
-				std::cout << "Error ! revents = " << this->_fds[i].revents << std::endl;
-				this->_ON = false;
-				break ;
-			}
-			if (this->_fds[i].fd == this->_socketFd)
+		} else {
+			size_t	current_size = this->_fds.size();
+			for (size_t i = 0; i < current_size; i++)
 			{
-				std::cout << "Listening socket is readable" << std::endl;
-				int new_sd = -1;
-				do
+				if (this->_fds[i].revents == 0)
+					continue;
+				if (this->_fds[i].revents == 17) {
+					std::cout << "User disconect" << std::endl;// : " << fds[i].fd << std::endl;
+				} else if (this->_fds[i].revents != POLLIN && _fds[i].revents != 32){
+					std::cout << "Error ! revents = " << this->_fds[i].revents << std::endl;
+					this->_ON = false;
+					break ;
+				}
+				if (this->_fds[i].fd == this->_socketFd && _fds[i].revents != 32)
 				{
-					new_sd = accept(this->_socketFd, NULL, NULL);
-					if (new_sd < 0){
-						if (errno != EWOULDBLOCK)
-						{
-							std::cout << "Error: accept failed" << std::endl;
-							this->_ON = false;
-						}
-						break ;
-					}
-					std::cout << "New incoming connection : " << new_sd << std::endl;
-					struct pollfd	newpollfd;
-					newpollfd.fd = new_sd;
-					newpollfd.events = POLLIN;
-					this->_fds.push_back(newpollfd);
-				} while (new_sd != -1);
-			}
-			else
-			{
-				std::cout << "Descriptor is readable" << this->_fds[i].fd << std::endl;
-				int	close_conn = false;
-				char	buffer[2000];
-				int	rc = -1;
-				int	len = -1;
-				do
-				{
-					rc = recv(this->_fds[i].fd, buffer, sizeof(buffer), 0);
-					if (rc < 0)
+					std::cout << "Listening socket is readable" << std::endl;
+					int new_sd = -1;
+					do
 					{
-						if (errno != EWOULDBLOCK)
+						new_sd = accept(this->_socketFd, NULL, NULL);
+						if (new_sd < 0){
+							if (errno != EWOULDBLOCK)
+							{
+								std::cout << "Error: accept failed" << std::endl;
+								this->_ON = false;
+							}
+							break ;
+						}
+						std::cout << "New incoming connection : " << new_sd << std::endl;
+						struct pollfd	newpollfd;
+						newpollfd.fd = new_sd;
+						newpollfd.events = POLLIN;
+						user.addUser(new_sd, "User", adresse.sin_addr.s_addr);
+						this->_fds.push_back(newpollfd);
+					} while (new_sd != -1);
+				}
+				else
+				{
+					std::cout << "Descriptor is readable" << this->_fds[i].fd << std::endl;
+					int	close_conn = false;
+					char	buffer[2000];
+					int	rc = -1;
+					int	len = -1;
+					do
+					{
+						rc = recv(this->_fds[i].fd, buffer, sizeof(buffer), 0);
+						if (rc < 0)
 						{
-							std::cout << "Error: recv failed" << std::endl;
+							if (errno != EWOULDBLOCK)
+							{
+								std::cout << "Error: recv failed" << std::endl;
+								close_conn = true;
+							}
+							break ;
+						}
+						if (rc == 0)
+						{
+							std::cout << "Connection closed" << std::endl;
 							close_conn = true;
+							break ;
 						}
-						break ;
-					}
-					if (rc == 0)
+						len = rc;
+						std::cout << len << " bytes received" <<std::endl;
+						rc = send(this->_fds[i].fd, buffer, len, 0);
+						if (rc < 0)
+						{
+							std::cout << "Error: send failed" << std::endl;
+							close_conn = true;
+							break ;
+						}
+					} while (true);
+					if (close_conn)
 					{
-						std::cout << "Connection closed" << std::endl;
-						close_conn = true;
-						break ;
+						close(this->_fds[i].fd);
+						std::vector<struct pollfd>::iterator	it = this->_fds.begin();
+						for (size_t z = 0; z < i; z++)
+							it++;
+						this->_fds.erase(it);
 					}
-					len = rc;
-					std::cout << len << " bytes received" <<std::endl;
-					rc = send(this->_fds[i].fd, buffer, len, 0);
-					if (rc < 0)
-					{
-						std::cout << "Error: send failed" << std::endl;
-						close_conn = true;
-						break ;
-					}
-				} while (true);
-				if (close_conn)
-				{
-					close(this->_fds[i].fd);
-					std::vector<struct pollfd>::iterator	it = this->_fds.begin();
-					for (size_t z = 0; z < i; z++)
-						it++;
-					this->_fds.erase(it);
 				}
 			}
 		}
-		
 	} while (this->_ON);
 	for (size_t i = 0; i < this->_fds.size(); i++)
 		close(this->_fds[i].fd);

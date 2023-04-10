@@ -73,6 +73,7 @@ int	main(int ac, char **av)
 		return (1);
 	//t_system	sys;
 	Server		server(av[1], av[2]);
+	User 		user;
 	int	tmp6 = server.CreateServer();
 	if (tmp6 < 0)
 	{
@@ -80,7 +81,7 @@ int	main(int ac, char **av)
 			close(server.getServerFD());
 		return -1;
 	}
-	server.StartServer();
+	server.StartServer(&user);
 	close(server.getServerFD());
 	return (0);
 }
