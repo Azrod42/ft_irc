@@ -20,6 +20,13 @@
 #include"../includes/Channel.hpp"
 
 #define NUMBER_CHANNEL_MAX 200
+#define IP INADDR_ANY
+#define BACKLOG 3
+#define TIMEOUT_M 2
+#define TIMEOUT_S 30
+#define MAXPORT 65535
+#define BUFFER_LEN 2000
+#define NB_CLIENT 256
 
 #define	FINDUSER std::vector<t_user>::iterator it = _user.begin();\
 	while (it != _user.end()){ \

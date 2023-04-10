@@ -114,6 +114,7 @@ unsigned int		User::userCommand(std::string prompt, unsigned int id){
 	// it->is_log = 4; //DEBUG_ONLY !!!
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
+	std::cout << prompt << std::endl;
 	if (it->cmd.find("\r\n") < std::string::npos)
 	{
 		if (it->is_log == 4)
