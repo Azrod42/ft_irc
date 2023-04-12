@@ -114,7 +114,7 @@ unsigned int		User::userCommand(std::string prompt, unsigned int id){
 	// it->is_log = 4; //DEBUG_ONLY !!!
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
-	std::cout << prompt << std::endl;
+	std::cout << "\n------------------\n" << prompt << "------------------\n" << std::endl;
 	if (it->cmd.find("\r\n") < std::string::npos)
 	{
 		if (it->is_log == 4)
@@ -175,6 +175,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 			send(id, rep.c_str(), rep.size(), 0);
 			return;
 		}
+		std::cout << "=====" << this->_pass << "-" << cmd << std::endl;
 		if (cmd == this->_pass)
 			it->pareturn_string_ok = true;
 	}
@@ -256,7 +257,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pass_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
+	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
 };
 
 void			User::execOPER(std::string cmd, unsigned int id){

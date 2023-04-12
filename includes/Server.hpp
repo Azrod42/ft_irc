@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ft_irc.hpp"
+#include "User.hpp"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <sys/ioctl.h>

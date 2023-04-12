@@ -81,7 +81,8 @@ int	main(int ac, char **av)
 			close(server.getServerFD());
 		return -1;
 	}
-	server.StartServer(&user);
+	user.getServerPass(av[2]);
+	server.StartServer(user);
 	close(server.getServerFD());
 	return (0);
 }

@@ -123,15 +123,16 @@ int	Server::StartServer(User &user){
 						struct pollfd	newpollfd;
 						newpollfd.fd = new_sd;
 						newpollfd.events = POLLIN;
-						user.addUser(new_sd, "User", adresse.sin_addr.s_addr);
+						user.addUser(new_sd, "User", _addr.sin_addr.s_addr);
 						this->_fds.push_back(newpollfd);
 					} while (new_sd != -1);
 				}
-				else
+				else if (_fds[i].revents != 32)
 				{
-					std::cout << "Descriptor is readable" << this->_fds[i].fd << std::endl;
+					std::cout << "Descriptor is readable : " << this->_fds[i].fd << std::endl;
 					int	close_conn = false;
 					char	buffer[2000];
+					char	*tmp;
 					int	rc = -1;
 					int	len = -1;
 					do
@@ -149,26 +150,26 @@ int	Server::StartServer(User &user){
 						if (rc == 0)
 						{
 							std::cout << "Connection closed" << std::endl;
+							user.disconectUser(_fds[i].fd);
 							close_conn = true;
 							break ;
 						}
 						len = rc;
 						std::cout << len << " bytes received" <<std::endl;
-						rc = send(this->_fds[i].fd, buffer, len, 0);
-						if (rc < 0)
-						{
-							std::cout << "Error: send failed" << std::endl;
-							close_conn = true;
-							break ;
-						}
 					} while (true);
-					if (close_conn)
+					if (close_conn == true)
 					{
 						close(this->_fds[i].fd);
 						std::vector<struct pollfd>::iterator	it = this->_fds.begin();
 						for (size_t z = 0; z < i; z++)
 							it++;
 						this->_fds.erase(it);
+					} else {
+						tmp = ft_substr(buffer, 0, len);
+						rc = user.userCommand(tmp, _fds[i].fd);
+						free(tmp);
+						if (rc == 1000)
+							this->_ON = false;
 					}
 				}
 			}
