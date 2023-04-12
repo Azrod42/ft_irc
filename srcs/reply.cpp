@@ -20,10 +20,10 @@ std::string error_alreadyregistred(void){
 }
 
 // #define ERR_NEEDMOREPARAMS " :Not enough parameters\n" // need <command> avant l'erreur
-std::string error_needmoreparams(std::string word){
+std::string error_needmoreparams(std::string cmd){
 	std::stringstream return_string;
 
-	return_string << ":" << IPADDR << " 461 " << word << " :Not enough parameters" << "\r\n";
+	return_string << ":" << IPADDR << " 461 " << cmd << " :Not enough parameters" << "\r\n";
 	return (return_string.str());
 }
 

@@ -31,12 +31,14 @@ class User {
 		void			execKICK(std::string cmd, unsigned int id);
 		unsigned int	execKILL(std::string cmd, unsigned int id);
 		unsigned int	execDIE(std::string cmd, unsigned int id);
+		void			execMODE(std::string cmd, unsigned int id);
 		void			execOPER(std::string cmd, unsigned int id);
 		void			execPING(std::string cmd, unsigned int id);
 		void			execJOIN(std::string cmd, unsigned int id);
 		void			execPART(std::string cmd, unsigned int id);
 		void			execPRIVMSGC(std::string cmd, unsigned int id);
 		void			execPRIVMSGU(std::string cmd, unsigned int id);
+		void			execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
 };
 
 #endif

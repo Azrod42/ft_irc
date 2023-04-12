@@ -17,6 +17,8 @@
 #include <poll.h>
 #include <vector>
 #include <map>
+#include<sstream>
+#include <string.h>
 #include"../includes/Channel.hpp"
 
 #define NUMBER_CHANNEL_MAX 200

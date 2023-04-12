@@ -67,6 +67,7 @@ int				Channel::initChannel(unsigned int id, std::string channel_name, std::stri
 	}
 	_current_user.clear();
 	_current_user.push_back(id);
+	_operator.push_back(id);
 	// std::cout << "Channel created\nNAME : " << channel_name <<  "\nKEY : " << channel_key << std::endl;
 	return (0);
 };
@@ -190,4 +191,50 @@ void			Channel::checkMU(){
 			it2++;
 		}
 	}
+};
+
+int				Channel::userIsInChannel(unsigned int id){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	while (it != _current_user.end()) {
+		if (*it == id)
+			return (0);
+	}
+	return (1);
+};
+
+int				Channel::userIsOperator(unsigned int id){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	while (it != _operator.end()) {
+		if (*it == id)
+			return (0);
+	}
+	return (1);
+};
+
+int				Channel::setOperator(unsigned int id){
+	std::vector<unsigned int>::iterator it = _operator.begin();
+	while (it != _operator.end()){
+		if (*it == id){
+			std::cout << "Already OP" << std::endl;
+			return (2);
+		}
+		it++;
+	}
+	this->_operator.push_back(id);
+	std::cout << "DEBUG : UPGRADE" << std::endl;
+	return (0);
+};
+
+int				Channel::unsetOperator(unsigned int id){
+	std::vector<unsigned int>::iterator it = _operator.begin();
+	while (it != _operator.end()){
+		if (*it == id)
+			break;
+		it++;
+	}
+	if (it == _operator.end())
+		return (2);
+	_operator.erase(it);
+	std::cout << "DEBUG : DOWNGRADE" << std::endl;
+	return (0);
 };

@@ -136,6 +136,8 @@ unsigned int		User::userCommand(std::string prompt, unsigned int id){
 				ret = this->execKILL(it->cmd, it->id);
 			if (it->cmd.find("DIE") == 0)
 				ret = this->execDIE(it->cmd, it->id);
+			if (it->cmd.find("MODE ") == 0)
+				this->execMODE(it->cmd, it->id);
 			if (it->cmd.find("PRIVMSG #") < std::string::npos)
 				this->execPRIVMSGC(it->cmd, it->id);
 			else if (it->cmd.find("PRIVMSG ") < std::string::npos)
@@ -175,7 +177,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 			send(id, rep.c_str(), rep.size(), 0);
 			return;
 		}
-		std::cout << "=====" << this->_pass << "-" << cmd << std::endl;
+		// std::cout << "=====" << this->_pass << "-" << cmd << std::endl;
 		if (cmd == this->_pass)
 			it->pareturn_string_ok = true;
 	}
@@ -770,7 +772,7 @@ void			User::execKICK(std::string cmd, unsigned int id){
 	}
 }
 
-unsigned int				User::execKILL(std::string cmd, unsigned int id){
+unsigned int	User::execKILL(std::string cmd, unsigned int id){
 	FINDUSER
 	NBARGUMENT(cmd.c_str())	
 
@@ -825,3 +827,79 @@ unsigned int	User::execDIE(std::string cmd, unsigned int id){
 	}
 	return (1000);
 };
+
+void			User::execMODE(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())
+
+	////////////////////////////////////////////////////////////
+	//NEEDMOREPARAM
+	std::cout << nb_cmd << std::endl;
+	if (nb_cmd < 4) {
+		std::string rep = error_needmoreparams("MODE");
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;	
+	}
+	////////////////////////////////////////////////////////////
+	//PARS_INPUT
+	cmd.erase(0, 5);
+	std::istringstream ss(cmd);
+	std::string channel, oper, user;
+	getline(ss, channel, ' ');
+	getline(ss, oper, ' ');
+	getline(ss, user, '\n');
+	////////////////////////////////////////////////////////////
+	//FIND_USER_ID
+	std::vector<t_user>::iterator it2 = _user.begin();
+	while (it2 != _user.end()){ 
+		if (it2->id == id){ 
+			break; 
+		} 
+		it2++; 
+	}
+	//user not in server 
+	if (it2 == _user.end()){
+		std::cout << "RPL USER NOT IN CHANNEL" << std::endl;
+		std::string rep = error_usernotinchannel(user, channel);
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;	
+	}
+	////////////////////////////////////////////////////////////
+	//FIND_CHANNEL
+	int idx = -1;
+	while (++idx < NUMBER_CHANNEL_MAX){
+		if (_channel[idx].getName() == channel)
+			break;
+	}
+	//channel not found
+	if (idx > NUMBER_CHANNEL_MAX - 1) {
+		std::string rep = error_nosuchchannel(channel);
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;	
+	}
+	//user not in channel
+	if (_channel[idx].userIsInChannel(it2->id)){
+		std::cout << "RPL USER NOT IN CHANNEL" << std::endl;
+		std::string rep = error_usernotinchannel(user, channel);
+		send(id, rep.c_str(), rep.size(), 0);
+		return ;		
+	}
+	////////////////////////////////////////////////////////////
+	std::cout << channel << " " << oper << " " << user << std::endl;
+	if (oper.find("+o") == 0)
+		execMODEO(it, it2, &_channel[idx]);
+	else 
+		std::cout << "NO" << std::endl;
+
+};
+
+void		User::execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+		std::cout << "YES" << std::endl;
+	if (channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges();
+		send(it->id, rep.c_str(), rep.size(), 0);
+	}
+	if (channel->userIsOperator(it2->id)) {
+		channel->unsetOperator(it2->id);
+	}
+}

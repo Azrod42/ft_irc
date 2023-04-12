@@ -9,6 +9,7 @@ class Channel {
 		std::string					_key;
 		std::vector<unsigned int>	_current_user;
 		std::vector<unsigned int>	_invite_list;
+		std::vector<unsigned int>	_operator;
 		std::vector<std::string>	_banned_user;
 		bool						_in_use;
 		bool						_invite_only;
@@ -43,8 +44,12 @@ class Channel {
 		void			checkMU();
 		int				initChannel(unsigned int id, std::string channel_name, std::string channel_key);
 		int				userLeave(unsigned int id);
+		int				userIsInChannel(unsigned int id);
+		int				userIsOperator(unsigned int id);
 		int				userDisconnect(unsigned int id);
 		int				userKick(unsigned int id, unsigned int trig, std::string user, std::string message);
 		int				sendMessage(std::string message,std::string nick,std::string name, unsigned int id_s);
+		int				setOperator(unsigned int id);
+		int				unsetOperator(unsigned int id);
 };
 #endif
