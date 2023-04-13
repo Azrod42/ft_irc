@@ -46,6 +46,7 @@ int				Channel::join(unsigned int id, std::string nick, std::string key){
 	}
 	std::vector<std::string>::iterator it3 = _banned_user.begin();
 	for (; it3 != _banned_user.end(); it3++) {
+		// std::cout << *it3 << " - " << nick << std::endl;
 		if (*it3 == nick)
 			return (3);
 		}
@@ -198,20 +199,22 @@ int				Channel::userIsInChannel(unsigned int id){
 	while (it != _current_user.end()) {
 		if (*it == id)
 			return (0);
+		it++;
 	}
 	return (1);
 };
 
 int				Channel::userIsOperator(unsigned int id){
-	std::vector<unsigned int>::iterator it = _current_user.begin();
+	std::vector<unsigned int>::iterator it = _operator.begin();
 	while (it != _operator.end()) {
 		if (*it == id)
-			return (0);
+			return (1);
+		it++;
 	}
-	return (1);
+	return (0);
 };
 
-int				Channel::setOperator(unsigned int id){
+int				Channel::setOperator(unsigned int id, std::string channel, std::string user){
 	std::vector<unsigned int>::iterator it = _operator.begin();
 	while (it != _operator.end()){
 		if (*it == id){
@@ -221,11 +224,11 @@ int				Channel::setOperator(unsigned int id){
 		it++;
 	}
 	this->_operator.push_back(id);
-	std::cout << "DEBUG : UPGRADE" << std::endl;
+	this->notifIsOperator(channel, user);
 	return (0);
 };
 
-int				Channel::unsetOperator(unsigned int id){
+int				Channel::unsetOperator(unsigned int id, std::string channel, std::string user){
 	std::vector<unsigned int>::iterator it = _operator.begin();
 	while (it != _operator.end()){
 		if (*it == id)
@@ -235,6 +238,63 @@ int				Channel::unsetOperator(unsigned int id){
 	if (it == _operator.end())
 		return (2);
 	_operator.erase(it);
-	std::cout << "DEBUG : DOWNGRADE" << std::endl;
+	this->notifIsNoLongerOperator(channel, user);
+	return (0);
+};
+
+void			Channel::printOperator(void) {
+	std::vector<unsigned int>::iterator it = _operator.begin();
+	std::cout << "---------------\nOperator :" << std::endl;
+	while (it != _operator.end()){
+		std::cout << *it << std::endl;
+		it++;
+	}
+	std::cout << "---------------" <<std::endl;
+}
+
+void			Channel::notifIsOperator(std::string channel, std::string user) {
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	while (it != _current_user.end()){
+		std::string rep = rpluserisnowoper(channel, user);
+		send(*it, rep.c_str(), rep.size(), 0);
+		it++;
+	}
+}
+
+void			Channel::notifIsNoLongerOperator(std::string channel, std::string user) {
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+	while (it != _current_user.end()){
+		std::string rep = rpluserisnolongeroper(channel, user);
+		send(*it, rep.c_str(), rep.size(), 0);
+		it++;
+	}
+}
+
+int				Channel::userIsBan(std::string nick){
+	std::vector<std::string>::iterator it = _banned_user.begin();
+	while (it != _banned_user.end()) {
+		if (*it == nick)
+			return (1);
+		it++;
+	}
+	return (0);
+};
+
+int				Channel::banUser(std::string channel, std::string nick, unsigned int id_banned){
+	_banned_user.push_back(nick);
+	std::vector<unsigned int>::iterator it = _current_user.begin();	
+	while (it != _current_user.end()){
+		std::string rep = rplusergetban(channel, nick);
+		send(*it, rep.c_str(), rep.size(), 0);
+		it++;
+	}
+	it = _current_user.begin();
+	while (it != _current_user.end()){
+		if (*it == id_banned)
+			break;
+		it++;
+	}
+	if (it != _current_user.end())
+		_current_user.erase(it);
 	return (0);
 };

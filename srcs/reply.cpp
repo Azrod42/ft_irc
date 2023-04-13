@@ -222,7 +222,7 @@ std::string rplkill(void){
 std::string error_usernotinchannel(std::string nick, std::string channel){
 	std::stringstream return_string;
 
-	return_string << ":" << IPADDR << " 441 " << nick << " " << channel << " :They aren't on that channel" << "\r\n";
+	return_string << ":" << IPADDR << " 441 " << nick << " " << channel << " :aren't on that channel" << "\r\n";
 	return (return_string.str());
 }	
 
@@ -254,5 +254,40 @@ std::string error_noprivileges(void){
 	std::stringstream return_string;
 
 	return_string << ":" << IPADDR << " 481 KILL" << " :Permission Denied- You're not an IRC operator " << "\r\n";
+	return (return_string.str());
+}
+
+std::string error_noprivileges2(std::string commande){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 481 "<< commande << " :Permission Denied- You're not an IRC operator " << "\r\n";
+	return (return_string.str());
+}
+
+std::string rpluserisnowoper(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " is now operator" << "\r\n";
+	return (return_string.str());
+}
+
+std::string rpluserisnolongeroper(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " is no longer operator" << "\r\n";
+	return (return_string.str());
+}
+
+std::string rplusergetban(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " is banned !" << "\r\n";
+	return (return_string.str());
+}
+
+std::string rplusergetunban(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " is unbanned !" << "\r\n";
 	return (return_string.str());
 }

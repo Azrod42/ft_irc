@@ -49,7 +49,13 @@ class Channel {
 		int				userDisconnect(unsigned int id);
 		int				userKick(unsigned int id, unsigned int trig, std::string user, std::string message);
 		int				sendMessage(std::string message,std::string nick,std::string name, unsigned int id_s);
-		int				setOperator(unsigned int id);
-		int				unsetOperator(unsigned int id);
+		int				setOperator(unsigned int id, std::string channel, std::string user);
+		int				unsetOperator(unsigned int id, std::string channel, std::string user);
+		void			printOperator(void);
+		void			notifIsOperator(std::string channel, std::string user);
+		void			notifIsNoLongerOperator(std::string channel, std::string user);
+		int				userIsBan(std::string nick);
+		int				banUser(std::string channel, std::string nick, unsigned int id_banned);
+
 };
 #endif

@@ -25,11 +25,11 @@ public:
 	int		StartServer(User &user);
 
 private:
-	int			_port;
-	std::string	_password;
-	int			_socketFd;
-	struct sockaddr_in	_addr;
-	std::vector<struct pollfd> _fds;
-	int			_timeout;
-	bool		_ON;
+	int							_port;
+	std::string					_password;
+	int							_socketFd;
+	struct sockaddr_in			_addr;
+	std::vector<struct pollfd>	_fds;
+	int							_timeout;
+	bool						_ON;
 };

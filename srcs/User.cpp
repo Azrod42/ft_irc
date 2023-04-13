@@ -834,7 +834,6 @@ void			User::execMODE(std::string cmd, unsigned int id){
 
 	////////////////////////////////////////////////////////////
 	//NEEDMOREPARAM
-	std::cout << nb_cmd << std::endl;
 	if (nb_cmd < 4) {
 		std::string rep = error_needmoreparams("MODE");
 		send(id, rep.c_str(), rep.size(), 0);
@@ -844,62 +843,80 @@ void			User::execMODE(std::string cmd, unsigned int id){
 	//PARS_INPUT
 	cmd.erase(0, 5);
 	std::istringstream ss(cmd);
-	std::string channel, oper, user;
+	std::string channel, oper, user, tmp;
 	getline(ss, channel, ' ');
 	getline(ss, oper, ' ');
 	getline(ss, user, '\n');
+	tmp.clear(); tmp = ft_substr(user.c_str(), 0, user.size() - 1);
+	user.clear(); user = tmp;
 	////////////////////////////////////////////////////////////
 	//FIND_USER_ID
 	std::vector<t_user>::iterator it2 = _user.begin();
 	while (it2 != _user.end()){ 
-		if (it2->id == id){ 
+		// std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
+		if (it2->nick.find(user) != std::string::npos){ 
 			break; 
 		} 
 		it2++; 
 	}
 	//user not in server 
 	if (it2 == _user.end()){
-		std::cout << "RPL USER NOT IN CHANNEL" << std::endl;
-		std::string rep = error_usernotinchannel(user, channel);
+		std::string rep = error_usernotinchannel(channel, user);
 		send(id, rep.c_str(), rep.size(), 0);
 		return ;	
 	}
 	////////////////////////////////////////////////////////////
 	//FIND_CHANNEL
 	int idx = -1;
-	while (++idx < NUMBER_CHANNEL_MAX){
+	while (++idx < NUMBER_CHANNEL_MAX - 1){
 		if (_channel[idx].getName() == channel)
 			break;
 	}
 	//channel not found
-	if (idx > NUMBER_CHANNEL_MAX - 1) {
+	if (idx > NUMBER_CHANNEL_MAX - 3) {
 		std::string rep = error_nosuchchannel(channel);
 		send(id, rep.c_str(), rep.size(), 0);
 		return ;	
 	}
 	//user not in channel
 	if (_channel[idx].userIsInChannel(it2->id)){
-		std::cout << "RPL USER NOT IN CHANNEL" << std::endl;
 		std::string rep = error_usernotinchannel(user, channel);
 		send(id, rep.c_str(), rep.size(), 0);
 		return ;		
 	}
 	////////////////////////////////////////////////////////////
 	std::cout << channel << " " << oper << " " << user << std::endl;
+	// _channel[idx].printOperator();
 	if (oper.find("+o") == 0)
 		execMODEO(it, it2, &_channel[idx]);
+	else if (oper.find("+b") == 0)
+		execMODEBP(it, it2, &_channel[idx]);
 	else 
 		std::cout << "NO" << std::endl;
 
 };
 
 void		User::execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
-		std::cout << "YES" << std::endl;
-	if (channel->userIsOperator(it->id)){
-		std::string rep = error_noprivileges();
+		// std::cout << "trigger is : " << it->id << " victim is : " << it2->id << std::endl;
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
 	}
 	if (channel->userIsOperator(it2->id)) {
-		channel->unsetOperator(it2->id);
+		channel->unsetOperator(it2->id, channel->getName(), it2->nick);
+	} else {
+		channel->setOperator(it2->id, channel->getName(), it2->nick);
+	}
+}
+
+void		User::execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
+		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
+	}
+	if (!channel->userIsBan(it2->nick)) {
+		channel->banUser(channel->getName(), it2->nick, it2->id);
 	}
 }

@@ -39,6 +39,8 @@ class User {
 		void			execPRIVMSGC(std::string cmd, unsigned int id);
 		void			execPRIVMSGU(std::string cmd, unsigned int id);
 		void			execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
+		void			execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
+
 };
 
 #endif
