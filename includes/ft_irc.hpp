@@ -86,6 +86,8 @@ std::string		rpluserisnowoper(std::string channel_name, std::string user);
 std::string		rpluserisnolongeroper(std::string channel_name, std::string user);
 std::string		rplusergetban(std::string channel_name, std::string user);
 std::string		rplusergetunban(std::string channel_name, std::string user);
+std::string		rplusergetkick(std::string channel_name, std::string user);
+std::string		rplyouaremuted(std::string channel_name, std::string user);
 std::string		error_alreadyregistred();
 std::string		error_pass(std::string nick);
 std::string		error_needmoreparams(std::string word);

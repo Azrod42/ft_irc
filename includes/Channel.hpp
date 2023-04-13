@@ -10,6 +10,7 @@ class Channel {
 		std::vector<unsigned int>	_current_user;
 		std::vector<unsigned int>	_invite_list;
 		std::vector<unsigned int>	_operator;
+		std::vector<unsigned int>	_mutted_user;
 		std::vector<std::string>	_banned_user;
 		bool						_in_use;
 		bool						_invite_only;
@@ -39,6 +40,7 @@ class Channel {
 		void			inviteOnlySetFalse() {_invite_only = false;};
 		void			setKey(std::string key) {_key = key;};
 		void			setName(std::string name) {_name = name;};
+		void			setTopic(std::string topic) {_topic = topic; _topic_set = true;};
 		//MEMBRE_FUCT
 		int				join(unsigned int id, std::string nick, std::string key);
 		void			checkMU();
@@ -56,6 +58,11 @@ class Channel {
 		void			notifIsNoLongerOperator(std::string channel, std::string user);
 		int				userIsBan(std::string nick);
 		int				banUser(std::string channel, std::string nick, unsigned int id_banned);
+		int				unBanUser(std::string channel, std::string nick, unsigned int id_banned);
+		int				kickUser(std::string channel, std::string nick, unsigned int id_banned);
+		int				muteUser(unsigned int id_mutted);
+		int				unMuteUser(unsigned int id_mutted);
+		int				userIsMute(unsigned int id_mutted);
 
 };
 #endif

@@ -127,7 +127,7 @@ std::string rplnotopic(std::string channel_name){
 std::string rpltopic(std::string channel_name, std::string topic){
 	std::stringstream return_string;
 
-	return_string << ":" << IPADDR << " 332 " << channel_name << " : " << topic << "\r\n";
+	return_string << ":" << IPADDR << " 332 a " << channel_name << " :" << topic << "\r\n";
 	return (return_string.str());
 }
 
@@ -289,5 +289,19 @@ std::string rplusergetunban(std::string channel_name, std::string user){
 	std::stringstream return_string;
 
 	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " is unbanned !" << "\r\n";
+	return (return_string.str());
+}
+
+std::string rplusergetkick(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " get kick !" << "\r\n";
+	return (return_string.str());
+}
+
+std::string rplyouaremuted(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " you are mutted" << "\r\n";
 	return (return_string.str());
 }

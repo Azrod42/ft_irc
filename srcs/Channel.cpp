@@ -280,6 +280,16 @@ int				Channel::userIsBan(std::string nick){
 	return (0);
 };
 
+int				Channel::userIsMute(unsigned int id){
+	std::vector<unsigned int>::iterator it = _mutted_user.begin();
+	while (it != _mutted_user.end()) {
+		if (*it == id)
+			return (1);
+		it++;
+	}
+	return (0);
+};
+
 int				Channel::banUser(std::string channel, std::string nick, unsigned int id_banned){
 	_banned_user.push_back(nick);
 	std::vector<unsigned int>::iterator it = _current_user.begin();	
@@ -298,3 +308,67 @@ int				Channel::banUser(std::string channel, std::string nick, unsigned int id_b
 		_current_user.erase(it);
 	return (0);
 };
+
+int				Channel::unBanUser(std::string channel, std::string nick, unsigned int id_banned){
+	std::vector<unsigned int>::iterator it = _current_user.begin();	
+	(void)id_banned;
+	while (it != _current_user.end()){
+		std::string rep = rplusergetunban(channel, nick);
+		send(*it, rep.c_str(), rep.size(), 0);
+		it++;
+	}
+	std::vector<std::string>::iterator it2 = _banned_user.begin();
+	while (it2 != _banned_user.end()){
+		if (*it2 == nick)
+			break;
+		it2++;
+	}
+	if (it2 != _banned_user.end())
+		_banned_user.erase(it2);
+	return (0);
+};
+
+int				Channel::kickUser(std::string channel, std::string nick, unsigned int id_banned){
+	std::vector<unsigned int>::iterator it = _current_user.begin();	
+
+	while (it != _current_user.end()){
+		std::string rep = rplusergetkick(channel, nick);
+		send(*it, rep.c_str(), rep.size(), 0);
+		it++;
+	}
+	it = _current_user.begin();
+	while (it != _current_user.end()){
+		if (*it == id_banned)
+			break;
+		it++;
+	}
+	if (it != _current_user.end())
+		_current_user.erase(it);
+	return (0);
+};
+
+int				Channel::muteUser(unsigned int id_mutted){
+	std::vector<unsigned int>::iterator it = _mutted_user.begin();
+
+	while (it != _mutted_user.end()){
+		if (*it == id_mutted)
+			break;
+		it++;
+	}
+	if (it == _mutted_user.end())
+		_mutted_user.push_back(id_mutted);
+	return (0);
+}
+
+int				Channel::unMuteUser(unsigned int id_mutted){
+	std::vector<unsigned int>::iterator it = _mutted_user.begin();
+
+	while (it != _mutted_user.end()){
+		if (*it == id_mutted)
+			break;
+		it++;
+	}
+	if (it != _mutted_user.end())
+		_mutted_user.erase(it);
+	return (0);
+}

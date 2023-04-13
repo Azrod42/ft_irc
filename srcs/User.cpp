@@ -612,7 +612,7 @@ void			User::execPRIVMSGC(std::string cmd, unsigned int id){
 	}
 	// std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
-		if (_channel[i].getName() == channel) {
+		if (_channel[i].getName() == channel && !_channel[i].userIsMute(id)) {
 			std::string rep;
 			int ret = _channel[i].sendMessage(message, it->nick, it->name, id);
 			switch (ret)
@@ -624,6 +624,11 @@ void			User::execPRIVMSGC(std::string cmd, unsigned int id){
 			default:
 				break;
 			}
+			return ;
+		}
+		if (_channel[i].userIsMute(id)){
+			std::string rep = rplyouaremuted(_channel[i].getName(), it->nick);
+			send(it->id, rep.c_str(), rep.size(), 0);
 			return ;
 		}
 	}
@@ -860,7 +865,7 @@ void			User::execMODE(std::string cmd, unsigned int id){
 		it2++; 
 	}
 	//user not in server 
-	if (it2 == _user.end()){
+	if (it2 == _user.end() && oper.find("+t") == std::string::npos){
 		std::string rep = error_usernotinchannel(channel, user);
 		send(id, rep.c_str(), rep.size(), 0);
 		return ;	
@@ -879,7 +884,7 @@ void			User::execMODE(std::string cmd, unsigned int id){
 		return ;	
 	}
 	//user not in channel
-	if (_channel[idx].userIsInChannel(it2->id)){
+	if (_channel[idx].userIsInChannel(it2->id) && oper.find("b") == std::string::npos && oper.find("+t") == std::string::npos){
 		std::string rep = error_usernotinchannel(user, channel);
 		send(id, rep.c_str(), rep.size(), 0);
 		return ;		
@@ -891,6 +896,16 @@ void			User::execMODE(std::string cmd, unsigned int id){
 		execMODEO(it, it2, &_channel[idx]);
 	else if (oper.find("+b") == 0)
 		execMODEBP(it, it2, &_channel[idx]);
+	else if (oper.find("-b") == 0)
+		execMODEBM(it, it2, &_channel[idx]);
+	else if (oper.find("k") == 0)
+		execMODEK(it, it2, &_channel[idx]);
+	else if (oper.find("+t") == 0)
+		execMODET(it, it2, &_channel[idx], user);
+	else if (oper.find("+m") == 0)
+		execMODEMP(it, it2, &_channel[idx]);
+	else if (oper.find("-m") == 0)
+		execMODEMM(it, it2, &_channel[idx]);
 	else 
 		std::cout << "NO" << std::endl;
 
@@ -919,4 +934,53 @@ void		User::execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::it
 	if (!channel->userIsBan(it2->nick)) {
 		channel->banUser(channel->getName(), it2->nick, it2->id);
 	}
+}
+
+void		User::execMODEBM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
+		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
+	}
+	if (channel->userIsBan(it2->nick)) {
+		channel->unBanUser(channel->getName(), it2->nick, it2->id);
+	}
+}
+
+void		User::execMODEK(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
+		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
+	}
+	if (!channel->userIsInChannel(it2->id))
+		channel->kickUser(channel->getName(), it2->nick, it2->id);
+}
+
+void		User::execMODET(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string topic){
+	(void)it2;
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
+		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
+	}	
+	channel->setTopic(topic);
+}
+
+void		User::execMODEMP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
+		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
+	}		
+	channel->muteUser(it2->id);
+}
+
+void		User::execMODEMM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+	if (!channel->userIsOperator(it->id)){
+		std::string rep = error_noprivileges2("MODE");
+		send(it->id, rep.c_str(), rep.size(), 0);
+		return ;
+	}		
+	channel->unMuteUser(it2->id);
 }

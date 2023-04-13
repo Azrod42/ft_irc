@@ -40,6 +40,11 @@ class User {
 		void			execPRIVMSGU(std::string cmd, unsigned int id);
 		void			execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
 		void			execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
+		void			execMODEBM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
+		void			execMODEK(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
+		void			execMODET(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string topic);
+		void			execMODEMP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
+		void			execMODEMM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
 
 };
 
