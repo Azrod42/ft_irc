@@ -17,7 +17,7 @@ User::User(const User &copy){
 	*this = copy;
 };
 
-User		   &User::operator=(const User &copy) {
+User		    &User::operator=(const User &copy) {
 	this->_user = copy._user;
 	this->_channel_use = copy._channel_use;
 	return (*this);
@@ -106,7 +106,7 @@ std::string 	User::getGestname(void) const {
 	return (ret);
 };
 
-unsigned int		User::userCommand(std::string prompt, unsigned int id){
+unsigned int	User::userCommand(std::string prompt, unsigned int id){
 	FINDUSER
 	
 	it->cmd += prompt;
@@ -915,7 +915,7 @@ void			User::execMODE(std::string cmd, unsigned int id){
 
 };
 
-void		User::execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+void			User::execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
 		// std::cout << "trigger is : " << it->id << " victim is : " << it2->id << std::endl;
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
@@ -929,7 +929,7 @@ void		User::execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::ite
 	}
 }
 
-void		User::execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+void			User::execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
@@ -940,7 +940,7 @@ void		User::execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::it
 	}
 }
 
-void		User::execMODEBM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+void			User::execMODEBM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
@@ -951,7 +951,7 @@ void		User::execMODEBM(std::vector<t_user>::iterator it, std::vector<t_user>::it
 	}
 }
 
-void		User::execMODEK(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+void			User::execMODEK(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
@@ -961,7 +961,7 @@ void		User::execMODEK(std::vector<t_user>::iterator it, std::vector<t_user>::ite
 		channel->kickUser(channel->getName(), it2->nick, it2->id);
 }
 
-void		User::execMODET(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string topic){
+void			User::execMODET(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string topic){
 	(void)it2;
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
@@ -971,7 +971,7 @@ void		User::execMODET(std::vector<t_user>::iterator it, std::vector<t_user>::ite
 	channel->setTopic(topic);
 }
 
-void		User::execMODEMP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+void			User::execMODEMP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
@@ -980,7 +980,7 @@ void		User::execMODEMP(std::vector<t_user>::iterator it, std::vector<t_user>::it
 	channel->muteUser(it2->id);
 }
 
-void		User::execMODEMM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
+void			User::execMODEMM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
@@ -989,7 +989,7 @@ void		User::execMODEMM(std::vector<t_user>::iterator it, std::vector<t_user>::it
 	channel->unMuteUser(it2->id);
 }
 
-void		User::execMODEI(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string status){
+void			User::execMODEI(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string status){
 	(void)it2;
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
@@ -1005,7 +1005,7 @@ void		User::execMODEI(std::vector<t_user>::iterator it, std::vector<t_user>::ite
 	}
 }
 
-void		User::execINVITE(std::string cmd, unsigned int id){
+void			User::execINVITE(std::string cmd, unsigned int id){
 	FINDUSER
 	NBARGUMENT(cmd.c_str())	
 
@@ -1077,3 +1077,4 @@ void		User::execINVITE(std::string cmd, unsigned int id){
 		return ;
 	};
 }
+
