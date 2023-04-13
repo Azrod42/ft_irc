@@ -87,7 +87,6 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-
 // int	init_socket(t_data *dta, struct sockaddr_in *addr) {
 // 	int	number_option = 1;
 
@@ -245,3 +244,4 @@ int	main(int ac, char **av)
 // 	// system("leaks ircserv");
 // 	return (0);
 // }
+

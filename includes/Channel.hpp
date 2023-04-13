@@ -36,8 +36,8 @@ class Channel {
 		//SETTER
 		void			useKeySetTrue() {_use_key = true;};
 		void			useKeySetFalse() {_use_key = false;};
-		void			inviteOnlySetTrue() {_invite_only = true;};
-		void			inviteOnlySetFalse() {_invite_only = false;};
+		void			inviteOnlySetTrue() {_invite_only = true; this->inviteOnlyInit();};
+		void			inviteOnlySetFalse() {_invite_only = false; _invite_list.clear();};
 		void			setKey(std::string key) {_key = key;};
 		void			setName(std::string name) {_name = name;};
 		void			setTopic(std::string topic) {_topic = topic; _topic_set = true;};
@@ -63,6 +63,9 @@ class Channel {
 		int				muteUser(unsigned int id_mutted);
 		int				unMuteUser(unsigned int id_mutted);
 		int				userIsMute(unsigned int id_mutted);
+		int				sendToAllUser(std::string message);
+		int				inviteOnlyInit();
+		int				inviteUser(unsigned int id);
 
 };
 #endif

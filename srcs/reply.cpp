@@ -123,6 +123,14 @@ std::string rplnotopic(std::string channel_name){
 	return (return_string.str());
 }
 
+//#define RPL_INVITING 341
+std::string rplinviting(std::string channel_name, std::string nick, std::string byhow){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 341 " << byhow << " " << nick << " " << channel_name << "\r\n";
+	return (return_string.str());
+}
+
 //#define RPL_NOTOPIC 332
 std::string rpltopic(std::string channel_name, std::string topic){
 	std::stringstream return_string;
@@ -303,5 +311,19 @@ std::string rplyouaremuted(std::string channel_name, std::string user){
 	std::stringstream return_string;
 
 	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << user << " you are mutted" << "\r\n";
+	return (return_string.str());
+}
+
+std::string rplchannelsetinviteonly(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << "Channel is now set on invite only by "<< user << "\r\n";
+	return (return_string.str());
+}
+
+std::string rplchannelunsetinviteonly(std::string channel_name, std::string user){
+	std::stringstream return_string;
+
+	return_string << ":" << IPADDR << " 441 " << channel_name << " : " << "Channel is no longer set invite only by "<< user << "\r\n";
 	return (return_string.str());
 }

@@ -40,7 +40,7 @@ int				Channel::join(unsigned int id, std::string nick, std::string key){
 			return (1);
 	if (_invite_only == true){
 		std::vector<unsigned int>::iterator it = _invite_list.begin();
-		for (; it != _invite_list.end();) { if (*it == id) break;};
+		for (; it != _invite_list.end(); it++) { if (*it == id) break;};
 		if (it == _invite_list.end())
 			return (2);
 	}
@@ -370,5 +370,40 @@ int				Channel::unMuteUser(unsigned int id_mutted){
 	}
 	if (it != _mutted_user.end())
 		_mutted_user.erase(it);
+	return (0);
+}
+
+int				Channel::sendToAllUser(std::string message){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+
+	while (it != _current_user.end()){
+		send(*it, message.c_str(), message.size(), 0);
+		it++;
+	}
+	return (0);
+}
+
+int				Channel::inviteOnlyInit(){
+	std::vector<unsigned int>::iterator it = _current_user.begin();
+
+	while (it != _current_user.end()){
+		_invite_list.push_back(*it);
+		it++;
+	}
+	return (0);
+}
+
+int				Channel::inviteUser(unsigned int id){
+	std::vector<unsigned int>::iterator it = _invite_list.begin();
+
+	while (it != _invite_list.end()){
+		if (*it == id)
+			break;
+		it++;
+	}
+	if (it == _invite_list.end()){
+		_invite_list.push_back(id);
+		return (1); //FOR SEND INVITE TO USER
+	}
 	return (0);
 }
