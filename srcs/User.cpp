@@ -132,8 +132,8 @@ unsigned int		User::userCommand(std::string prompt, unsigned int id){
 				this->execLOG(it->cmd, it->id);
 			if (it->cmd.find("KICK ") < std::string::npos)
 				this->execKICK(it->cmd, it->id);
-			if (it->cmd.find("KILL ") < std::string::npos)
-				ret = this->execKILL(it->cmd, it->id);
+			// if (it->cmd.find("KILL ") < std::string::npos)
+			// 	ret = this->execKILL(it->cmd, it->id);
 			if (it->cmd.find("DIE") == 0)
 				ret = this->execDIE(it->cmd, it->id);
 			if (it->cmd.find("MODE ") == 0)
@@ -902,9 +902,9 @@ void			User::execMODE(std::string cmd, unsigned int id){
 		execMODEK(it, it2, &_channel[idx]);
 	else if (oper.find("+t") == 0)
 		execMODET(it, it2, &_channel[idx], user);
-	else if (oper.find("+m") == 0)
+	else if (oper.find("+m") == 0 || oper.find("-v") == 0)
 		execMODEMP(it, it2, &_channel[idx]);
-	else if (oper.find("-m") == 0)
+	else if (oper.find("-m") == 0 || oper.find("+v") == 0)
 		execMODEMM(it, it2, &_channel[idx]);
 	else 
 		std::cout << "NO" << std::endl;
