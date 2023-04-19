@@ -138,6 +138,8 @@ unsigned int	User::userCommand(std::string prompt, unsigned int id){
 			// 	ret = this->execKILL(it->cmd, it->id);
 			if (it->cmd.find("DIE") == 0)
 				ret = this->execDIE(it->cmd, it->id);
+			if (it->cmd.find("NOTICE") == 0)
+				this->execNOTICE(it->cmd, it->id);
 			if (it->cmd.find("MODE ") == 0)
 				this->execMODE(it->cmd, it->id);
 			if (it->cmd.find("PRIVMSG #") < std::string::npos)
@@ -828,7 +830,7 @@ unsigned int	User::execDIE(std::string cmd, unsigned int id){
 
 	int ret = 999;
 	if (it->is_operator == false) {
-		std::string rep = error_noprivileges();
+		std::string rep = error_noprivileges2("DIE");
 		send(id, rep.c_str(), rep.size(), 0);
 		return ret;
 	}
@@ -854,8 +856,8 @@ void			User::execMODE(std::string cmd, unsigned int id){
 	getline(ss, channel, ' ');
 	getline(ss, oper, ' ');
 	getline(ss, user, '\n');
-	tmp.clear(); tmp = ft_substr(user.c_str(), 0, user.size() - 1);
-	user.clear(); user = tmp;
+	tmp.clear(); tmp = user.erase(user.size() - 1, user.size());
+	user.clear(); user = tmp; 
 	////////////////////////////////////////////////////////////
 	//FIND_USER_ID
 	std::vector<t_user>::iterator it2 = _user.begin();
@@ -1023,7 +1025,7 @@ void			User::execINVITE(std::string cmd, unsigned int id){
 	std::string channel, user, tmp;
 	getline(ss, user, ' ');
 	getline(ss, channel, '\n');
-	tmp.clear(); tmp = ft_substr(channel.c_str(), 0, channel.size() - 1);
+	tmp.clear(); tmp = channel; tmp.erase(channel.size() - 1, channel.size());
 	channel.clear(); channel = tmp;
 	////////////////////////////////////////////////////////////
 	//FIND_CHANNEL
@@ -1078,3 +1080,39 @@ void			User::execINVITE(std::string cmd, unsigned int id){
 	};
 }
 
+
+void			User::execNOTICE(std::string cmd, unsigned int id){
+	FINDUSER
+	NBARGUMENT(cmd.c_str())	
+
+	////////////////////////////////////////////////////////////
+	//NEEDMOREPARAM
+	if (nb_cmd < 3)
+		return ;	
+	////////////////////////////////////////////////////////////
+	//PARS_INPUT
+	cmd.erase(0, 7);
+	std::istringstream ss(cmd);
+	std::string message, user, tmp;
+	getline(ss, user, ' ');
+	tmp.clear(); tmp = user.c_str(); 
+	user.clear(); user = tmp;
+	getline(ss, message, '\n');
+	message.erase(0, 1);
+	std::cout << user << " " << message << std::endl;
+	////////////////////////////////////////////////////////////
+	//FIND_USER_ID
+	std::vector<t_user>::iterator it2 = _user.begin();
+	while (it2 != _user.end()){ 
+		// std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
+		if (it2->nick.find(user) != std::string::npos && it2->nick.size() - 1 < user.size()){ 
+			break; 
+		} 
+		it2++; 
+	}
+	//user not in server 
+	if (it2 == _user.end())
+		return ;
+	std::string rep = rplnotice(it->nick, it->name, message);
+	send(it2->id, rep.c_str(), rep.size(), 0);
+}

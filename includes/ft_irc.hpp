@@ -91,6 +91,7 @@ std::string		rplyouaremuted(std::string channel_name, std::string user);
 std::string		rplchannelsetinviteonly(std::string channel_name, std::string user);
 std::string		rplchannelunsetinviteonly(std::string channel_name, std::string user);
 std::string		rplinviting(std::string channel_name, std::string nick, std::string byhow);
+std::string 	rplnotice(std::string nick, std::string name, std::string message);
 std::string		error_alreadyregistred();
 std::string		error_pass(std::string nick);
 std::string		error_needmoreparams(std::string word);

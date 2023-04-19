@@ -84,6 +84,7 @@ int	main(int ac, char **av)
 	user.getServerPass(av[2]);
 	server.StartServer(user);
 	close(server.getServerFD());
+	system("leaks ircserv");
 	return (0);
 }
 
@@ -93,8 +94,7 @@ int	main(int ac, char **av)
 // /nick <new nick>
 // /mode <channel> <option> <target / command>
 // 	option :
-//			+o <target> set channel operator
-//			-o <target> unset channel operator
+//			+o <target> set channel operator (SWITCH DE DROIT ON / OFF qui remplace le -o)
 //			+m / -v <target> mute user
 //			-m / +v <target> unmute user
 //			k <target> kick target

@@ -186,6 +186,13 @@ std::string rpl(std::string nick, std::string channel, std::string name, std::st
 	return (return_string.str());
 }
 
+std::string rplnotice(std::string nick, std::string name, std::string message){
+	std::stringstream return_string;
+
+	return_string << ":" << nick <<  "!" << name << "@" << IPADDR << " NOTICE " << message << "\r\n";
+	return (return_string.str());
+}
+
 //#define ERR_CANNOTSENDTOCHAN 404
 std::string error_cannotsendtochan(std::string channel_name){
 	std::stringstream return_string;

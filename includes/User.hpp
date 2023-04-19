@@ -47,6 +47,7 @@ class User {
 		void			execMODEMP(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
 		void			execMODEMM(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel);
 		void			execMODEI(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string status);
+		void			execNOTICE(std::string cmd, unsigned int id);
 
 };
 
