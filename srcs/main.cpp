@@ -84,7 +84,7 @@ int	main(int ac, char **av)
 	user.getServerPass(av[2]);
 	server.StartServer(user);
 	close(server.getServerFD());
-	system("leaks ircserv");
+	// system("leaks ircserv");
 	return (0);
 }
 
