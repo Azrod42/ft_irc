@@ -3,6 +3,8 @@
 
 #include"../includes/ft_irc.hpp"
 
+typedef struct s_uer t_user;
+
 class Channel {
 	private :
 		std::string					_name;
@@ -42,14 +44,14 @@ class Channel {
 		void			setName(std::string name) {_name = name;};
 		void			setTopic(std::string topic) {_topic = topic; _topic_set = true;};
 		//MEMBRE_FUCT
-		int				join(unsigned int id, std::string nick, std::string key);
+		int				join(unsigned int id, std::string nick, std::string key, std::vector<t_user>::iterator the, std::vector<t_user>& Users);
 		void			checkMU();
 		int				initChannel(unsigned int id, std::string channel_name, std::string channel_key);
-		int				userLeave(unsigned int id);
+		int				userLeave(unsigned int id, std::string rep);
 		int				userIsInChannel(unsigned int id);
 		int				userIsOperator(unsigned int id);
-		int				userDisconnect(unsigned int id);
-		int				userKick(unsigned int id, unsigned int trig, std::string user, std::string message);
+		int				userDisconnect(unsigned int id, std::string rep);
+		int				userKick(unsigned int id, unsigned int trig, std::string user, std::string message, std::string rep);
 		int				sendMessage(std::string message,std::string nick,std::string name, unsigned int id_s);
 		int				setOperator(unsigned int id, std::string channel, std::string user);
 		int				unsetOperator(unsigned int id, std::string channel, std::string user);
@@ -57,9 +59,9 @@ class Channel {
 		void			notifIsOperator(std::string channel, std::string user);
 		void			notifIsNoLongerOperator(std::string channel, std::string user);
 		int				userIsBan(std::string nick);
-		int				banUser(std::string channel, std::string nick, unsigned int id_banned);
+		int				banUser(std::string channel, std::string nick, unsigned int id_banned, std::string rep);
 		int				unBanUser(std::string channel, std::string nick, unsigned int id_banned);
-		int				kickUser(std::string channel, std::string nick, unsigned int id_banned);
+		int				kickUser(std::string channel, std::string nick, unsigned int id_banned, std::string rep);
 		int				muteUser(unsigned int id_mutted);
 		int				unMuteUser(unsigned int id_mutted);
 		int				userIsMute(unsigned int id_mutted);

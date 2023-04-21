@@ -6,13 +6,13 @@
 class User {
 	private :
 		std::map<std::string, std::string>	_operator;
-		std::vector<t_user> 				_user;
 		Channel								_channel[NUMBER_CHANNEL_MAX];
 		int									_channel_use;
 		std::string							_pass;
 		static const bool					_operator_allow = true;
 
 	public :
+		std::vector<t_user> 				_user;
 		//CONSTRUCTOR
 		User();
 		~User();

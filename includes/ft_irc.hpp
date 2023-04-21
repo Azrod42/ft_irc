@@ -80,6 +80,7 @@ std::string		rplkicked(std::string nick, std::string channel, std::string reason
 std::string		rplyouroper(std::string nick);
 std::string		rplping(void);
 std::string		rpljoin(std::string nick, std::string name, std::string channel);
+std::string 	rplpart(std::string nick, std::string name, std::string channel);
 std::string		rplnotopic(std::string channel_name);
 std::string		rpltopic(std::string channel_name, std::string topic);
 std::string		rpluserisnowoper(std::string channel_name, std::string user);

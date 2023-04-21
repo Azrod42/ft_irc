@@ -107,6 +107,14 @@ std::string rpljoin(std::string nick, std::string name, std::string channel){
 	return (return_string.str());
 }
 
+// PART REPLY
+std::string rplpart(std::string nick, std::string name, std::string channel){
+	std::stringstream return_string;
+
+	return_string << ":" << nick <<  "!" << name << "@" << IPADDR << " PART " << channel << "\r\n";
+	return (return_string.str());
+}
+
 //#define ERR_TOOMANYCHANNELS 405
 std::string error_toomanychannels(std::string channel_name){
 	std::stringstream return_string;

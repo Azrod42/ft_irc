@@ -92,7 +92,7 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 void			User::disconectUser(unsigned int id){
 	FINDUSER
 	for (int i = 0; i < NUMBER_CHANNEL_MAX - 1; i++){
-			_channel[i].userDisconnect(id);
+			_channel[i].userDisconnect(id, rplpart(it->nick, it->name, _channel[i].getName()));
 	}
 	_user.erase(it);
 };
@@ -114,7 +114,7 @@ unsigned int	User::userCommand(std::string prompt, unsigned int id){
 	// it->is_log = 4; //DEBUG_ONLY !!!
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
-	std::cout << "\n------------------\n" << prompt << "------------------\n" << std::endl;
+	//std::cout << "\n------------------\n" << prompt << "------------------\n" << std::endl;
 	if (it->cmd.find("\r\n") < std::string::npos)
 	{
 		if (it->is_log == 4)
@@ -434,7 +434,7 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 			}
 		}
 		if (j < NUMBER_CHANNEL_MAX - 1){ //FIND_THE_CHANNEL
-			int ret = _channel[j].join(it->id, it->nick, key[j]);
+			int ret = _channel[j].join(it->id, it->nick, key[j], it, this->_user);
 			// std::cout << "Code : " << ret << std::endl;
 			std::string rep;
 			switch (ret)
@@ -460,8 +460,8 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 			default:
 				//RET 0 = USER_JOIN_CHANNEL
 				// std::cout << "Find channel : " << _channel[j].getName() << std::endl;
-				rep = rpljoin(it->nick, it->name, chan[i]);
-				send(id, rep.c_str(), rep.size(), 0);
+				// rep = rpljoin(it->nick, it->name, chan[i]);
+				// send(id, rep.c_str(), rep.size(), 0);
 				if (_channel[j].istopic() == true){ //RPL_TOPIC
 					std::string rep = rpltopic(chan[i], _channel[j].getTopic());
 					send(id, rep.c_str(), rep.size(), 0);
@@ -482,13 +482,13 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 				_channel[k].initChannel(id, chan[i], key[i]);
 				std::string rep = rpljoin(it->nick, it->name, chan[i]);
 				send(id, rep.c_str(), rep.size(), 0);
-				// if (_channel[k].istopic() == true){ //RPL_TOPIC
-				// 	std::string rep = rpltopic(chan[i], _channel[k].getTopic());
-				// 	send(id, rep.c_str(), rep.size(), 0);
-				// } else { //RPL_NOTOPIC
-				// 	std::string rep = rplnotopic(chan[i]);
-				// 	send(id, rep.c_str(), rep.size(), 0);
-				// }
+				if (_channel[k].istopic() == true){ //RPL_TOPIC
+					std::string rep = rpltopic(chan[i], _channel[k].getTopic());
+					send(id, rep.c_str(), rep.size(), 0);
+				} else { //RPL_NOTOPIC
+					std::string rep = rplnotopic(chan[i]);
+					send(id, rep.c_str(), rep.size(), 0);
+				}
 				_channel_use += 1;
 			}
 		}
@@ -544,7 +544,7 @@ void			User::execPART(std::string cmd, unsigned int id){
 				break;
 		}
 		if (j < NUMBER_CHANNEL_MAX){
-			if (_channel[j].userLeave(id)){
+			if (_channel[j].userLeave(id, rplpart(it->nick, it->name, _channel[j].getName()))){
 				std::string ret = error_notonchannel(chan[i]);
 				send(id, ret.c_str(), ret.size(), 0);
 			}
@@ -761,7 +761,7 @@ void			User::execKICK(std::string cmd, unsigned int id){
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++) {
 		// std::cout << _channel[i].getName() << " " << channel << std::endl;
 		if (_channel[i].getName() == channel){
-			int ret = _channel[i].userKick(iter->id, id, user, reason);
+			int ret = _channel[i].userKick(iter->id, id, user, reason, rplpart(iter->nick, iter->name, _channel[i].getName()));
 			if (ret == 1){
 				std::string rep = error_usernotinchannel(user, channel);
 				send(id, rep.c_str(), rep.size(), 0);
@@ -938,7 +938,7 @@ void			User::execMODEBP(std::vector<t_user>::iterator it, std::vector<t_user>::i
 		return ;
 	}
 	if (!channel->userIsBan(it2->nick)) {
-		channel->banUser(channel->getName(), it2->nick, it2->id);
+		channel->banUser(channel->getName(), it2->nick, it2->id, rplpart(it2->nick, it2->name, channel->getName()));
 	}
 }
 
@@ -960,7 +960,7 @@ void			User::execMODEK(std::vector<t_user>::iterator it, std::vector<t_user>::it
 		return ;
 	}
 	if (!channel->userIsInChannel(it2->id))
-		channel->kickUser(channel->getName(), it2->nick, it2->id);
+		channel->kickUser(channel->getName(), it2->nick, it2->id, rplpart(it2->nick, it2->name, channel->getName()));
 }
 
 void			User::execMODET(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel, std::string topic){

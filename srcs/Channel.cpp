@@ -33,7 +33,7 @@ Channel		   &Channel::operator=(const Channel &copy) {
 //RET 2 = INVITE_LIST_USER_NOT_IN
 //RET 3 = USER_BANNED_FORM_CHANNEL
 //RET 4 = USER_ALREADY_IN_CHANNEL
-int				Channel::join(unsigned int id, std::string nick, std::string key){
+int				Channel::join(unsigned int id, std::string nick, std::string key, std::vector<t_user>::iterator the, std::vector<t_user>& Users){
 	// std::cout<< "channel join " << std::endl;
 	if (_use_key == true)
 	{
@@ -57,6 +57,25 @@ int				Channel::join(unsigned int id, std::string nick, std::string key){
 	std::vector<unsigned int>::iterator it2 = _current_user.begin();
 	for (; it2!= _current_user.end(); it2++) { if (*it2 == id) return (4);}
 	_current_user.push_back(id);
+	std::string rep = rpljoin(the->nick, the->name, this->_name);
+	// -----
+	for (size_t i4 = 0; i4 < this->_current_user.size(); i4++)
+		send(this->_current_user[i4], rep.c_str(), rep.size(), 0);
+	for (size_t i4 = 0; i4 < this->_current_user.size(); i4++)
+	{
+		if (this->_current_user[i4] != the->id){
+			for (size_t i5 = 0; i5 < Users.size(); i5++)
+			{
+				if (Users[i5].id == this->_current_user[i4]){
+					rep = rpljoin(Users[i5].nick, Users[i5].name, this->_name);
+					send(the->id, rep.c_str(), rep.size(), 0);
+					break ;
+				}
+			}
+		}
+	}
+	
+	// -----
 	// std::cout<< "OK join" << std::endl;
 	return (0);
 };
@@ -76,17 +95,21 @@ int				Channel::initChannel(unsigned int id, std::string channel_name, std::stri
 	return (0);
 };
 
-int				Channel::userLeave(unsigned int id){
+int				Channel::userLeave(unsigned int id, std::string rep){
 	std::vector<unsigned int>::iterator it = _current_user.begin();
 
 	while (it != _current_user.end()){
 		if (*it == id){
-			_current_user.erase(it);
-			return (0);
+			break;
 		}
 		it++;
 	}
-	return (1);
+	if (it == _current_user.end())
+		return 1;
+	for (size_t i = 0; i < _current_user.size(); i++)
+		send(_current_user[i], rep.c_str(), rep.size(), 0);
+	_current_user.erase(it);
+	return 0;
 };
 
 //ret 1 = ERR_CANNOTSENDTOCHAN (user not in)
@@ -125,7 +148,7 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 	return (0);
 };
 
-int				Channel::userDisconnect(unsigned int id){
+int				Channel::userDisconnect(unsigned int id, std::string rep){
 	{
 		std::vector<unsigned int>::iterator it = _current_user.begin();
 
@@ -135,7 +158,8 @@ int				Channel::userDisconnect(unsigned int id){
 		while (it != _current_user.end()){
 			// std::cout << this->_name << *it << std::endl;
 			if (*it == id){
-				_current_user.erase(it);
+				this->userLeave(id, rep);
+				//_current_user.erase(it);
 				return (0);
 			}
 			it++;
@@ -154,19 +178,19 @@ int				Channel::userDisconnect(unsigned int id){
 			it++;
 		}
 	}
-	{
-		std::vector<unsigned int>::iterator it = _operator.begin();
+	// {
+	// 	std::vector<unsigned int>::iterator it = _operator.begin();
 
-		if (_operator.size() < 1)
-			return (0);
-		while (it != _operator.end()){
-			if (*it == id){
-				_operator.erase(it);
-				return (0);
-			}
-			it++;
-		}
-	}
+	// 	if (_operator.size() < 1)
+	// 		return (0);
+	// 	while (it != _operator.end()){
+	// 		if (*it == id){
+	// 			_operator.erase(it);
+	// 			return (0);
+	// 		}
+	// 		it++;
+	// 	}
+	// }
 	{
 		std::vector<unsigned int>::iterator it = _mutted_user.begin();
 
@@ -183,7 +207,7 @@ int				Channel::userDisconnect(unsigned int id){
 	return (0);
 };
 
-int				Channel::userKick(unsigned int id, unsigned int trig, std::string user, std::string message){
+int				Channel::userKick(unsigned int id, unsigned int trig, std::string user, std::string message, std::string repl){
 	std::vector<unsigned int>::iterator it = _current_user.begin();
 	std::vector<unsigned int>::iterator it2 = _current_user.begin();
 	std::string mess;
@@ -215,7 +239,8 @@ int				Channel::userKick(unsigned int id, unsigned int trig, std::string user, s
 			send(*it3, rep.c_str(), rep.size(), 0);
 			it3++;
 		}
-		_current_user.erase(it);
+		this->userLeave(*it, repl);
+		//_current_user.erase(it);
 		return 0;
 	} else if (!trigger_in){
 		return 2;
@@ -334,7 +359,7 @@ int				Channel::userIsMute(unsigned int id){
 	return (0);
 };
 
-int				Channel::banUser(std::string channel, std::string nick, unsigned int id_banned){
+int				Channel::banUser(std::string channel, std::string nick, unsigned int id_banned, std::string rep){
 	_banned_user.push_back(nick);
 	std::vector<unsigned int>::iterator it = _current_user.begin();	
 	while (it != _current_user.end()){
@@ -349,7 +374,8 @@ int				Channel::banUser(std::string channel, std::string nick, unsigned int id_b
 		it++;
 	}
 	if (it != _current_user.end())
-		_current_user.erase(it);
+		this->userLeave(id_banned, rep);
+		//_current_user.erase(it);
 	return (0);
 };
 
@@ -372,7 +398,7 @@ int				Channel::unBanUser(std::string channel, std::string nick, unsigned int id
 	return (0);
 };
 
-int				Channel::kickUser(std::string channel, std::string nick, unsigned int id_banned){
+int				Channel::kickUser(std::string channel, std::string nick, unsigned int id_banned, std::string rep){
 	std::vector<unsigned int>::iterator it = _current_user.begin();	
 
 	while (it != _current_user.end()){
@@ -387,7 +413,8 @@ int				Channel::kickUser(std::string channel, std::string nick, unsigned int id_
 		it++;
 	}
 	if (it != _current_user.end())
-		_current_user.erase(it);
+		this->userLeave(id_banned, rep);
+		//_current_user.erase(it);
 	return (0);
 };
 
