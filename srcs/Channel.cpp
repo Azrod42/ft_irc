@@ -36,8 +36,11 @@ Channel		   &Channel::operator=(const Channel &copy) {
 int				Channel::join(unsigned int id, std::string nick, std::string key){
 	// std::cout<< "channel join " << std::endl;
 	if (_use_key == true)
+	{
+		// std::cout << "-=-=-" << key << " " << _key << std::endl;
 		if (key != _key)
 			return (1);
+	}
 	if (_invite_only == true){
 		std::vector<unsigned int>::iterator it = _invite_list.begin();
 		for (; it != _invite_list.end(); it++) { if (*it == id) break;};
@@ -123,18 +126,59 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 };
 
 int				Channel::userDisconnect(unsigned int id){
-	std::vector<unsigned int>::iterator it = _current_user.begin();
+	{
+		std::vector<unsigned int>::iterator it = _current_user.begin();
 
-	// std::cout << "UI " << _current_user.size() << " id : " << id << std::endl;
-	if (_current_user.size() < 1)
-		return (0);
-	while (it != _current_user.end()){
-		// std::cout << this->_name << *it << std::endl;
-		if (*it == id){
-			_current_user.erase(it);
+		// std::cout << "UI " << _current_user.size() << " id : " << id << std::endl;
+		if (_current_user.size() < 1)
 			return (0);
+		while (it != _current_user.end()){
+			// std::cout << this->_name << *it << std::endl;
+			if (*it == id){
+				_current_user.erase(it);
+				return (0);
+			}
+			it++;
 		}
-		it++;
+	}
+	{
+		std::vector<unsigned int>::iterator it = _invite_list.begin();
+
+		if (_invite_list.size() < 1)
+			return (0);
+		while (it != _invite_list.end()){
+			if (*it == id){
+				_invite_list.erase(it);
+				return (0);
+			}
+			it++;
+		}
+	}
+	{
+		std::vector<unsigned int>::iterator it = _operator.begin();
+
+		if (_operator.size() < 1)
+			return (0);
+		while (it != _operator.end()){
+			if (*it == id){
+				_operator.erase(it);
+				return (0);
+			}
+			it++;
+		}
+	}
+	{
+		std::vector<unsigned int>::iterator it = _mutted_user.begin();
+
+		if (_mutted_user.size() < 1)
+			return (0);
+		while (it != _mutted_user.end()){
+			if (*it == id){
+				_mutted_user.erase(it);
+				return (0);
+			}
+			it++;
+		}
 	}
 	return (0);
 };

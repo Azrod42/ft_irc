@@ -189,7 +189,7 @@ std::string rpl(std::string nick, std::string channel, std::string name, std::st
 std::string rplnotice(std::string nick, std::string name, std::string message){
 	std::stringstream return_string;
 
-	return_string << ":" << nick <<  "!" << name << "@" << IPADDR << " NOTICE " << message << "\r\n";
+	return_string << ":" << nick <<  "!" << name << "@" << IPADDR << " NOTICE s " << message << "\r\n";
 	return (return_string.str());
 }
 

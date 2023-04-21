@@ -134,8 +134,8 @@ unsigned int	User::userCommand(std::string prompt, unsigned int id){
 				this->execKICK(it->cmd, it->id);
 			if (it->cmd.find("INVITE ") < std::string::npos)
 				this->execINVITE(it->cmd, it->id);
-			// if (it->cmd.find("KILL ") < std::string::npos)
-			// 	ret = this->execKILL(it->cmd, it->id);
+			if (it->cmd.find("KILL ") < std::string::npos)
+				ret = this->execKILL(it->cmd, it->id);
 			if (it->cmd.find("DIE") == 0)
 				ret = this->execDIE(it->cmd, it->id);
 			if (it->cmd.find("NOTICE") == 0)
@@ -417,15 +417,16 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 		while (key.size() < chan.size())
 			key.push_back("__NOKEY__");
 	//AFFICHAGE_PARSING
-	// for(int i = 0; i < (int)chan.size(); i++){
-	// 	std::cout << "--" << chan[i] << std::endl;
-	// }
-	// for(int i = 0; i < (int)key.size(); i++)
-	// 	std::cout << "==" << key[i] << std::endl;
+	for(int i = 0; i < (int)chan.size(); i++){
+		std::cout << "--" << chan[i] << std::endl;
+	}
+	for(int i = 0; i < (int)key.size(); i++)
+		std::cout << "==" << key[i] << std::endl;
 
 	//JOIN_CHANNEL_OR_CREATE
 	for (int i = 0; i < (int)chan.size(); i++){
 		int j = -1;
+		// std::cout << "Join : " << i << std::endl;
 		while (++j < NUMBER_CHANNEL_MAX) {
 			if (_channel[j].getName() == chan[i]){
 				// std::cout << "Find channel :" << chan[i] << " " << _channel[j].getName() << std::endl;
@@ -489,7 +490,6 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 				// 	send(id, rep.c_str(), rep.size(), 0);
 				// }
 				_channel_use += 1;
-				break;
 			}
 		}
 	}
@@ -1079,7 +1079,6 @@ void			User::execINVITE(std::string cmd, unsigned int id){
 		return ;
 	};
 }
-
 
 void			User::execNOTICE(std::string cmd, unsigned int id){
 	FINDUSER

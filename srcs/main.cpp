@@ -104,6 +104,7 @@ int	main(int ac, char **av)
 //			i false     unset channel to invite only
 // /invite <user> 
 // /die
+// /kill <user> <reason>
 // /kick <user> <reason>
 // PRIVMSG / PING / PART / NICK / PASS / USER are handle
 // /exit
