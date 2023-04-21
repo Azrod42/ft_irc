@@ -66,7 +66,7 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 		name = this->getGestname();
 	while (it!= _user.end()){
 		if (it->id == id || it->name == name){
-			std::cout << "Error : addUser() not possible (ID or Name already use)." << std::endl;
+			//std::cout << "Error : addUser() not possible (ID or Name already use)." << std::endl;
 			return (1);
 		}
 		it++;
@@ -85,13 +85,13 @@ int				User::addUser(const unsigned int id, std::string name, in_addr_t ip) {
 	udef.unused = " ";
 	udef.cmd = "";
 	_user.push_back(udef);
-	// std::cout << "New user connected : " << udef.name << std::endl;
+	// //std::cout << "New user connected : " << udef.name << std::endl;
 	return (0);
 };
 
 void			User::disconectUser(unsigned int id){
 	FINDUSER
-	for (int i = 0; i < NUMBER_CHANNEL_MAX - 1; i++){
+	for (int i = 0; i < NUMBER_CHANNEL_MAX - 5; i++){
 			_channel[i].userDisconnect(id, rplpart(it->nick, it->name, _channel[i].getName()));
 	}
 	_user.erase(it);
@@ -114,12 +114,12 @@ unsigned int	User::userCommand(std::string prompt, unsigned int id){
 	// it->is_log = 4; //DEBUG_ONLY !!!
 	if (it->cmd.find("\n") < std::string::npos && it->cmd.find("\r") == std::string::npos)
 		it->cmd.insert(it->cmd.find("\n"), "\r");
-	//std::cout << "\n------------------\n" << prompt << "------------------\n" << std::endl;
+	////std::cout << "\n------------------\n" << prompt << "------------------\n" << std::endl;
 	if (it->cmd.find("\r\n") < std::string::npos)
 	{
 		if (it->is_log == 4)
 		{
-			// std::cout << "User enter CMD : " << it->cmd << std::endl;
+			// //std::cout << "User enter CMD : " << it->cmd << std::endl;
 			if (it->cmd.find("OPER ") < std::string::npos)
 				this->execOPER(it->cmd, it->id);
 			if (it->cmd.find("PING ") < std::string::npos)
@@ -134,8 +134,8 @@ unsigned int	User::userCommand(std::string prompt, unsigned int id){
 				this->execKICK(it->cmd, it->id);
 			if (it->cmd.find("INVITE ") < std::string::npos)
 				this->execINVITE(it->cmd, it->id);
-			if (it->cmd.find("KILL ") < std::string::npos)
-				ret = this->execKILL(it->cmd, it->id);
+			// if (it->cmd.find("KILL ") < std::string::npos)
+				// ret = this->execKILL(it->cmd, it->id);
 			if (it->cmd.find("DIE") == 0)
 				ret = this->execDIE(it->cmd, it->id);
 			if (it->cmd.find("NOTICE") == 0)
@@ -157,19 +157,19 @@ unsigned int	User::userCommand(std::string prompt, unsigned int id){
 void			User::execLOG(std::string full_cmd, unsigned int id){
 	FINDUSER
 	
-	//std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\n"<< full_cmd << std::endl;
+	////std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\n"<< full_cmd << std::endl;
 	if (full_cmd.find("PASS ") < std::string::npos){
 		std::string cmd(full_cmd);
-		// std::cout << "-" << cmd << std::endl;
+		// //std::cout << "-" << cmd << std::endl;
 		while (cmd.find("PASS ") > 0)
 			cmd.erase(cmd.begin());
 		if (cmd.find("\r\n") < std::string::npos)
 			cmd.erase(cmd.begin() + cmd.find("\r\n"), cmd.end()); 
 		else
 			cmd.erase(cmd.begin() + cmd.find("\n"), cmd.end()); 
-		// std::cout << "-" << cmd << std::endl;
+		// //std::cout << "-" << cmd << std::endl;
 		cmd.erase(cmd.begin(), cmd.begin() + 5);
-		// std::cout << "-" << cmd << std::endl;
+		// //std::cout << "-" << cmd << std::endl;
 		//ALREADY_REGISTER
 		if (it->pareturn_string_ok == 1){
 			std::string rep = error_alreadyregistred();
@@ -181,7 +181,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 			send(id, rep.c_str(), rep.size(), 0);
 			return;
 		}
-		// std::cout << "=====" << this->_pass << "-" << cmd << std::endl;
+		// //std::cout << "=====" << this->_pass << "-" << cmd << std::endl;
 		if (cmd == this->_pass)
 			it->pareturn_string_ok = true;
 	}
@@ -263,7 +263,7 @@ void			User::execLOG(std::string full_cmd, unsigned int id){
 		std::string rep = rplwelcome(it->nick, it->name);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	// std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
+	// //std::cout << "\n" << full_cmd << "ID CLIENT :" << it->id  << "\nPASS :" << it->pareturn_string_ok << "\nNICK = " << it->nick << "\nUSER :" << it->name << "\nREAL_NAME :" << it->realname << "\n"<< std::endl;
 };
 
 void			User::execOPER(std::string cmd, unsigned int id){
@@ -301,7 +301,7 @@ void			User::execOPER(std::string cmd, unsigned int id){
 	}
 	catch (std::exception &e){/* std::cerr << e.what() << std::endl; */}
 	for (; iter != _operator.end(); iter++){
-		// std::cout << iter->first << " == " << cmd1 << " | " << iter->second << " == " << cmd2 << std::endl;
+		// //std::cout << iter->first << " == " << cmd1 << " | " << iter->second << " == " << cmd2 << std::endl;
 		if (!std::string(iter->first).compare(cmd1)) {
 			if (!std::string(iter->second).compare(cmd2)){
 				it->mode = "o";
@@ -418,24 +418,24 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 			key.push_back("__NOKEY__");
 	//AFFICHAGE_PARSING
 	for(int i = 0; i < (int)chan.size(); i++){
-		std::cout << "--" << chan[i] << std::endl;
+		//std::cout << "--" << chan[i] << std::endl;
 	}
 	for(int i = 0; i < (int)key.size(); i++)
-		std::cout << "==" << key[i] << std::endl;
+		//std::cout << "==" << key[i] << std::endl;
 
 	//JOIN_CHANNEL_OR_CREATE
 	for (int i = 0; i < (int)chan.size(); i++){
 		int j = -1;
-		// std::cout << "Join : " << i << std::endl;
+		// //std::cout << "Join : " << i << std::endl;
 		while (++j < NUMBER_CHANNEL_MAX) {
 			if (_channel[j].getName() == chan[i]){
-				// std::cout << "Find channel :" << chan[i] << " " << _channel[j].getName() << std::endl;
+				// //std::cout << "Find channel :" << chan[i] << " " << _channel[j].getName() << std::endl;
 				break;
 			}
 		}
 		if (j < NUMBER_CHANNEL_MAX - 1){ //FIND_THE_CHANNEL
 			int ret = _channel[j].join(it->id, it->nick, key[j], it, this->_user);
-			// std::cout << "Code : " << ret << std::endl;
+			// //std::cout << "Code : " << ret << std::endl;
 			std::string rep;
 			switch (ret)
 			{
@@ -459,7 +459,7 @@ void			User::execJOIN(std::string cmd, unsigned int id){
 				break;
 			default:
 				//RET 0 = USER_JOIN_CHANNEL
-				// std::cout << "Find channel : " << _channel[j].getName() << std::endl;
+				// //std::cout << "Find channel : " << _channel[j].getName() << std::endl;
 				// rep = rpljoin(it->nick, it->name, chan[i]);
 				// send(id, rep.c_str(), rep.size(), 0);
 				if (_channel[j].istopic() == true){ //RPL_TOPIC
@@ -555,7 +555,7 @@ void			User::execPART(std::string cmd, unsigned int id){
 	}
 	//AFFICHAGE_PARSING
 	// for(int i = 0; i < (int)chan.size(); i++){
-		// std::cout << "--" << chan[i] << std::endl;
+		// //std::cout << "--" << chan[i] << std::endl;
 	// }
 }
 
@@ -614,7 +614,7 @@ void			User::execPRIVMSGC(std::string cmd, unsigned int id){
 		iter++;
 		message.erase(message.begin(), iter);
 	}
-	// std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
+	// //std::cout << "MSG in channel : " << channel << "\nMessage :" << message << std::endl;
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++){
 		if (_channel[i].getName() == channel && !_channel[i].userIsMute(id)) {
 			std::string rep;
@@ -687,7 +687,7 @@ void			User::execPRIVMSGU(std::string cmd, unsigned int id){
 		std::string rep = error_nosuchnick(user);
 		send(id, rep.c_str(), rep.size(), 0);
 	}
-	// std::cout << "Message prive pour :" << user << "\nLe message est " << message << std::endl;
+	// //std::cout << "Message prive pour :" << user << "\nLe message est " << message << std::endl;
 };
 
 void			User::execKICK(std::string cmd, unsigned int id){
@@ -739,9 +739,9 @@ void			User::execKICK(std::string cmd, unsigned int id){
 		user.erase(iter3, user.end());
 		reason.clear();
 	}
-	// std::cout << "Channel :" << channel << std::endl;
-	// std::cout << "User :" << user << std::endl;
-	// std::cout << "Reason :" << reason << std::endl;
+	// //std::cout << "Channel :" << channel << std::endl;
+	// //std::cout << "User :" << user << std::endl;
+	// //std::cout << "Reason :" << reason << std::endl;
 	if (it->is_operator == false) {
 		std::string rep = error_chanoprivsneeded(channel);
 		send(id, rep.c_str(), rep.size(), 0);
@@ -759,7 +759,7 @@ void			User::execKICK(std::string cmd, unsigned int id){
 		return ;
 	}
 	for (int i = 0; i < NUMBER_CHANNEL_MAX; i++) {
-		// std::cout << _channel[i].getName() << " " << channel << std::endl;
+		// //std::cout << _channel[i].getName() << " " << channel << std::endl;
 		if (_channel[i].getName() == channel){
 			int ret = _channel[i].userKick(iter->id, id, user, reason, rplpart(iter->nick, iter->name, _channel[i].getName()));
 			if (ret == 1){
@@ -787,7 +787,7 @@ unsigned int	User::execKILL(std::string cmd, unsigned int id){
 
 	int ret = 999;
 	if (nb_cmd < 3) {
-		std::string rep = error_needmoreparams("KICK");
+		std::string rep = error_needmoreparams("KILL");
 		send(id, rep.c_str(), rep.size(), 0);
 		return ret;
 	}
@@ -817,7 +817,7 @@ unsigned int	User::execKILL(std::string cmd, unsigned int id){
 		std::string rep = rplkill(iter->nick, reason);
 		send(id, rep.c_str(), rep.size(), 0);
 		send(iter->id, rep.c_str(), rep.size(), 0);
-		// std::cout << "Close de l'user : " << iter->nick << " " << ret << std::endl;
+		// //std::cout << "Close de l'user : " << iter->nick << " " << ret << std::endl;
 		this->disconectUser(ret);
 		return (ret);
 	}
@@ -862,7 +862,7 @@ void			User::execMODE(std::string cmd, unsigned int id){
 	//FIND_USER_ID
 	std::vector<t_user>::iterator it2 = _user.begin();
 	while (it2 != _user.end()){ 
-		// std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
+		// //std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
 		if (it2->nick.find(user) != std::string::npos && it2->nick.size() - 2 < user.size()){ 
 			break; 
 		} 
@@ -894,7 +894,7 @@ void			User::execMODE(std::string cmd, unsigned int id){
 		return ;		
 	}
 	////////////////////////////////////////////////////////////
-	std::cout << channel << " " << oper << " " << user << std::endl;
+	//std::cout << channel << " " << oper << " " << user << std::endl;
 	// _channel[idx].printOperator();
 	if (oper.find("+o") == 0)
 		execMODEO(it, it2, &_channel[idx]);
@@ -912,13 +912,15 @@ void			User::execMODE(std::string cmd, unsigned int id){
 		execMODEMM(it, it2, &_channel[idx]);
 	else if (oper.find("i") == 0 || oper.find("+v") == 0)
 		execMODEI(it, it2, &_channel[idx], user);
-	else 
-		std::cout << "NO" << std::endl;
+	else {
+		std::string rep = error_unknowcommand(oper);
+		send(id, rep.c_str(), rep.size(), 0);
+	}
 
 };
 
 void			User::execMODEO(std::vector<t_user>::iterator it, std::vector<t_user>::iterator it2, Channel *channel){
-		// std::cout << "trigger is : " << it->id << " victim is : " << it2->id << std::endl;
+		// //std::cout << "trigger is : " << it->id << " victim is : " << it2->id << std::endl;
 	if (!channel->userIsOperator(it->id)){
 		std::string rep = error_noprivileges2("MODE");
 		send(it->id, rep.c_str(), rep.size(), 0);
@@ -1031,7 +1033,7 @@ void			User::execINVITE(std::string cmd, unsigned int id){
 	//FIND_CHANNEL
 	int idx = -1;
 	while (++idx < NUMBER_CHANNEL_MAX - 1){
-		// std::cout << _channel[idx].getName() << channel << std::endl;
+		// //std::cout << _channel[idx].getName() << channel << std::endl;
 		if (_channel[idx].getName() == channel)
 			break;
 	}
@@ -1052,7 +1054,7 @@ void			User::execINVITE(std::string cmd, unsigned int id){
 	//FIND_USER_ID
 	std::vector<t_user>::iterator it2 = _user.begin();
 	while (it2 != _user.end()){ 
-		// std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
+		// //std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
 		if (it2->nick.find(user) != std::string::npos && it2->nick.size() - 1 < user.size()){ 
 			break; 
 		} 
@@ -1098,12 +1100,12 @@ void			User::execNOTICE(std::string cmd, unsigned int id){
 	user.clear(); user = tmp;
 	getline(ss, message, '\n');
 	message.erase(0, 1);
-	std::cout << user << " " << message << std::endl;
+	//std::cout << user << " " << message << std::endl;
 	////////////////////////////////////////////////////////////
 	//FIND_USER_ID
 	std::vector<t_user>::iterator it2 = _user.begin();
 	while (it2 != _user.end()){ 
-		// std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
+		// //std::cout << it2->nick << " " << user << " " << it2->nick.find(user) << std::endl;
 		if (it2->nick.find(user) != std::string::npos && it2->nick.size() - 1 < user.size()){ 
 			break; 
 		} 

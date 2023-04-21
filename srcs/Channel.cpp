@@ -34,10 +34,10 @@ Channel		   &Channel::operator=(const Channel &copy) {
 //RET 3 = USER_BANNED_FORM_CHANNEL
 //RET 4 = USER_ALREADY_IN_CHANNEL
 int				Channel::join(unsigned int id, std::string nick, std::string key, std::vector<t_user>::iterator the, std::vector<t_user>& Users){
-	// std::cout<< "channel join " << std::endl;
+	// //std::cout<< "channel join " << std::endl;
 	if (_use_key == true)
 	{
-		// std::cout << "-=-=-" << key << " " << _key << std::endl;
+		// //std::cout << "-=-=-" << key << " " << _key << std::endl;
 		if (key != _key)
 			return (1);
 	}
@@ -49,7 +49,7 @@ int				Channel::join(unsigned int id, std::string nick, std::string key, std::ve
 	}
 	std::vector<std::string>::iterator it3 = _banned_user.begin();
 	for (; it3 != _banned_user.end(); it3++) {
-		// std::cout << *it3 << " - " << nick << std::endl;
+		// //std::cout << *it3 << " - " << nick << std::endl;
 		if (*it3 == nick)
 			return (3);
 		}
@@ -76,7 +76,7 @@ int				Channel::join(unsigned int id, std::string nick, std::string key, std::ve
 	}
 	
 	// -----
-	// std::cout<< "OK join" << std::endl;
+	// //std::cout<< "OK join" << std::endl;
 	return (0);
 };
 
@@ -91,7 +91,7 @@ int				Channel::initChannel(unsigned int id, std::string channel_name, std::stri
 	_current_user.clear();
 	_current_user.push_back(id);
 	_operator.push_back(id);
-	// std::cout << "Channel created\nNAME : " << channel_name <<  "\nKEY : " << channel_key << std::endl;
+	// //std::cout << "Channel created\nNAME : " << channel_name <<  "\nKEY : " << channel_key << std::endl;
 	return (0);
 };
 
@@ -106,8 +106,10 @@ int				Channel::userLeave(unsigned int id, std::string rep){
 	}
 	if (it == _current_user.end())
 		return 1;
-	for (size_t i = 0; i < _current_user.size(); i++)
-		send(_current_user[i], rep.c_str(), rep.size(), 0);
+	if (_current_user.size() > 1) {
+		for (size_t i = 0; i < _current_user.size(); i++)
+			send(_current_user[i], rep.c_str(), rep.size(), 0);
+	}
 	_current_user.erase(it);
 	return 0;
 };
@@ -119,13 +121,13 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 	int user_in = 0;
 	
 	while (itin != _current_user.end()){
-		// std::cout << "user :" <<  *itin << std::endl;
+		// //std::cout << "user :" <<  *itin << std::endl;
 		itin++;
 	}
 	// this->checkMU();
 	// itin = _current_user.begin();
 	// while (itin != _current_user.end()){
-	// 	std::cout << "user :" <<  *itin << std::endl;
+	// 	//std::cout << "user :" <<  *itin << std::endl;
 	// 	itin++;
 	// }
 	itin = _current_user.begin();
@@ -134,13 +136,13 @@ int				Channel::sendMessage(std::string message ,std::string nick,std::string na
 			user_in = 1;
 		itin++;
 	}
-	// std::cout << "User in :" << user_in << std::endl;
+	// //std::cout << "User in :" << user_in << std::endl;
 	if (!user_in)
 		return (1);
 	while (it != _current_user.end()){
 		if (*it != id_s && *it != 99999){
 			std::string rep = rpl(nick, this->getName(), name, message);
-			// std::cout << "Message send to :" << *it << "\n" << rep << std::endl;
+			// //std::cout << "Message send to :" << *it << "\n" << rep << std::endl;
 			send(*it, rep.c_str(), rep.size(), 0);
 		}
 		it++;
@@ -152,11 +154,11 @@ int				Channel::userDisconnect(unsigned int id, std::string rep){
 	{
 		std::vector<unsigned int>::iterator it = _current_user.begin();
 
-		// std::cout << "UI " << _current_user.size() << " id : " << id << std::endl;
+		// //std::cout << "UI " << _current_user.size() << " id : " << id << std::endl;
 		if (_current_user.size() < 1)
 			return (0);
 		while (it != _current_user.end()){
-			// std::cout << this->_name << *it << std::endl;
+			// //std::cout << this->_name << *it << std::endl;
 			if (*it == id){
 				this->userLeave(id, rep);
 				//_current_user.erase(it);
@@ -252,7 +254,7 @@ void			Channel::checkMU(){
 	std::vector<unsigned int>::iterator it = _current_user.begin();
 	for (;it != _current_user.end(); it++) {
 		std::vector<unsigned int>::iterator it2 = _current_user.begin();
-		// std::cout << *it << " at " << &it << "\n" << *it2 << " at " << &it2 << std::endl;
+		// //std::cout << *it << " at " << &it << "\n" << *it2 << " at " << &it2 << std::endl;
 		while (it2 != _current_user.end()) {
 			if (*it == *it2 && it != it2){
 				_current_user.erase(it2);
@@ -287,7 +289,7 @@ int				Channel::setOperator(unsigned int id, std::string channel, std::string us
 	std::vector<unsigned int>::iterator it = _operator.begin();
 	while (it != _operator.end()){
 		if (*it == id){
-			std::cout << "Already OP" << std::endl;
+			//std::cout << "Already OP" << std::endl;
 			return (2);
 		}
 		it++;
@@ -313,12 +315,12 @@ int				Channel::unsetOperator(unsigned int id, std::string channel, std::string 
 
 void			Channel::printOperator(void) {
 	std::vector<unsigned int>::iterator it = _operator.begin();
-	std::cout << "---------------\nOperator :" << std::endl;
+	//std::cout << "---------------\nOperator :" << std::endl;
 	while (it != _operator.end()){
-		std::cout << *it << std::endl;
+		//std::cout << *it << std::endl;
 		it++;
 	}
-	std::cout << "---------------" <<std::endl;
+	//std::cout << "---------------" <<std::endl;
 }
 
 void			Channel::notifIsOperator(std::string channel, std::string user) {

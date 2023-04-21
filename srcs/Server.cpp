@@ -46,12 +46,12 @@ int	Server::CreateServer()
 	tempFd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (tempFd == -1)
 	{
-		std::cout << "\033[31m" << "error : during creation" << "\033[0" << std::endl;
+		//std::cout << "\033[31m" << "error : during creation" << "\033[0" << std::endl;
 		return -2;
 	}
 	if (setsockopt(tempFd, SOL_SOCKET, SO_REUSEADDR, (char *)&on, sizeof(on)) == -1)
 	{
-		std::cout << "\033[31m" << "error : during settings" << "\033[0" << std::endl;
+		//std::cout << "\033[31m" << "error : during settings" << "\033[0" << std::endl;
 		return -1;
 	}
 	_socketFd = tempFd;
@@ -61,19 +61,19 @@ int	Server::CreateServer()
 	_addr.sin_port = htons(_port);
 	if (bind(_socketFd, (struct sockaddr *)&_addr, sizeof(_addr)) == -1)
 	{
-		std::cout << "\033[31m" << "error : during binding IP" << "\033[0" << std::endl;
+		//std::cout << "\033[31m" << "error : during binding IP" << "\033[0" << std::endl;
 		return -1;
 	}
 	if (listen(_socketFd, BACKLOG) == -1)
 	{
-		std::cout << "\033[31m" << "error : during starting to listen" << "\033[0" << std::endl;
+		//std::cout << "\033[31m" << "error : during starting to listen" << "\033[0" << std::endl;
 		return -1;
 	}
 	struct pollfd tmp;
 	tmp.fd = tempFd;
 	tmp.events = POLLIN;
 	_fds.push_back(tmp);
-	//std::cout << _fds[0].fd << std::endl;
+	////std::cout << _fds[0].fd << std::endl;
 	_timeout = (1000 * 60 * TIMEOUT_M + TIMEOUT_S * 1000);
 	fcntl(this->_socketFd, 4, O_NONBLOCK);
 	return (1);
@@ -99,7 +99,7 @@ int	Server::StartServer(User &user){
 					continue;
 				if (this->_fds[i].revents == 17) {
 					std::cout << "User disconect" << std::endl;// : " << fds[i].fd << std::endl;
-				} else if (this->_fds[i].revents != POLLIN && _fds[i].revents != 32){
+				} else if (this->_fds[i].revents != POLLIN && _fds[i].revents != 32 ){
 					std::cout << "Error ! revents = " << this->_fds[i].revents << std::endl;
 					this->_ON = false;
 					break ;
@@ -119,7 +119,7 @@ int	Server::StartServer(User &user){
 							}
 							break ;
 						}
-						std::cout << "New incoming connection : " << new_sd << std::endl;
+						std::cout << "New incoming connection " << std::endl; // << new_sd << std::endl;
 						struct pollfd	newpollfd;
 						newpollfd.fd = new_sd;
 						newpollfd.events = POLLIN;
@@ -129,7 +129,7 @@ int	Server::StartServer(User &user){
 				}
 				else if (_fds[i].revents != 32)
 				{
-					std::cout << "Descriptor is readable : " << this->_fds[i].fd << std::endl;
+					std::cout << "Descriptor is readable" << std::endl; // << this->_fds[i].fd << std::endl;
 					int	close_conn = false;
 					char	buffer[2000];
 					char	*tmp;
